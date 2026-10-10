@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Factory</title>
+<style>
+  :root {
+    --bg: #f6f6f4; --panel: #ffffff; --line: #e4e4df; --text: #1f1f1c; --muted: #7a7a72;
+    --pass: #2e8b57; --pass-bg: #e3f3ea; --changes: #c2452d; --changes-bg: #fbe7e2;
+    --human: #b7791f; --human-bg: #fdf3dc; --accent: #3b5bdb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #151514; --panel: #1f1f1d; --line: #33332f; --text: #ecece6; --muted: #96968c;
+      --pass: #5fc08a; --pass-bg: #1d3327; --changes: #f0806a; --changes-bg: #3d211b;
+      --human: #e6b455; --human-bg: #3a2e14; --accent: #8fa4ff;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  code, pre, .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+
+  header { display: flex; align-items: baseline; gap: 12px; padding: 20px 24px 8px; }
+  h1 { font-size: 17px; margin: 0; font-weight: 650; }
+  #status { color: var(--muted); font-size: 12px; }
+  #status::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+                    background: var(--pass); margin-right: 6px; }
+  #status.off::before { background: var(--changes); }
+
+  #board { display: grid; grid-template-columns: repeat(6, minmax(190px, 1fr)); gap: 12px;
+           padding: 12px 24px 32px; overflow-x: auto; align-items: start; }
+  .col { min-height: 120px; }
+  .col h2 { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+            margin: 0 0 10px; font-weight: 600; display: flex; justify-content: space-between; }
+  .col.human h2 { color: var(--human); }
+  .empty { border: 1px dashed var(--line); border-radius: 8px; height: 56px; }
+
+  .card { width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer;
+          background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+          padding: 12px; margin-bottom: 10px; display: block; }
+  .card:hover, .card:focus-visible { border-color: var(--accent); outline: none; }
+  .card.human { border-color: var(--human); background: var(--human-bg);
+                box-shadow: 0 0 0 3px color-mix(in srgb, var(--human) 22%, transparent); }
+  .card.merged { opacity: .7; }
+  .title { font-weight: 600; }
+  .id, .note, .hint { color: var(--muted); font-size: 12px; }
+  .id { margin-bottom: 2px; }
+  .note { margin-top: 8px; }
+  .card.human .note { color: var(--text); }
+  .hint { margin-top: 6px; }
+
+  .round { display: flex; align-items: center; gap: 4px; margin-top: 8px; }
+  .round .n { width: 22px; color: var(--muted); font-size: 11px; }
+  .chip { flex: 1; text-align: center; font-size: 10.5px; padding: 2px 0; border-radius: 4px;
+          border: 1px dashed var(--line); color: var(--muted); white-space: nowrap; }
+  .chip.PASS { background: var(--pass-bg); color: var(--pass); border: 1px solid transparent; font-weight: 600; }
+  .chip.CHANGES { background: var(--changes-bg); color: var(--changes); border: 1px solid transparent; font-weight: 600; }
+  .chip.live { animation: pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity: .35; } }
+  @media (prefers-reduced-motion: reduce) { .chip.live { animation: none; } }
+
+  #none { padding: 48px 24px; color: var(--muted); }
+
+  dialog { width: min(860px, 94vw); height: min(80vh, 760px); padding: 0; border: 1px solid var(--line);
+           border-radius: 10px; background: var(--panel); color: var(--text); }
+  dialog[open] { display: flex; flex-direction: column; }
+  dialog::backdrop { background: rgba(0, 0, 0, .45); }
+  .dhead { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px 10px; }
+  .dhead b { font-size: 15px; }
+  .x { background: none; border: 0; color: var(--muted); font-size: 20px; cursor: pointer; line-height: 1; }
+  #tabs { display: flex; flex-wrap: wrap; gap: 4px; padding: 0 18px 10px; border-bottom: 1px solid var(--line); }
+  #tabs button { font: inherit; font-size: 12px; padding: 3px 9px; border-radius: 5px; cursor: pointer;
+                 border: 1px solid var(--line); background: none; color: var(--muted); }
+  #tabs button[aria-selected="true"] { background: var(--text); color: var(--panel); border-color: var(--text); }
+  #tabs .sep { color: var(--muted); font-size: 11px; align-self: center; margin: 0 2px 0 8px; }
+  #doc { overflow: auto; padding: 6px 22px 24px; flex: 1; }
+  #doc h1 { font-size: 18px; } #doc h2 { font-size: 15px; margin-top: 22px; } #doc h3, #doc h4 { font-size: 14px; }
+  #doc pre { background: var(--bg); padding: 10px 12px; border-radius: 6px; overflow-x: auto; font-size: 12.5px; }
+  #doc code { background: var(--bg); padding: 1px 4px; border-radius: 3px; font-size: 12.5px; }
+  #doc pre code { padding: 0; }
+  #doc .verdict { display: inline-block; font-weight: 700; padding: 3px 10px; border-radius: 5px; margin-top: 14px; }
+  #doc .verdict.good { background: var(--pass-bg); color: var(--pass); }
+  #doc .verdict.bad { background: var(--changes-bg); color: var(--changes); }
+  #doc .verdict.human { background: var(--human-bg); color: var(--human); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Software Factory</h1>
+  <span id="status">connecting</span>
+</header>
+<main id="board"></main>
+<div id="none" hidden>No jobs yet. Run <code>/factory &lt;feature&gt;</code> in Claude Code to start one.</div>
+
+<dialog id="dlg">
+  <div class="dhead"><b id="dtitle"></b><button class="x" aria-label="Close" onclick="dlg.close()">×</button></div>
+  <div id="tabs" role="tablist"></div>
+  <div id="doc"></div>
+</dialog>
+
+<script>
+const STAGES = [
+  ['spec', 'Spec'], ['build', 'Build'], ['review', 'Review'],
+  ['approve', 'Approve'], ['merged', 'Merged'], ['needs-human', 'Needs human'],
+];
+const REVIEWERS = ['security', 'ux', 'ui', 'code'];
+const POLL_MS = 2000;
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const getText = async path => {
+  const r = await fetch(path, { cache: 'no-store' });
+  return r.ok ? r.text() : null;
+};
+
+let jobs = [], lastBoard = '';
+const past = new Map();   // "<job-id>/<round>" -> verdicts of a finished round, read from its review files
+
+// Earlier rounds are not in board.json; their verdicts are the first line of each review file.
+async function loadPastRound(id, n) {
+  const key = id + '/' + n;
+  if (past.has(key)) return;
+  past.set(key, null);
+  const v = {};
+  await Promise.all(REVIEWERS.map(async r => {
+    const t = await getText(`jobs/${id}/round-${n}/review-${r}.md`);
+    v[r] = (t && t.match(/^\s*VERDICT:\s*(PASS|CHANGES)/) || [])[1] || 'pending';
+  }));
+  if (REVIEWERS.every(r => v[r] !== 'pending')) { past.set(key, v); render(); }
+  else past.delete(key);   // not all readable yet, try again on the next poll
+}
+
+function roundRow(n, verdicts, live) {
+  const chips = REVIEWERS.map(r => {
+    const v = (verdicts && verdicts[r]) || 'pending';
+    const cls = v === 'pending' ? (live ? 'live' : '') : v;
+    return `<span class="chip ${cls}" title="${r}: ${esc(v)}">${r}</span>`;
+  }).join('');
+  return `<div class="round"><span class="n">R${n}</span>${chips}</div>`;
+}
+
+function card(j) {
+  let rounds = '';
+  for (let n = 1; n <= (j.round || 0); n++) {
+    const current = n === j.round;
+    if (!current) loadPastRound(j.id, n);
+    rounds += roundRow(n, current ? j.reviews : past.get(j.id + '/' + n), current && j.stage === 'review');
+  }
+  const human = j.stage === 'needs-human';
+  return `<button class="card ${human ? 'human' : ''} ${j.stage === 'merged' ? 'merged' : ''}" data-id="${esc(j.id)}">
+    <div class="id mono">${esc(j.id)}</div>
+    <div class="title">${esc(j.title || j.id)}</div>
+    ${rounds}
+    ${j.note ? `<div class="note">${esc(j.note)}</div>` : ''}
+    ${human ? `<div class="hint mono">/factory approve ${esc(j.id)}</div>` : ''}
+  </button>`;
+}
+
+function render() {
+  $('none').hidden = jobs.length > 0;
+  $('board').hidden = jobs.length === 0;
+  $('board').innerHTML = STAGES.map(([key, label]) => {
+    const mine = jobs.filter(j => j.stage === key);
+    return `<section class="col ${key === 'needs-human' ? 'human' : ''}">
+      <h2><span>${label}</span><span>${mine.length || ''}</span></h2>
+      ${mine.map(card).join('') || '<div class="empty"></div>'}
+    </section>`;
+  }).join('');
+}
+
+async function poll() {
+  try {
+    const text = await getText('board.json');
+    if (text === null) throw new Error('board.json not found');
+    if (text !== lastBoard) {
+      jobs = JSON.parse(text).jobs || [];   // a half-written file throws here and is retried
+      lastBoard = text;
+      render();
+    }
+    $('status').textContent = 'live';
+    $('status').className = '';
+  } catch (e) {
+    $('status').textContent = location.protocol === 'file:'
+      ? 'open this through python3 -m http.server, not as a file' : 'waiting for board.json';
+    $('status').className = 'off';
+  }
+}
+
+// ---- job detail: the markdown files of one job ----
+
+async function openJob(id) {
+  const j = jobs.find(x => x.id === id);
+  if (!j) return;
+  const files = [['spec', 'spec.md'], ['build', 'build.md']];
+  for (let n = 1; n <= (j.round || 0); n++)
+    for (const r of REVIEWERS) files.push([r, `round-${n}/review-${r}.md`, n]);
+  files.push(['decision', 'decision.md']);
+
+  $('dtitle').textContent = `${j.id}  ·  ${j.branch || ''}`;
+  $('tabs').innerHTML = '';
+  $('doc').innerHTML = '<p class="note">Loading…</p>';
+  if (!$('dlg').open) $('dlg').showModal();
+
+  const found = (await Promise.all(files.map(async f => [f, await getText(`jobs/${id}/${f[1]}`)])))
+    .filter(([, text]) => text !== null);
+  if (!found.length) { $('doc').innerHTML = '<p class="note">No files written yet.</p>'; return; }
+
+  let lastRound = 0;
+  found.forEach(([[label, path, n], text], i) => {
+    if (n && n !== lastRound) {
+      $('tabs').insertAdjacentHTML('beforeend', `<span class="sep">R${n}</span>`);
+      lastRound = n;
+    }
+    const b = document.createElement('button');
+    b.textContent = label; b.title = path; b.setAttribute('role', 'tab');
+    b.onclick = () => {
+      for (const t of $('tabs').querySelectorAll('button')) t.setAttribute('aria-selected', t === b);
+      $('doc').innerHTML = markdown(text);
+      $('doc').scrollTop = 0;
+    };
+    $('tabs').append(b);
+    if (i === found.length - 1) b.click();   // open on the newest file
+  });
+}
+
+// Small markdown renderer: headings, lists, code blocks, inline code, bold, italics.
+function markdown(src) {
+  const inline = s => esc(s)
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|[\s(])\*([^*\s][^*]*)\*/g, '$1<em>$2</em>');
+  const out = [];
+  let para = [], list = null, code = null;
+  const endPara = () => { if (para.length) { out.push(`<p>${inline(para.join(' '))}</p>`); para = []; } };
+  const endList = () => { if (list) { out.push(`</${list}>`); list = null; } };
+
+  src.replace(/\r/g, '').split('\n').forEach((line, i) => {
+    let m;
+    if (code) {
+      if (/^\s*```/.test(line)) { out.push(`<pre><code>${esc(code.join('\n'))}</code></pre>`); code = null; }
+      else code.push(line);
+    } else if (/^\s*```/.test(line)) { endPara(); endList(); code = []; }
+    else if (i === 0 && (m = line.match(/^(VERDICT:\s*)?(PASS|CHANGES|APPROVE|ESCALATE)\b/))) {
+      const kind = { PASS: 'good', APPROVE: 'good', CHANGES: 'bad', ESCALATE: 'human' }[m[2]];
+      out.push(`<div class="verdict ${kind}">${esc(line)}</div>`);
+    }
+    else if ((m = line.match(/^(#{1,4})\s+(.*)/))) {
+      endPara(); endList();
+      out.push(`<h${m[1].length}>${inline(m[2])}</h${m[1].length}>`);
+    }
+    else if ((m = line.match(/^\s*([-*]|\d+[.)])\s+(.*)/))) {
+      endPara();
+      const tag = /\d/.test(m[1]) ? 'ol' : 'ul';
+      if (list !== tag) { endList(); out.push(`<${tag}>`); list = tag; }
+      out.push(`<li>${inline(m[2]).replace(/^\[ \]/, '☐').replace(/^\[x\]/i, '☑')}</li>`);
+    }
+    else if (!line.trim()) { endPara(); endList(); }
+    else if (list && /^\s+/.test(line)) { out.push(inline(' ' + line.trim())); }   // list item continues
+    else { endList(); para.push(line.trim()); }
+  });
+  if (code) out.push(`<pre><code>${esc(code.join('\n'))}</code></pre>`);
+  endPara(); endList();
+  return out.join('\n');
+}
+
+$('board').addEventListener('click', e => {
+  const c = e.target.closest('.card');
+  if (c) openJob(c.dataset.id);
+});
+$('dlg').addEventListener('click', e => { if (e.target === $('dlg')) $('dlg').close(); });
+
+poll();
+setInterval(poll, POLL_MS);
+</script>
+</body>
+</html>
