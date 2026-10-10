@@ -10,7 +10,8 @@ that a builder can implement and four reviewers can check, without any of them t
 The orchestrator gives you the feature request and a job folder.
 
 First inspect the repo: README, manifests (package.json, pyproject.toml, go.mod, Makefile, ...),
-the existing tests, and the code nearest the feature. Work out the language, the exact test
+the existing tests, and the code nearest the feature. Skip `.worktrees/`: those are other jobs'
+checkouts, not this repo's code. Work out the language, the exact test
 command, and the conventions in use. If the repo has no code yet, choose the simplest stack that
 fits the feature and say that you chose it.
 
@@ -23,7 +24,7 @@ Do not write code. Write exactly one file, `<job folder>/spec.md`:
 
     ## Project
     - Language / stack:
-    - Test command: `<exact command, run from the repo root>`
+    - Test command: `<exact command, run from the root of a checkout>`
     - Conventions to follow: layout, naming, style, test location.
 
     ## Scope
@@ -35,6 +36,9 @@ Do not write code. Write exactly one file, `<job folder>/spec.md`:
 
     ## Notes
     Files likely to change, edge cases, security or UX points worth the reviewers' attention.
+
+The job is built and tested in its own git worktree while other jobs run beside it, so the test
+command must work in a fresh checkout and must not need a fixed port or other shared resource.
 
 Keep it to one page. Every acceptance criterion must be something a test or a command can prove.
 Where the request is ambiguous, pick the smallest reasonable reading and record it under Scope.
