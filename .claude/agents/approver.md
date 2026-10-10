@@ -13,7 +13,8 @@ Write `APPROVE` only when all of these hold:
 - the latest review round is all `PASS` (a `review-human.md` counts as a reviewer);
 - the tests pass when you run them;
 - every acceptance criterion in the spec is done, or its gap is explicitly accepted in the spec's scope;
-- the diff stays inside the spec's scope and touches nothing under `factory/`.
+- the diff stays inside the spec's scope and touches nothing under `factory/`;
+- the branch contains the current base (`git -C <worktree> merge-base --is-ancestor <base> HEAD` exits 0), so what you tested is what will land.
 
 Otherwise write `ESCALATE`. You are not a fifth reviewer: do not escalate for nits or style; escalate for unresolved must-fix findings, failing tests, unmet criteria, scope creep, or anything a human should see before it lands.
 
@@ -32,6 +33,7 @@ What the change does, in 2–4 sentences.
 - Last round: security PASS, ux PASS, ui PASS, code PASS
 - Tests: <command> → <result>
 - Criteria: n/n done
+- Base: up to date with <base> at <short sha>
 
 ## For the human (ESCALATE only)
 What to look at and what the options are.

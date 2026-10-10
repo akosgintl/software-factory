@@ -15,7 +15,7 @@
   header h1 { margin: 0; font-size: 17px; font-weight: 600; }
   header .meta { color: var(--muted); font-size: 12px; }
   header .meta.err { color: var(--changes); }
-  .board { display: grid; grid-template-columns: repeat(6, minmax(190px, 1fr)); gap: 12px; padding: 16px 24px; overflow-x: auto; }
+  .board { display: grid; grid-template-columns: repeat(7, minmax(170px, 1fr)); gap: 12px; padding: 16px 24px; overflow-x: auto; }
   .col h2 { margin: 0 0 10px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; }
   .col h2 b { color: var(--text); font-weight: 500; }
   .col.human h2 { color: var(--human); }
@@ -71,7 +71,7 @@
 
 <script>
 const STAGES = [
-  ['spec', 'Spec'], ['build', 'Build'], ['review', 'Review'],
+  ['spec', 'Spec'], ['build', 'Build'], ['review', 'Review'], ['sync', 'Sync'],
   ['approve', 'Approve'], ['merged', 'Merged'], ['needs-human', 'Needs human'],
 ];
 const $ = (id) => document.getElementById(id);
