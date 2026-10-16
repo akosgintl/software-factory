@@ -125,3 +125,13 @@ túl tág volt, egy jó Scrum-csapat is belefért.
   módosítható.
 - 💭 Nyitott: egy nagy PR többet változtathat, mint amit az AC-k leírnak. Pótlék lehet a scope
   conformance ellenőrzés.
+
+---
+
+## Folytatás: kérdések rendezése, scope conformance
+
+- Lezártunk négy kérdést, amelyekre az álláspontok már válaszoltak (metafora, bizalom mérése, mi
+  helyettesíti a code review-t). A lezártak a `questions.md` aljára kerültek.
+- 🔍 A super-review már tud scope conformance-t: *Scope drift* találati osztály, AC-t olvas a Builder
+  beszámolója előtt, a mellékesen észrevett refaktor a Backlogba kerül. Ellentmondás: AC-vel
+  rendelkező refaktor-kártya egyenesen a Ready oszlopba mehet, kikerülve a K1-et.

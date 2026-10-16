@@ -39,3 +39,10 @@ git show <branch>:<útvonal>              # egy fájl tartalma
 - 🔍 **super-board és a 0004** (2026-10-16): a kemény kategóriákból money, auth és schema megvan.
   A 400 soros küszöb ellentétes a 0004-gyel. Hiányzik: visszavonhatóság, fan-in alapú hatókör, új
   függőség, bizonyíték-lefedettség, előélet, mintavételezés.
+- 🔍 **super-board, scope conformance** (2026-10-16, `staging`): a `super-review` a diffet és az AC-ket
+  a Builder beszámolója *előtt* olvassa, és saját hipotézist ír. A találatok osztályai között van
+  *Scope drift* (a diff olyat változtat, amit a kártya nem kért) és *Over-engineering*. A review
+  közben észrevett refaktor külön kártya lesz a Backlog oszlopban, nem a Ready-ben, mert „senki nem
+  nézte, és nincs AC-je” (`bin/super-review-file-refactor.sh`). Ellentmondás: ha a reviewer AC-t is
+  ír a kártyához, az egyenesen a Ready oszlopba kerül (`super-review/SKILL.md`), vagyis kikerüli
+  az emberi K1-et.
