@@ -1,0 +1,11 @@
+name: "Skills: update a pack"
+command: 'python3 scripts/warp-skills.py update {{source}} {{ref}} && git diff --stat -- vendor/warp-skills'
+description: Re-vendor one skill pack from GitHub (latest, or a given commit), then show what changed. Review the diff before committing.
+tags: ["skills"]
+arguments:
+  - name: source
+    description: "common-skills | oz-skills | oz-for-oss"
+    default_value: common-skills
+  - name: ref
+    description: Commit or tag (empty = latest)
+    default_value: ""

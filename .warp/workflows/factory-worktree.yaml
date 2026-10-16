@@ -1,0 +1,11 @@
+name: "Factory: new job worktree"
+command: 'git worktree add .worktrees/{{job}} -b factory/{{job}} {{base}} && cd .worktrees/{{job}}'
+description: Create a branch and worktree for one factory job, the way the factory-local skill does.
+tags: ["factory", "git"]
+arguments:
+  - name: job
+    description: Job id, e.g. 20261016-1200-add-contributing
+    default_value: ""
+  - name: base
+    description: Base branch
+    default_value: warpdotdev-factory

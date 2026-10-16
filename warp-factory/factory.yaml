@@ -1,0 +1,18 @@
+schemaVersion: v1alpha1
+name: software-factory
+description: >-
+  Warp's issue-to-PR factory (warp-factory-examples 02-sdlc-issue-to-pr),
+  pointed at akosgintl/software-factory: intake from Slack, Linear, and
+  GitHub; triage; optional spec; implementation; adversarial review; a human
+  merge. A custom agent builds an iOS app on macOS when one is attached.
+alias: SoftwareFactory
+credentialStrategy: EXECUTOR
+repositories:
+  - owner: akosgintl
+    name: software-factory
+integrations:
+  - type: slack
+  - type: linear
+agentDefaults:
+  model: auto
+  runner: linux-standard

@@ -1,0 +1,54 @@
+# Vendored Warp skill packs. Managed with scripts/warp-skills.py.
+#
+# Each source is copied verbatim from its GitHub repo at `sha` into
+# vendor/warp-skills/<source>/. Enabled skills are exposed to Warp (and to any
+# agent that reads .agents/skills) as symlinks in .agents/skills/<skill>.
+# To turn a skill off or on, edit `disabled` and run `scripts/warp-skills.py sync`,
+# or run `scripts/warp-skills.py disable|enable <skill>`.
+
+[settings]
+# "symlink" (default) or "copy" if Warp ever stops following symlinked skills.
+mode = "symlink"
+
+[sources.common-skills]
+repo = "warpdotdev/common-skills"
+path = ".agents/skills"
+sha = "7c4eb852de8d7c3e68c81802e1c59db9a611f914"
+license = "MIT"
+disabled = ["brandalf", "complain", "scan-new-specs", "suggestion-box"]
+
+[sources.common-skills.notes]
+brandalf = "Warp/Oz brand guide; off: not our brand"
+complain = "off: tells the agent to post to Warp's Slack webhook without asking or telling you"
+suggestion-box = "off: tells the agent to post to Warp's Slack webhook without asking or telling you"
+scan-new-specs = "off: deprecated upstream"
+council = "multi-model subagents"
+saga = "orchestrator + worker subagents"
+readout = "writes HTML under ~/.readouts"
+skill-doctor = "reads local agent session logs"
+
+[sources.oz-skills]
+repo = "warpdotdev/oz-skills"
+path = ".agents/skills"
+sha = "6c08c49fc6c51b8f768bf8c53c041bc06a160765"
+license = "MIT (mcp-builder and webapp-testing: Apache-2.0, see their LICENSE.txt)"
+disabled = ["dbt-model-index", "scheduler", "slack-qa-investigate", "terraform-style-check"]
+
+[sources.oz-skills.notes]
+dbt-model-index = "off: no dbt in this repo"
+scheduler = "off: Oz cloud schedules need credits"
+slack-qa-investigate = "off: needs Slack"
+terraform-style-check = "off: no Terraform in this repo"
+seo-aeo-audit = "uses Lighthouse / PageSpeed / Search Console"
+
+[sources.oz-for-oss]
+repo = "warpdotdev/oz-for-oss"
+path = ".agents/skills"
+sha = "a2bb45f231fd56ea28c1b381999d11b277a0b0e2"
+license = "MIT"
+# Several skills run .agents/shared/scripts/*.py; sync links that path to _shared/.
+shared = ".agents/shared"
+disabled = []
+
+[sources.oz-for-oss.notes]
+evaluate-auto-implement-eligibility-local = "frontmatter name: evaluate-auto-implement-eligibility"

@@ -1,0 +1,4 @@
+# Keep Warp's codebase index to our own files.
+.worktrees/
+vendor/
+warp-factory/local-runs/

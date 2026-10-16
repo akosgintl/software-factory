@@ -1,0 +1,11 @@
+name: "Skills: turn on or off"
+command: 'python3 scripts/warp-skills.py {{action}} {{skills}}'
+description: Enable or disable vendored skills. Updates vendor/warp-skills/skills.toml and the symlinks in .agents/skills.
+tags: ["skills"]
+arguments:
+  - name: action
+    description: "enable | disable"
+    default_value: disable
+  - name: skills
+    description: One or more skill names, space separated
+    default_value: ""

@@ -1,0 +1,30 @@
+# Warp tab config: the "+" menu entry "Software factory".
+# Installed by scripts/warp-setup.sh as a symlink into Warp's tab_configs dir.
+name = "Software factory"
+title = "factory · {{repo}}"
+color = "magenta"
+
+[[panes]]
+id = "root"
+split = "horizontal"
+children = ["foreman", "shell"]
+
+[[panes]]
+id = "foreman"
+type = "agent"
+directory = "{{repo}}"
+is_focused = true
+
+[[panes]]
+id = "shell"
+type = "terminal"
+directory = "{{repo}}"
+commands = [
+  "git status -sb",
+  "git worktree list",
+  "python3 scripts/warp-skills.py list | tail -1",
+]
+
+[params.repo]
+type = "repo"
+description = "The software-factory checkout (warpdotdev-factory branch)"

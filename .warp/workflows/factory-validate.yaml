@@ -1,0 +1,4 @@
+name: "Factory: validate definition"
+command: 'python3 -I tools/warp/validate_factory_files.py warp-factory'
+description: Send warp-factory/ to Warp's server-side parser. Exit 0 valid, 1 diagnostics, 2 not checked (offline). Needs no login.
+tags: ["factory"]

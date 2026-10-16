@@ -1,0 +1,4 @@
+name: "Factory: local run logs"
+command: 'ls -t warp-factory/local-runs/ 2>/dev/null | head -20; git worktree list'
+description: Recent /factory-local run logs and the job worktrees that are still open.
+tags: ["factory"]

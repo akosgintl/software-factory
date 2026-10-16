@@ -1,0 +1,11 @@
+name: "Factory: run one agent"
+command: 'oz agent run -C "$(git rev-parse --show-toplevel)" -n factory-{{agent}} --prompt "You are the {{agent}} agent of this repo''s software factory, running locally. Read warp-factory/agents/{{agent}}/agent.md and follow its body as your instructions, together with warp-factory/skills/repository-conventions/SKILL.md and the local translations in .agents/skills/factory-local/SKILL.md. There is no orchestrator: report to me. Brief: {{brief}}"'
+description: Run a single factory agent (triage, spec, implementer, reviewer) on its own, outside the foreman loop.
+tags: ["factory", "oz", "agents"]
+arguments:
+  - name: agent
+    description: "triage | spec | implementer | reviewer"
+    default_value: triage
+  - name: brief
+    description: The work item, links and decisions this agent needs
+    default_value: ""

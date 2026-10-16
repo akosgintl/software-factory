@@ -1,0 +1,33 @@
+# Execution profiles for the Warp Agent CLI (`warp`), for reference.
+# The CLI reads ~/.config/warp-terminal/cli/settings.toml on Linux.
+# scripts/warp-setup.sh never overwrites that file: merge these sections by hand,
+# then pick one in the CLI with /profile.
+# Keys and values checked against `warp dump-settings-schema` (CLI v0.2026.10.14).
+
+[agents.execution_profiles.factory]
+name = "Factory"
+# An explicit model, not Auto (Auto always bills Warp credits). Exact ids: /model in the CLI.
+base_model = "claude-opus-5-5"
+execute_commands = "agent_decides"
+apply_code_diffs = "agent_decides"
+read_files = "always_allow"
+run_agents = "always_ask"             # /factory-local starts child agents; ask each time
+ask_user_question = "always_ask"
+mcp_permissions = "agent_decides"
+command_allowlist = [
+  'git (status|diff|log|show|branch|switch|worktree|add|commit|fetch)(\s.*)?',
+  'gh (issue|pr|label|api|repo view)(\s.*)?',
+  'python3 (-I )?(scripts|tools)/.*',
+  'ls(\s.*)?',
+  'cat(\s.*)?',
+]
+# Leaving command_denylist unset keeps Warp's defaults (shells, curl, wget, rm, eval, ssh, ...).
+
+[agents.execution_profiles.review]
+name = "Review (read-only)"
+base_model = "claude-opus-5-5"
+execute_commands = "always_ask"
+apply_code_diffs = "always_ask"
+read_files = "always_allow"
+run_agents = "never_allow"
+ask_user_question = "always_ask"

@@ -1,0 +1,4 @@
+name: "Skills: list packs"
+command: 'python3 scripts/warp-skills.py list'
+description: Every vendored Warp skill with its source pack and on/off state, plus local skills.
+tags: ["skills"]

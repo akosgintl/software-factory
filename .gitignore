@@ -1,0 +1,3 @@
+# factory-local job worktrees and run logs
+.worktrees/
+warp-factory/local-runs/

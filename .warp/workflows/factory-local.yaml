@@ -1,0 +1,8 @@
+name: "Factory: run locally"
+command: 'oz agent run -C "$(git rev-parse --show-toplevel)" -n factory-foreman --prompt "Use the factory-local skill (.agents/skills/factory-local/SKILL.md) for this request: {{request}}"'
+description: Run a request through warp-factory/ on this machine. The Warp Agent acts as the foreman and runs the other agents as local children. Uses your own model key; no cloud.
+tags: ["factory", "oz", "agents"]
+arguments:
+  - name: request
+    description: What the factory should do (a feature, a bug, a question)
+    default_value: ""

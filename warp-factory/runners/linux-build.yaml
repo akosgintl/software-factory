@@ -1,0 +1,11 @@
+description: >-
+  Build runner for implementation: double the compute of the default, on an
+  image that already carries the Python toolchain the repo's scripts use.
+instanceShape:
+  vcpus: 8
+  memoryGb: 16
+platform:
+  os: linux
+  arch: x86_64
+  linux:
+    dockerImage: python:3.12-bookworm
