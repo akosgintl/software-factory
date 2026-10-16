@@ -1,4 +1,5 @@
 ---
+name: task-compliance
 description: Did the run deliver what the work item asked for, and only that?
 agents:
   - implementer

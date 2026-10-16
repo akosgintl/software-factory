@@ -1,4 +1,5 @@
 ---
+name: review-quality
 description: Did the review report actionable findings with locations and corrections?
 agents:
   - reviewer
