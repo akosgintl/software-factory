@@ -18,7 +18,8 @@ Egy PR akkor alacsony kockázatú, ha **mind az öt feltétel teljesül**. Ha b�
    nem hoz vissza.
 3. **Kicsi hatókör:** a változtatás nem a közös magot érinti, kevés hívója van (fan-in). **A sorok
    száma nem számít.**
-4. **Teljes bizonyíték:** minden AC-hez bizonyíték (0003), az e2e zöld, a változott kódot teszt fedi.
+4. **Teljes bizonyíték:** minden AC-hez bizonyíték (0003), az e2e zöld, a változott kódot teszt fedi,
+   és nincs scope drift (0005).
 5. **Jó előélet:** a kategória és a kódterület mért escape rate-je a küszöb alatt van.
 
 Három szabály:
@@ -41,9 +42,8 @@ Három szabály:
 
 - A sorok száma a hibavalószínűség durva, de olcsó jelzője. Elvetettük, mert a hatókör és a
   bizonyíték jobban mér.
-- 💭 Egy nagy PR könnyen többet változtat, mint amit az AC-k leírnak. Ezt a bizonyíték nem fedi le.
-  Lehetséges pótlék: független ellenőrzés, hogy a diff nem lépi túl az AC-ket (scope
-  conformance). Nyitott kérdés.
+- Egy nagy PR könnyen többet változtat, mint amit az AC-k leírnak. Ezt a bizonyíték nem fedi le.
+  Pótlék: scope conformance, lásd `positions/0005-scope-conformance.md`.
 
 ## Mi változtatná meg
 

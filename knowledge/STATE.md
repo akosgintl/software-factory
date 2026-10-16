@@ -4,8 +4,8 @@ Utolsó frissítés: 2026-10-16
 
 ## Fókusz
 
-Négy álláspont van: 0001 definíció, 0002 emberi kapuk és mért bizalom, 0003 a vég a PR,
-bizonyítékkal, 0004 alacsony kockázat (automatikus merge feltételei).
+Öt álláspont van: 0001 definíció, 0002 emberi kapuk és mért bizalom, 0003 a vég a PR,
+bizonyítékkal, 0004 alacsony kockázat, 0005 scope conformance.
 
 ## Javasolt következő lépés
 
@@ -20,6 +20,7 @@ változtatást, és hogyan véd a Goodhart-hatás ellen.
 | Definíció | `positions/0001-mit-ertunk-szoftvergyar-alatt.md` | 📌 elfogadva |
 | Emberi kapuk és bizalom | `positions/0002-emberi-kapuk-es-bizalom.md` | 📌 elfogadva |
 | Alacsony kockázat | `positions/0004-alacsony-kockazat.md` | 📌 elfogadva |
+| Scope conformance | `positions/0005-scope-conformance.md` | 📌 elfogadva |
 | A vég és a bizonyíték | `positions/0003-a-veg-a-pr-bizonyitekkal.md` | 📌 elfogadva |
 | A három gyár-kísérlet összevetése | `experiments.md` | 🔍 a super-board kapuit megnéztük |
 

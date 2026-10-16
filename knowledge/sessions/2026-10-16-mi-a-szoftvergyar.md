@@ -135,3 +135,7 @@ túl tág volt, egy jó Scrum-csapat is belefért.
 - 🔍 A super-review már tud scope conformance-t: *Scope drift* találati osztály, AC-t olvas a Builder
   beszámolója előtt, a mellékesen észrevett refaktor a Backlogba kerül. Ellentmondás: AC-vel
   rendelkező refaktor-kártya egyenesen a Ready oszlopba mehet, kikerülve a K1-et.
+- 📌 [`positions/0005-scope-conformance.md`](../positions/0005-scope-conformance.md): a diff minden része
+  visszavezethető egy AC-re; a scope drift kikerül vagy Backlog-kártya lesz; a gyár által javasolt
+  kártya nem kerülheti ki a K1-et; a 0004 negyedik feltétele bővült; a refaktor-kártyák száma és kora
+  az erózió mérőszáma.

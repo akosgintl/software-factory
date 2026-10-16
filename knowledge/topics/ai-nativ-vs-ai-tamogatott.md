@@ -28,6 +28,9 @@ Röviden: intent → PR, a célt az ember választja, az ember validál (a vég�
 📌 A vég a PR, bizonyítékkal (képernyőkép, e2e a futó rendszeren): lásd
 [`positions/0003-a-veg-a-pr-bizonyitekkal.md`](../positions/0003-a-veg-a-pr-bizonyitekkal.md).
 
+📌 Automatikus merge alacsony kockázatnál: [`positions/0004-alacsony-kockazat.md`](../positions/0004-alacsony-kockazat.md).
+A PR nem csinál többet, mint az AC-k: [`positions/0005-scope-conformance.md`](../positions/0005-scope-conformance.md).
+
 ## A két pólus
 
 | Szempont | AI-támogatott | AI-natív |

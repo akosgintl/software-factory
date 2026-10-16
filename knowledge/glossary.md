@@ -19,6 +19,8 @@ mutatunk.
 | intent (szándék) | az ember által megfogalmazott cél egy változtatásra; a gyár bemenete | `positions/0001-mit-ertunk-szoftvergyar-alatt.md` |
 | lane | egy szerepkör sávja a folyamatban (Build, QA, Review); saját ágens, saját szabályok | `experiments.md` |
 | merge kapu (merge gate) | szabályalapú döntési pont: automatikus merge, vagy emberi jóváhagyás kockázat szerint | `experiments.md` |
+| scope conformance | annak ellenőrzése, hogy a diff minden része visszavezethető egy AC-re | `positions/0005-scope-conformance.md` |
+| scope drift | a diff olyat változtat, amit a kártya AC-i nem kértek | `positions/0005-scope-conformance.md` |
 | szoftvergyár (software factory) | rendszer, amely emberi szándékból (intent) ágensekkel, skillekkel és workflow-kkal PR-t állít elő; az ember dönt és validál, a gyár javasol, végrehajt és tanul | `positions/0001-mit-ertunk-szoftvergyar-alatt.md` |
 | tanuló hurok (learning loop) | a gyár elemzi az eredményeit és a hatékonyságát, és változtatást javasol a saját működésére; az ember dönt róla | `positions/0001-mit-ertunk-szoftvergyar-alatt.md` |
 | worktree izoláció | minden munkaegység saját git worktree-ben és branchen fut, hogy a párhuzamos munka ne ütközzön | `experiments.md` |

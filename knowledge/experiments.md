@@ -45,4 +45,4 @@ git show <branch>:<útvonal>              # egy fájl tartalma
   közben észrevett refaktor külön kártya lesz a Backlog oszlopban, nem a Ready-ben, mert „senki nem
   nézte, és nincs AC-je” (`bin/super-review-file-refactor.sh`). Ellentmondás: ha a reviewer AC-t is
   ír a kártyához, az egyenesen a Ready oszlopba kerül (`super-review/SKILL.md`), vagyis kikerüli
-  az emberi K1-et.
+  az emberi K1-et. A 0005 szerint ez nem megengedett.

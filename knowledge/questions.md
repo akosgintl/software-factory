@@ -11,8 +11,6 @@ tesszük.
 
 ## Gyakorlati
 
-- [ ] Kell scope conformance ellenőrzés (a diff nem csinál többet, mint az AC-k), ha a méret nem
-      számít? (0004)
 - [ ] Hogyan védjük a tanuló hurkot a Goodhart-hatástól, vagyis attól, hogy a gyár kijátssza a
       saját mérőszámait?
 - [ ] Milyen sorrendben kapcsolhatók ki a kapuk (K2 elsőként?), és mi a pontos küszöb (escape rate
@@ -20,8 +18,8 @@ tesszük.
 - [ ] Mely mérőszámok mutatják meg, hogy egy gyár jól működik? Eddig felmerült: escape rate, emberi
       idő PR-onként a K3-nál, újramunka aránya. (DORA átdolgozva?)
 - [ ] Hogyan kezeljük az e2e teszt költségét és véletlenszerű hibáit (flakiness)?
-- [ ] Hogyan védekezik a gyár az architektúra eróziója ellen? (Kapcsolódik: scope conformance,
-      fan-in alapú hatókör.)
+- [ ] Hogyan védekezik a gyár az architektúra eróziója ellen? Részben: 0005 (refaktor-kártyák mint
+      mérőszám, emberi refaktor-kör). Kapcsolódik: fan-in alapú hatókör (0004).
 - [ ] Hol fordul át a gazdaságosság: mikor olcsóbb az ágens, mint az ember, a teljes költséggel?
 
 ## Emberi oldal
@@ -38,6 +36,8 @@ tesszük.
 
 ## Lezárt
 
+- [x] ~~Kell scope conformance ellenőrzés, ha a méret nem számít?~~
+      → `positions/0005-scope-conformance.md`
 - [x] ~~A szoftvergyár metafora segít, vagy félrevisz? Mi az, ami a gyár-analógiából nem igaz a
       szoftverre?~~ → `positions/0001-mit-ertunk-szoftvergyar-alatt.md` (nem terméket gyártunk,
       hanem változtatást; a felfedező munkára a gyár kevésbé alkalmas)
