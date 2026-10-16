@@ -16,6 +16,18 @@ folyamattá szervezzük, egyedi kézművesség helyett. Két korábbi hullám:
 nem. Az AI-hullám új eleme, hogy a munkát végző „munkás” maga is szabványosítható, másolható és
 párhuzamosítható.
 
+## Mit értünk szoftvergyár alatt
+
+📌 Lásd [`positions/0001-mit-ertunk-szoftvergyar-alatt.md`](../positions/0001-mit-ertunk-szoftvergyar-alatt.md).
+Röviden: intent → PR, a célt az ember választja, az ember validál (a végén mindig), a gyár tanul.
+„A gyár javasol és végrehajt, az ember dönt és validál.”
+
+📌 Az emberi kapuk (spec, terv, elfogadás) és a mért bizalom: lásd
+[`positions/0002-emberi-kapuk-es-bizalom.md`](../positions/0002-emberi-kapuk-es-bizalom.md).
+
+📌 A vég a PR, bizonyítékkal (képernyőkép, e2e a futó rendszeren): lásd
+[`positions/0003-a-veg-a-pr-bizonyitekkal.md`](../positions/0003-a-veg-a-pr-bizonyitekkal.md).
+
 ## A két pólus
 
 | Szempont | AI-támogatott | AI-natív |
@@ -40,6 +52,10 @@ párhuzamosítható.
 | L3 | feladat-ágens | feladatot ad, minden PR-t átnéz | egy ágens, egy ticket, emberi review |
 | L4 | kapuzott folyamat | specifikációt ír és szabályt állít, csak a kivételeknél lép be | build, QA, review lane-ek, merge gate |
 | L5 | önirányító | célt és határt ad, a backlogot is ágensek töltik | telemetriából ticket, ágens prioritizál |
+
+📌 A 0001-es álláspont szerint az L5 nem gyár-szint: a gyár javasolhat backlog-elemet, de a célt az
+ember választja. A végső emberi validálás miatt a mi gyárunk L4-ben marad, a tanuló hurok
+hozzáadásával.
 
 💭 Az AI-támogatott sáv nagyjából L1–L3, az AI-natív L4–L5. A határ L3 és L4 között van. Ott
 fordul meg, hogy az ember a munka része vagy a rendszer tervezője.

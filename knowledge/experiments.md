@@ -23,3 +23,19 @@ git show <branch>:<útvonal>              # egy fájl tartalma
   állapotfájl?
 - 💭 Hogyan oldja meg mindhárom a párhuzamos munka ütközését: worktree, landing slot, merge kapu?
 - 💭 Hol lép be az ember mindháromban, és ez melyik autonómia-szintnek felel meg?
+
+## Megfigyelések
+
+- 🔍 **super-board, emberi kapuk** (2026-10-16, `staging`): a kártya formátuma spec (Problem, Fix,
+  AC, Risk). A `super-collect` a Backlog oszlopba tesz, a Builder a Ready oszlopból dolgozik
+  (`references/run.md`). Terv-kapu nincs. A merge-et a Reviewer ágens végzi, emberhez csak a
+  `merge_policy` küldi (`bin/super-board-merge-policy.py`: default, money, auth, schema, 400 sor
+  felett). A bizalom statikus config, nem mért érték. A 0002-es álláspont kapuival összevetve:
+  K1 valószínűleg van, K2 nincs, K3 csak kockázat szerint van.
+- 🔍 **super-board, bizonyíték** (2026-10-16, `staging`): a `super-qa` Playwrighttal fut, lépésenként
+  képernyőképet, console és HAR naplót ment. Egy növekvő e2e készletet épít (`e2e/paths/`,
+  `e2e/flows/`), amit a CI minden PR-nál futtat, steady state-ben AI nélkül. A `super-qa` független
+  a `super-build`-től. Az emberi approval a head SHA-hoz kötött (`bin/super-board-approval.py`).
+- 🔍 **super-board és a 0004** (2026-10-16): a kemény kategóriákból money, auth és schema megvan.
+  A 400 soros küszöb ellentétes a 0004-gyel. Hiányzik: visszavonhatóság, fan-in alapú hatókör, új
+  függőség, bizonyíték-lefedettség, előélet, mintavételezés.
