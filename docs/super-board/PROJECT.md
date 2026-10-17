@@ -7,7 +7,7 @@ first cards on the board define the stack.
 |---|---|
 | Repo | github.com/akosgintl/software-factory |
 | Board | Software-factory board — github.com/users/akosgintl/projects/2 |
-| Base branch | `staging` (cards merge here; promote to `main` by hand) |
+| Base branch | `super-board` (cards merge here; promote to `main` by hand) |
 | Stack | none yet — record it here once the first card picks one |
 | Build / test | none yet — add them to `verify_commands` in `.claude/super-board/configs/software-factory-board.json` |
 | Deploy | none detected |

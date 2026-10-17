@@ -19,7 +19,7 @@
     "path": ".",
     "remote": "https://github.com/akosgintl/software-factory"
   },
-  "base_branch": "staging",
+  "base_branch": "super-board",
   "timezone": "Europe/Budapest",
   "columns": [
     "Backlog",
