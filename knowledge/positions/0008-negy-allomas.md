@@ -11,6 +11,8 @@ spec, terv, ütemezés, build, QA, review, landing, utókövetés). Ez túl sok.
 
 Négy állomás, egy mellékállapot, négy kapu (KISS):
 
+Ábra (sávok, állomások, kapuk): https://claude.ai/artifact/QfdY4btjwQMcAwXPBguZ2H
+
 ```
 backlog ─[K0]─▶ tervezés ─[K1, K2]─▶ build ⇄ ellenőrzés ─▶ landing ─[K3]─▶ kész
                        bármelyik állomásból ──▶ elakadt ──[ember]──▶ vissza

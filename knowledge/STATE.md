@@ -31,7 +31,7 @@ A folyamat váza kész (0008). Következő jelöltek: a 0005 és a fogalmi model
 | Scope-ellenőrzés | `positions/0005-scope-conformance.md` | 📌 elfogadva |
 | Gráfmodell | `positions/0006-grafmodell.md` | 📌 elfogadva |
 | Elakadás | `positions/0007-elakadas.md` | 📌 elfogadva |
-| Négy állomás | `positions/0008-negy-allomas.md` | 📌 elfogadva |
+| Négy állomás | `positions/0008-negy-allomas.md`, ábra: https://claude.ai/artifact/QfdY4btjwQMcAwXPBguZ2H | 📌 elfogadva |
 | Folyamat-összevetés (saját és publikus gyárak) | `topics/folyamat-osszevetes.md` | 🔍 |
 | A három gyár-kísérlet összevetése | `experiments.md` | 🔍 a super-board kapuit megnéztük |
 
