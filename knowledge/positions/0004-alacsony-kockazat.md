@@ -1,6 +1,6 @@
 # 0004 — Alacsony kockázat: mikor merge-ölhet a gyár ember nélkül
 
-Állapot: 📌 elfogadva · 2026-10-16
+Állapot: 📌 elfogadva · 2026-10-16 · módosítva 2026-10-18 (a gyár saját szabályai kemény kategória, E8)
 
 ## Kérdés
 
@@ -13,7 +13,9 @@ Kockázat = mi romolhat el × mennyire látjuk × mennyire vonható vissza.
 Egy PR akkor alacsony kockázatú, ha **mind az öt feltétel teljesül**. Ha bármelyik nem, ember dönt.
 
 1. **Nincs kemény kategória:** pénz, auth és jogosultság, adat (séma, migráció, törlés), személyes
-   adat, publikus API vagy szerződés, infrastruktúra és titkok, új függőség.
+   adat, publikus API vagy szerződés, infrastruktúra és titkok, új függőség, **a gyár saját
+   szabályai és működése** (konfiguráció, küszöb, kemény lista, skill, ágens-utasítás,
+   munkafolyamat; E8).
 2. **Egy reverttel visszavonható:** nincs külső mellékhatás, nincs olyan adatírás, amit a revert
    nem hoz vissza.
 3. **Kicsi hatókör:** a változtatás nem a közös magot érinti, kevés hívója van (fan-in). **A sorok

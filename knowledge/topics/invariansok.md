@@ -91,6 +91,9 @@ mi invariáns, mi ítélet, és mi az, ami egyik formába sem fér bele.
 - **I-0004-4** A kemény kategóriák listájának minden változására ember ítélete vonatkozik.
 - **I-0004-5** Az elmúlt időszakban szabály által elfogadott PR-ok legalább 10%-ára vonatkozik
   utólagos emberi mintavételi ítélet.
+- **I-0004-6** A gyár saját szabályait vagy működését változtató PR (konfiguráció, küszöb, kemény
+  lista, skill, ágens-utasítás, munkafolyamat) kemény kategória: elfogadó ítéletét csak ember hozhatja.
+  Ennek a gyár által előállított változata javaslat marad, amíg ember jóvá nem hagyja (E8).
 
 **Ítéletek:** kockázati besorolás (ágens vagy szabály), emberi elfogadás a nem alacsony
 kockázatnál, mintavételi ítélet, a küszöbök és a lista módosítása.

@@ -9,7 +9,7 @@ bizonyítékkal, 0004 alacsony kockázat, 0005 scope-ellenőrzés, 0006 gráfmod
 0008 négy állomás (tervezés, build, ellenőrzés, landing; mellékállapot: elakadt).
 A 0006 szerint a gyárat típusos, időbeli gráfként írjuk le, és minden döntést invariáns, ítélet
 vagy mérőszám formában fogalmazunk meg. A fogalomtárban minden használt fogalom definícióval
-szerepel. Az irányelvek az `elvek.md` fájlban vannak (E1–E7, M1–M3); a kulcs: az autonómia úgy
+szerepel. Az irányelvek az `elvek.md` fájlban vannak (E1–E8, M1–M3); a kulcs: az autonómia úgy
 nő, hogy az ember tételek helyett szabályokról dönt.
 
 ## Javasolt következő lépés

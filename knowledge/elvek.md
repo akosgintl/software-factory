@@ -15,6 +15,7 @@ invariánsa, az rés (visszavezethetőség az elvek szintjén).
 | E5 | **A kockázat csak felfelé módosítható ágens által.** | 0004 | I-0004-2 |
 | E6 | **Semmi nem íródik felül; minden változás új verzió.** | 0006 | I-0002-2, I-0003-2, I-0007-5 |
 | E7 | **Előre ugrani nem lehet.** Elakadás után a munka ugyanott vagy korábban folytatódik. | 0007 | I-0007-4 |
+| E8 | **A szabályt soha nem élesíti a gyár maga.** Szabály minden, ami a gyár működését meghatározza: kapu-kapcsolás, küszöb, mintavételi arány, kemény lista, újramunka-korlát, skill, ágens-utasítás, munkafolyamat. A gyár javasolhat változtatást, de érvénybe csak emberi jóváhagyással lép. | 0001, 0004 | I-0002-4, I-0004-4, I-0004-6 |
 
 ### Az autonómia létrája (E4)
 
@@ -24,7 +25,7 @@ Minden kapu ugyanazt a létrát járhatja be, kategóriánként:
 2. szabály dönt, az ember mintát néz;
 3. szabály dönt, a gyár javasolja a szabály módosítását, és az ember hagyja jóvá.
 
-A szabályt soha nem élesíti a gyár maga. Ez a K0-ra is igaz: a K0 lehet „nem kötelező
+A szabályt soha nem élesíti a gyár maga (E8). Ez a K0-ra is igaz: a K0 lehet „nem kötelező
 tételenként”, ha ember által írt szabály választ (például: minden átcsúszott hiba javítása
 automatikusan kiválasztott). A célválasztás így embernél marad. Ha a gyár maga választana célt és
 maga írná a szabályt, az L5 lenne, amit a 0001 kizár.
