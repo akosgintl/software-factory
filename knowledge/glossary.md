@@ -15,6 +15,7 @@ amelyeket „mindenki ismer”. Ha egy fogalom jelentése vitatott, a hozzá tar
 | andon zsinór | a Toyota-gyárak zsinórja, amellyel bárki megállíthatja a sort, ha hibát lát. Nálunk: elakadás | `positions/0007-elakadas.md` |
 | átcsúszási arány (escape rate) | az átcsúszott hibák aránya kapunként és kategóriánként; a kapu és a bizalom mérőszáma. Külön jelzés nélkül a merge utáni átcsúszást értjük alatta | `positions/0004-alacsony-kockazat.md` |
 | átcsúszott hiba (escape) | hiba, amely átjutott egy kapun, és később találták meg. Mindig egy kapuhoz képest értjük; ha a kapu megfogja, az újramunka, nem átcsúszás. Lehet AC-sértés, a szándék sértése teljesült AC mellett (ez a K1-en csúszott át), vagy ki nem mondott elvárás sértése (regresszió, biztonság). Ha az ember meggondolta magát, az új szándék, nem átcsúszás. A besorolása ítélet, kezdetben emberé | `positions/0007-elakadas.md` |
+| autonómia létrája | ahogy egy kapu kategóriánként halad: ember tételenként dönt → szabály dönt, ember mintát néz → szabály dönt, a gyár javasolja a szabály módosítását, ember hagyja jóvá. A szabályt soha nem élesíti a gyár | `elvek.md` |
 | backlog | a még nem indítható munkadarabok és szándékok nézete; a gráfból levezetett, nem tárolt állapot. Angolul marad | `positions/0006-grafmodell.md` |
 | befogadás (intake) | a szándékok beérkezése a backlogba, nem állomás. Forrás az ember, vagy a gyár javaslata (telemetria, átcsúszott hiba, refaktor). Hogy mit építünk, arról az ember dönt | `positions/0001-mit-ertunk-szoftvergyar-alatt.md` |
 | beszámoló | munkatermék: a Builder saját leírása arról, mit csinált. A review csak az AC-k és a diff után olvassa | `positions/0005-scope-conformance.md` |
@@ -44,6 +45,7 @@ amelyeket „mindenki ismer”. Ha egy fogalom jelentése vitatott, a hozzá tar
 | intake | lásd: befogadás | |
 | intent | lásd: szándék | |
 | invariáns | a gyár gráfján gépi úton ellenőrizhető szabály; a döntéseink három formájának egyike (invariáns, ítélet, mérőszám) | `positions/0006-grafmodell.md` |
+| irányelv | rövid, emberi mondat, amelyből álláspontok és invariánsok következnek; mellette ott áll, mely invariánsok valósítják meg (E1–E7). A munkánk elvei külön szerepelnek (M1–M3) | `elvek.md` |
 | ítélet | munkatermék: egy szereplő (ember, ágens vagy szabály) döntése egy munkatermék adott verziójáról. Fajtái: kiválasztás, jóváhagyás, elfogadás, elutasítás, kockázati besorolás, hatókör-ítélet, mintavételi ítélet. Az invariánsok mondják meg, melyiket ki hozhatja | `positions/0006-grafmodell.md` |
 | jóváhagyás | ítélet, mielőtt a munka elindul: K1 a specre, K2 a tervre; vö. elfogadás | `topics/fogalmi-modell.md` |
 | K0, K1, K2, K3 | a négy emberi kapu: K0 a szándék kiválasztása (mindig él), K1 a spec jóváhagyása, K2 a terv jóváhagyása, K3 az eredmény elfogadása (mindig él) | `positions/0002-emberi-kapuk-es-bizalom.md` |

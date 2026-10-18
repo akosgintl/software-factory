@@ -9,7 +9,8 @@ bizonyítékkal, 0004 alacsony kockázat, 0005 scope-ellenőrzés, 0006 gráfmod
 0008 négy állomás (tervezés, build, ellenőrzés, landing; mellékállapot: elakadt).
 A 0006 szerint a gyárat típusos, időbeli gráfként írjuk le, és minden döntést invariáns, ítélet
 vagy mérőszám formában fogalmazunk meg. A fogalomtárban minden használt fogalom definícióval
-szerepel (elv: mindenki ugyanazt értse alatta).
+szerepel. Az irányelvek az `elvek.md` fájlban vannak (E1–E7, M1–M3); a kulcs: az autonómia úgy
+nő, hogy az ember tételek helyett szabályokról dönt.
 
 ## Javasolt következő lépés
 
@@ -21,6 +22,7 @@ A folyamat váza kész (0008). Következő jelöltek: a 0005 és a fogalmi model
 | Szál | Hol | Állapot |
 |---|---|---|
 | AI-natív és AI-támogatott keret | `topics/ai-nativ-vs-ai-tamogatott.md` | 💭 vázlat |
+| Irányelvek | `elvek.md` | 📌 elfogadva |
 | Fogalmi modell | `topics/fogalmi-modell.md` | 📌 elfogadva |
 | Fogalomtár, magyar szavak | `glossary.md` | 📌 teljes, minden fogalom definícióval |
 | Invariánsok a 0002–0005-ön | `topics/invariansok.md` | 🔍 első változat; nyitott ellentmondás a 0005-tel (`questions.md`) |

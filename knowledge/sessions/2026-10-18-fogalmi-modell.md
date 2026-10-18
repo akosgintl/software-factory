@@ -85,3 +85,17 @@ Miből áll egy szoftvergyár, melyek a folyamat lépései?
   forgatókönyvek (StrongDM), az azonos okú hiba számolása (super-board). Mind a `questions.md`-be
   került.
 - Javítás: a super-board az `origin/super-board` branchen van, nem a `staging`-en.
+
+---
+
+## Folytatás: ábra, független ellenőrzés, irányelvek
+
+- 📌 Folyamatábra: `abrak/gyar-folyamat.html`, élő változat:
+  https://claude.ai/artifact/QfdY4btjwQMcAwXPBguZ2H
+- 📌 Minden kapu előtt eval és review egy független szereplőtől, a kikapcsolt kapuk előtt is
+  (I-0008-4). A tervezésen belül: Planner → Reviewer → K1/K2.
+- 📌 Elakadás után: alapból ott folytatódik, ahol elakadt; az ember visszaküldheti a buildbe, a
+  tervre, a specre vagy a szándékra, vagy lezárhatja. Előre ugrani nem lehet (0007).
+- 📌 Az autonómia úgy nő, hogy az ember tételek helyett szabályokról dönt. A K0 is lehet nem
+  kötelező tételenként, ha ember által írt szabály választ. A 0001 kiegészült.
+- 📌 [`elvek.md`](../elvek.md): irányelvek (E1–E7) invariánsokkal, és a munkánk elvei (M1–M3).

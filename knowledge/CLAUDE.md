@@ -15,7 +15,7 @@ board, nincs PR. A gyár-kísérleteket más branchekről olvassuk, lásd `exper
 
 ## Munkamenet eleje
 
-1. Olvasd el a `STATE.md` fájlt.
+1. Olvasd el a `STATE.md` és az `elvek.md` fájlt.
 2. Olvasd el a legutóbbi naplót a `sessions/` mappában.
 3. Egy-két mondatban mondd el, hol tartunk, és mi a javasolt következő kérdés.
 

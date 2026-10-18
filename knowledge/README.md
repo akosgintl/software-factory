@@ -24,6 +24,7 @@ A munkamódszer részletei a [`CLAUDE.md`](CLAUDE.md) fájlban vannak. Claude ez
 | [`STATE.md`](STATE.md) | aktuális fókusz, a következő lépés, a futó szálak | minden munkamenet végén |
 | [`sessions/`](sessions/) | munkamenet-naplók, `ÉÉÉÉ-HH-NN-<téma>.md` | munkamenetenként egy új fájl |
 | [`topics/`](topics/) | témajegyzetek, egy fogalom vagy kérdéskör fájlonként | amikor egy téma megérik |
+| [`elvek.md`](elvek.md) | irányelvek (E1–E7) a hozzájuk tartozó invariánsokkal, és a munkánk elvei (M1–M3) | amikor új irányelv születik |
 | [`positions/`](positions/) | álláspontok, amelyekben megegyeztünk (ADR-szerű, számozott) | amikor egy vita lezárul |
 | [`questions.md`](questions.md) | nyitott kérdések listája | folyamatosan |
 | [`glossary.md`](glossary.md) | fogalomtár, a közös szókincs | amikor új fogalmat használunk |

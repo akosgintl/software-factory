@@ -1,6 +1,6 @@
 # 0001 — Mit értünk szoftvergyár alatt
 
-Állapot: 📌 elfogadva · 2026-10-16
+Állapot: 📌 elfogadva · 2026-10-16 · kiegészítve 2026-10-18 (az autonómia iránya)
 
 ## Kérdés
 
@@ -21,6 +21,10 @@ termelés (C) jelentést használjuk, emberi végső kapuval.
    javasol a saját működésére. A javaslatról az ember dönt.
 
 Egy mondatban: **a gyár javasol és végrehajt, az ember dönt és validál.**
+
+6. **Az autonómia úgy nő, hogy az ember tételek helyett szabályokról dönt.** A szabályt mindig
+   ember hagyja jóvá, a gyár csak javasolhat. Így a K0 is lehet „nem kötelező tételenként”, ha
+   ember által írt szabály választ; a célválasztás embernél marad (`elvek.md`, E4).
 
 ## Miért
 
