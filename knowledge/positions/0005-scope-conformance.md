@@ -11,16 +11,16 @@ hogy más nem változott.
 ## Álláspont
 
 1. **Kell scope conformance.** Egy független reviewer a diff minden részét visszavezeti egy AC-re.
-   Az AC-ket és a diffet a Builder beszámolója *előtt* olvassa. Ami nem vezethető vissza, az scope
-   drift.
-2. **A scope drift nem maradhat a PR-ban.** Vagy kikerül belőle, vagy külön kártya lesz a
+   Az AC-ket és a diffet a Builder beszámolója *előtt* olvassa. Ami nem vezethető vissza, az
+   kéretlen változás (scope drift).
+2. **A kéretlen változás nem maradhat a PR-ban.** Vagy kikerül belőle, vagy külön munkadarab lesz a
    Backlogban, és arról ember dönt (K1, 0002).
-3. **A gyár által javasolt kártya nem kerülheti ki a K1-et.** Akkor sem mehet egyenesen a Ready
+3. **A gyár által javasolt munkadarab nem kerülheti ki a K1-et.** Akkor sem mehet egyenesen a Ready
    oszlopba, ha az ágens AC-t is írt hozzá.
-4. **A 0004 negyedik feltétele bővül:** alacsony kockázatú csak az a PR, amelyben nincs scope drift.
+4. **A 0004 negyedik feltétele bővül:** alacsony kockázatú csak az a PR, amelyben nincs kéretlen változás.
    Az AC eléréséhez szükséges mellékváltozás (teszt, átnevezés, kis előkészítő módosítás)
    megengedett, de ha a közös magot érinti, a 3. feltétel (hatókör) emberhez küldi.
-5. **Az erózió ellen:** a Backlogban álló refaktor-kártyák száma és kora a tanuló hurok
+5. **Az erózió ellen:** a Backlogban álló refaktor-munkadarabok száma és kora a tanuló hurok
    mérőszáma. Ha nő, a gyár refaktor-kört javasol, és arról ember dönt.
 
 ## Miért
@@ -33,7 +33,7 @@ hogy más nem változott.
 
 ## Mi szólt ellene
 
-- Ha minden mellékes javítás külön kártyára megy, a kód nem javul, csak a Backlog nő. A scope
+- Ha minden mellékes javítás külön munkadarabra megy, a kód nem javul, csak a Backlog nő. A scope
   conformance így gyorsíthatja is az architektúra erózióját. Erre válasz az 5. pont.
 - A „visszavezethető egy AC-re” ítélet ágensé, és lehet engedékeny. Védelem: a reviewer független,
   és a 0004 szerinti 10%-os emberi mintavétel ezt is ellenőrzi.
@@ -41,6 +41,6 @@ hogy más nem változott.
 
 ## Mi változtatná meg
 
-- Ha a refaktor-kártyák tartósan felgyűlnek, és az emberi refaktor-körök nem győzik, akkor
+- Ha a refaktor-munkadarabok tartósan felgyűlnek, és az emberi refaktor-körök nem győzik, akkor
   megengedhető lesz egy szűk, előre definiált „cserkész” mellékváltozás (például elnevezés,
   holt kód törlése a módosított fájlban), de csak levél-modulban.

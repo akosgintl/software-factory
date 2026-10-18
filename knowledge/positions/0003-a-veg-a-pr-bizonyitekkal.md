@@ -19,7 +19,7 @@ alapján validál?
    - **AC-nként:** minden AC mellett ott a saját bizonyítéka.
    - **A commithoz kötött:** a head SHA-ról készült; ha a kód változik, elavul.
    - **Független:** nem a Builder állítja elő, hanem egy másik lane.
-   - **Valódi környezet:** PR-onként futó előnézeti (preview) környezetben készül.
+   - **Valódi környezet:** preview környezetben készül (PR-onként egy, a merge-ig él).
 3. Az ember a bizonyítékot nézi a szándékhoz és az AC-hez képest. A diffet csak kockázat szerint
    (0002).
 

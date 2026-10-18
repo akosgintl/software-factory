@@ -16,7 +16,7 @@ termelés (C) jelentést használjuk, emberi végső kapuval.
 2. **Hogy mit építünk, arról az ember dönt.** A gyár nem választ célt.
 3. **Az ember validál.** Korai fázisban sok ponton, a bizalom növekedésével kevesebb ponton, de a
    végén mindig.
-4. **Építőelemek:** skillek, ágensek, workflow-k.
+4. **Építőelemek:** skillek, ágensek, munkafolyamatok (workflow).
 5. **Tanuló hurok.** A gyár folyamatosan elemzi az eredményeit és a hatékonyságát, és változtatást
    javasol a saját működésére. A javaslatról az ember dönt.
 

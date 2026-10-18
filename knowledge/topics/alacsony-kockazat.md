@@ -15,7 +15,7 @@ Eltérés az alábbi javaslattól: a sorok száma nem számít, a mintavétel 10
 | 2 | **Egy reverttel visszavonható** | nincs külső mellékhatás (e-mail, fizetés, harmadik fél), nincs adatírás, amit a revert nem hoz vissza | szabály + független ágens |
 | 3 | **Kicsi hatókör** | levél-modul, nem közös mag; kevés fájl és sor; kevés hívó (fan-in) | szabály (méret, függőségi gráf) |
 | 4 | **Teljes bizonyíték** | minden AC-hez van bizonyíték (0003 négy tulajdonsága), e2e zöld, a változott kódot teszt fedi | QA lane, szabály |
-| 5 | **Jó előélet** | ebben a kategóriában és kódterületen a mért escape rate a küszöb alatt | tanuló hurok, mérés |
+| 5 | **Jó előélet** | ebben a kategóriában és kódterületen a mért átcsúszási arány a küszöb alatt | tanuló hurok, mérés |
 
 ## Három szabály a definíció köré
 

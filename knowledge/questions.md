@@ -11,7 +11,6 @@ tesszük.
 
 - [ ] Nagy szándéknál a szándék : spec arány 1:N legyen, vagy a nagy szándékot bontsuk több
       szándékra? (`topics/fogalmi-modell.md`, most 1:1)
-- [ ] Mi legyen a „kártya” magyar neve? (`topics/fogalmi-modell.md`)
 
 - [ ] Mitől lesz egy ágens saját állítása ellenőrizhető (például „preview környezetben készült”,
       „reverttel visszavonható”)? Független második ágens, vagy gépi mérés az állítás mögött?
@@ -21,12 +20,12 @@ tesszük.
 
 - [ ] Hogyan védjük a tanuló hurkot a Goodhart-hatástól, vagyis attól, hogy a gyár kijátssza a
       saját mérőszámait?
-- [ ] Milyen sorrendben kapcsolhatók ki a kapuk (K2 elsőként?), és mi a pontos küszöb (escape rate
+- [ ] Milyen sorrendben kapcsolhatók ki a kapuk (K2 elsőként?), és mi a pontos küszöb (átcsúszási arány
       kapunként és kategóriánként)?
-- [ ] Mely mérőszámok mutatják meg, hogy egy gyár jól működik? Eddig felmerült: escape rate, emberi
+- [ ] Mely mérőszámok mutatják meg, hogy egy gyár jól működik? Eddig felmerült: átcsúszási arány, emberi
       idő PR-onként a K3-nál, újramunka aránya. (DORA átdolgozva?)
 - [ ] Hogyan kezeljük az e2e teszt költségét és véletlenszerű hibáit (flakiness)?
-- [ ] Hogyan védekezik a gyár az architektúra eróziója ellen? Részben: 0005 (refaktor-kártyák mint
+- [ ] Hogyan védekezik a gyár az architektúra eróziója ellen? Részben: 0005 (refaktor-munkadarabok mint
       mérőszám, emberi refaktor-kör). Kapcsolódik: fan-in alapú hatókör (0004).
 - [ ] Hol fordul át a gazdaságosság: mikor olcsóbb az ágens, mint az ember, a teljes költséggel?
 
@@ -43,6 +42,8 @@ tesszük.
       skálázódik jobban, és miért?
 
 ## Lezárt
+
+- [x] ~~Mi legyen a „kártya” magyar neve?~~ → munkadarab, `topics/fogalmi-modell.md`
 
 - [x] ~~Kell scope conformance ellenőrzés, ha a méret nem számít?~~
       → `positions/0005-scope-conformance.md`

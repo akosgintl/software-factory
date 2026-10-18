@@ -28,7 +28,7 @@ gondolkodjunk róla (leíró modell), vagy arra, hogy a gyár ténylegesen így 
    - **ítélet**: csomópont, amelyet egy szereplő hoz: ember, ágens vagy szabály. A gráf azt
      rögzíti, hogy ki ítélt, miről, és melyik verzióról. Azt nem, hogy jól ítélt-e. Az invariánsok
      mondják meg, melyik ítéletet ki hozhatja;
-   - **mérőszám**: lekérdezés a gráfon (például escape rate kapunként és kategóriánként). A
+   - **mérőszám**: lekérdezés a gráfon (például átcsúszási arány kapunként és kategóriánként). A
      küszöbe konfiguráció, amely emberi ítélettel változik.
 5. **Ami egyik formába sem fér bele, az figyelmeztető jel.** Vagy még nem elég pontos, vagy rejtett
    ítélet, amit ki kell mondani, és szereplőt kell rendelni hozzá.
@@ -42,7 +42,7 @@ gondolkodjunk róla (leíró modell), vagy arra, hogy a gyár ténylegesen így 
 
 ## Miért
 
-- A valódi viszonyok nem fák. Az escape egy PR-ból új szándékot szül, ez kör. A scope driftből
+- A valódi viszonyok nem fák. Az átcsúszott hiba egy PR-ból új szándékot szül, ez kör. A kéretlen változásból
   egy másik munkadarabból származó új munkadarab lesz. A bizonyíték egyszerre kötődik AC-hez és
   commithoz.
 - A folyamat az élekben él: a kapcsolat jelentése fontosabb, mint a darabszám.

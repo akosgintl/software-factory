@@ -38,5 +38,5 @@ intent ──ágens──▶ spec ──[K1: spec]──▶ ágens ──▶ ter
 
 ## Mi változtatná meg
 
-- Ha a mérés szerint egy kapu hosszú ideig semmit nem fog meg, és a későbbi hibák (escape) sem
-  nőnek, akkor az a kapu abban a kategóriában kikapcsolható. Ha az escape nő, visszakapcsoljuk.
+- Ha a mérés szerint egy kapu hosszú ideig semmit nem fog meg, és az átcsúszott hibák sem
+  szaporodnak, akkor az a kapu abban a kategóriában kikapcsolható. Ha az átcsúszási arány nő, visszakapcsoljuk.

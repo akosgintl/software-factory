@@ -7,8 +7,11 @@ board, nincs PR. A gyár-kísérleteket más branchekről olvassuk, lásd `exper
 ## Nyelv
 
 - A beszélgetés és a jegyzetek nyelve magyar.
-- Az angol szakkifejezést meghagyjuk, ha nincs jó magyar megfelelője. Első előfordulásnál a
-  [`glossary.md`](glossary.md) fájlba kerül.
+- Az angol szakkifejezést meghagyjuk, ha nincs jó magyar megfelelője, vagy a magyar fejlesztők is
+  angolul mondják.
+- **Mindenki ugyanazt értse alatta.** Minden fogalom, amit használunk, definícióval szerepel a
+  [`glossary.md`](glossary.md) fájlban: az angolul maradók és a „mindenki által ismertek” is. Új
+  fogalom első használatakor a definíció is bekerül.
 
 ## Munkamenet eleje
 

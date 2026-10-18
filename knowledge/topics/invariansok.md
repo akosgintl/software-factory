@@ -10,9 +10,9 @@ mi invariáns, mi ítélet, és mi az, ami egyik formába sem fér bele.
 | Csoport | Típus | Megjegyzés |
 |---|---|---|
 | munkatermék | szándék, spec, AC, terv, munkadarab, commit, diffrész, PR, bizonyíték, beszámoló | a diffrész a commit egy darabja (hunk); a beszámoló a Builder saját leírása |
-| munkatermék | ítélet | jóváhagyás, elfogadás, elutasítás, kockázati besorolás, scope-ítélet, mintavételi ítélet |
+| munkatermék | ítélet | jóváhagyás, elfogadás, elutasítás, kockázati besorolás, hatókör-ítélet, mintavételi ítélet |
 | munkatermék | konfiguráció | kemény kategóriák listája, küszöbök, kapuk be- és kikapcsolása kategóriánként |
-| munkatermék | escape | merge után talált hiba |
+| munkatermék | átcsúszott hiba | egy kapun átjutott, később talált hiba |
 | tevékenység | állomás-futás | attribútum: állomás, sáv, kezdet, vég |
 | szereplő | ember, ágens, szabály | a szabály determinisztikus kód (például merge policy) |
 
@@ -27,8 +27,8 @@ mi invariáns, mi ítélet, és mi az, ami egyik formába sem fér bele.
 | *igazol* | bizonyíték → AC | |
 | *vonatkozik* | ítélet → munkatermék egy verziója | miről szól az ítélet |
 | *függ* | munkadarab → munkadarab | |
-| *okozta* | escape → commit | |
-| *átengedte* | escape → ítélet | melyik kapun jutott át |
+| *okozta* | átcsúszott hiba → commit | |
+| *átengedte* | átcsúszott hiba → ítélet | melyik kapun jutott át |
 | *előállította* | munkatermék → állomás-futás | |
 | *használta* | állomás-futás → munkatermék | időbélyeggel |
 | *végezte* | állomás-futás → szereplő | |
@@ -50,7 +50,7 @@ mi invariáns, mi ítélet, és mi az, ami egyik formába sem fér bele.
 (ember, a tanuló hurok javaslata alapján).
 
 **Ami nem fér bele:** „a bizalmat mérjük”. Ez se nem invariáns, se nem ítélet, hanem
-**lekérdezés** a gráfon: az escape-ek aránya kapunként és kategóriánként.
+**lekérdezés** a gráfon: az átcsúszott hibák aránya kapunként és kategóriánként.
 
 ## 0003 — A vég a PR, bizonyítékkal
 
@@ -60,8 +60,8 @@ mi invariáns, mi ítélet, és mi az, ami egyik formába sem fér bele.
 - **I-0003-2** A bizonyítékot előállító futás *használta* a PR aktuális head commitját. Ha a head
   változik, a bizonyíték elavul.
 - **I-0003-3** A bizonyítékot előállító futás sávja más, mint a commitot előállító futásé.
-- **I-0003-4** A bizonyítékok között van e2e eredmény és képernyőkép, és a futás preview
-  környezetben készült.
+- **I-0003-4** A bizonyítékok között van e2e eredmény és képernyőkép, és a futás
+  preview környezetben készült.
 
 **Ítéletek:** K3, a bizonyíték alapján, a szándékhoz és az AC-hez képest.
 
@@ -80,8 +80,8 @@ mi invariáns, mi ítélet, és mi az, ami egyik formába sem fér bele.
   1. a kockázati besorolás szerint nem érint kemény kategóriát,
   2. a besorolás szerint egy reverttel visszavonható,
   3. a hatókör kicsi (lásd alább),
-  4. az I-0003-1…4 teljesül, a lefedettség elég, és van „nincs scope drift” ítélet (0005),
-  5. a kategória escape rate-je a küszöb alatt van.
+  4. az I-0003-1…4 teljesül, a lefedettség elég, és van „nincs kéretlen változás” ítélet (0005),
+  5. a kategória átcsúszási aránya a küszöb alatt van.
 - **I-0004-2** Csak felfelé: ha egy munkadarabnak több kockázati besorolása van, egy későbbi,
   alacsonyabb besorolást csak ember hozhat.
 - **I-0004-3** A munkadarabra vonatkozó kockázati besorolást nem hozhatja az a szereplő, amelyik a
@@ -104,13 +104,13 @@ kockázatnál, mintavételi ítélet, a küszöbök és a lista módosítása.
 **Invariánsok**
 
 - **I-0005-1** A PR minden diffrészéből *teljesít* él vezet a munkadarab egy AC-jéhez.
-- **I-0005-2** A scope-ítéletet hozó futás szereplője más, mint a commitot előállítóé.
-- **I-0005-3** A scope-ítéletet hozó futás előbb *használta* az AC-ket és a diffet, és csak utána
+- **I-0005-2** A hatókör-ítéletet hozó futás szereplője más, mint a commitot előállítóé.
+- **I-0005-3** A hatókör-ítéletet hozó futás előbb *használta* az AC-ket és a diffet, és csak utána
   a Builder beszámolóját (az időbélyegek sorrendje).
 - **I-0005-4** Ha egy munkadarab egy másik munkadarabból *származik* (a review közben jött létre),
   akkor a Ready állapothoz emberi K1 jóváhagyás kell rá.
 
-**Ítéletek:** scope-ítélet (ágens), az, hogy a talált drift kikerül vagy új munkadarab lesz
+**Ítéletek:** hatókör-ítélet (ágens), az, hogy a talált kéretlen változás kikerül vagy új munkadarab lesz
 (ágens), refaktor-kör indítása (ember).
 
 **Ami nem fér bele:**
@@ -122,7 +122,7 @@ kockázatnál, mintavételi ítélet, a küszöbök és a lista módosítása.
 
 1. **Két forma kevés, három kell.** Invariáns, ítélet és **mérőszám** (lekérdezés a gráfon). A
    küszöbök konfigurációként, emberi ítélettel változnak.
-2. **Ítéletet nem csak ember hoz.** Ágens (scope, kockázat, visszavonhatóság) és szabály (merge
+2. **Ítéletet nem csak ember hoz.** Ágens (hatókör, kockázat, visszavonhatóság) és szabály (merge
    policy) is. Az invariánsok azt mondják meg, *melyik* ítéletet ki hozhatja.
 3. **A gráf időbeli, és csak bővülhet.** Verziók, SHA-kötés, olvasási sorrend, „csak felfelé”:
    ezek mind az időre vonatkoznak. Ezért semmi nem íródik felül, minden új csomópont vagy él lesz.

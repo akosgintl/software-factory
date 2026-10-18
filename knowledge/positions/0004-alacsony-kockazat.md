@@ -19,8 +19,8 @@ Egy PR akkor alacsony kockázatú, ha **mind az öt feltétel teljesül**. Ha b�
 3. **Kicsi hatókör:** a változtatás nem a közös magot érinti, kevés hívója van (fan-in). **A sorok
    száma nem számít.**
 4. **Teljes bizonyíték:** minden AC-hez bizonyíték (0003), az e2e zöld, a változott kódot teszt fedi,
-   és nincs scope drift (0005).
-5. **Jó előélet:** a kategória és a kódterület mért escape rate-je a küszöb alatt van.
+   és nincs kéretlen változás (0005).
+5. **Jó előélet:** a kategória és a kódterület mért átcsúszási aránya a küszöb alatt van.
 
 Három szabály:
 
@@ -29,7 +29,7 @@ Három szabály:
 - **A kemény kategóriák listáját csak ember változtatja.** A tanuló hurok az 5. feltétel küszöbét
   javasolhatja, az 1. listát nem.
 - **Mintavételezés:** az automatikusan merge-ölt PR-ok 10%-át utólag ember nézi meg. Az arány
-  módosítható. Ebből jön az escape rate az 5. feltételhez.
+  módosítható. Ebből jön az átcsúszási arány az 5. feltételhez.
 
 ## Miért
 
@@ -47,5 +47,5 @@ Három szabály:
 
 ## Mi változtatná meg
 
-- Ha a mintavétel azt mutatja, hogy a nagy, de „kis hatókörű” PR-ok escape rate-je magasabb,
+- Ha a mintavétel azt mutatja, hogy a nagy, de „kis hatókörű” PR-ok átcsúszási aránya magasabb,
   akkor a méret visszakerül jelzőként.

@@ -37,10 +37,10 @@ A PR nem csinál többet, mint az AC-k: [`positions/0005-scope-conformance.md`](
 |---|---|---|
 | Ki a fő munkavégző | ember, AI-eszközzel | ágens, ember a rendszer körül |
 | Az ember helye | a hurokban (in the loop), minden lépésnél | a hurok fölött (on the loop), kivételeknél és kapuknál |
-| A munka egysége | fejlesztői feladat | specifikáció elfogadási feltételekkel (AC) |
+| A munka egysége | fejlesztői feladat | specifikáció elfogadási kritériumokkal (AC) |
 | A folyamat | a meglévő (Scrum, emberi code review), AI-val gyorsítva | az ágensekre tervezve: lane-ek, kapuk, bizonyíték |
 | Szűk keresztmetszet | emberi figyelem és gépelés | specifikáció minősége és ellenőrzési kapacitás |
-| Mit mérünk | fejlesztői produktivitás | átfutás kártyánként, újramunka aránya, emberi érintés merge-enként |
+| Mit mérünk | fejlesztői produktivitás | átfutás munkadarabonként, újramunka aránya, emberi érintés merge-enként |
 | A dokumentáció olvasója | ember | elsősorban ágens (AGENTS.md, skillek, ellenőrizhető AC) |
 
 ## Spektrum, nem kettősség
