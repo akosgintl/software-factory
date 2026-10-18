@@ -22,7 +22,7 @@ Vissza a folyamathoz, a gráfmodellel: a K1 kettéválása (akarjuk-e, és jól 
 | AI-natív és AI-támogatott keret | `topics/ai-nativ-vs-ai-tamogatott.md` | 💭 vázlat |
 | Fogalmi modell | `topics/fogalmi-modell.md` | 📌 elfogadva |
 | Fogalomtár, magyar szavak | `glossary.md` | 📌 teljes, minden fogalom definícióval |
-| Invariánsok a 0002–0005-ön | `topics/invariansok.md` | 🔍 első változat |
+| Invariánsok a 0002–0005-ön | `topics/invariansok.md` | 🔍 első változat; nyitott ellentmondás a 0005-tel (`questions.md`) |
 | Definíció | `positions/0001-mit-ertunk-szoftvergyar-alatt.md` | 📌 elfogadva |
 | Emberi kapuk és bizalom | `positions/0002-emberi-kapuk-es-bizalom.md` | 📌 elfogadva |
 | A vég és a bizonyíték | `positions/0003-a-veg-a-pr-bizonyitekkal.md` | 📌 elfogadva |

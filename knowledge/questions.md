@@ -16,6 +16,15 @@ tesszük.
       „reverttel visszavonható”)? Független második ágens, vagy gépi mérés az állítás mögött?
       (`positions/0006-grafmodell.md`, `topics/invariansok.md`)
 
+- [ ] **Ellentmondás:** a 0005 szerint a review közben talált kéretlen változásból munkadarab lesz,
+      a fogalmi modell szerint viszont munkadarab csak tervből jöhet (a felbontás egyetlen helye).
+      A review-ból született munkadarab megkerüli a K0-t, a K1-et és a K2-t. A gráfban ugyanez: a
+      *munkadarab → munkadarab* irányú *származik* él és az I-0005-4. Javaslat (még nem döntöttünk):
+      minden gyár-javaslat (review-lelet, telemetria, átcsúszott hiba, tanuló hurok) szándék-javaslat
+      legyen, amely K0-n megy át; a *származik* él a szándéktól a lelet helyére mutasson; a 0005 3.
+      pontja és az I-0005-4 helyére az I-0002-5 lépjen. (`positions/0005-scope-conformance.md`,
+      `topics/fogalmi-modell.md`, `topics/invariansok.md`)
+
 ## Gyakorlati
 
 - [ ] Hogyan védjük a tanuló hurkot a Goodhart-hatástól, vagyis attól, hogy a gyár kijátssza a
