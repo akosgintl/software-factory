@@ -12,3 +12,13 @@ megerősítve.
 | Dan Shapiro: „five levels” skála a „spicy autocomplete”-től a „dark factory”-ig (2026 eleje, blogbejegyzés) | a mi L0–L5 skálánk közeli rokona | `[ellenőrizendő]` |
 | StrongDM: „software factory” szabályok (embernek nem szabad kódot írnia és átnéznie) | a C jelentés szélső változata, amit elvetünk | `[ellenőrizendő]` |
 | Jack W. Reeves: „What Is Software Design?” (1992) | a kód maga a terv, a fordító a gyár | `[ellenőrizendő]` |
+| Warp: Factories dokumentáció (korábban Oz). https://docs.warp.dev/factories/ | Triage, Planning, Building, Reviewing; spec jóváhagyás alapból; a merge-et nem végzi | ✅ |
+| Factory: Missions és Software Factory dokumentáció. https://docs.factory.com/missions/overview · https://factory.com/news/missions-architecture | „validation contract”: a bizonyíték előre rögzítve; független validátorok | ✅ |
+| StrongDM: Software Factory és Attractor. https://factory.strongdm.ai/ | embernek nem szabad kódot írnia és átnéznie; rejtett forgatókönyvek; gráf-pipeline | ✅ |
+| GitHub Spec Kit. https://github.com/github/spec-kit | specify, plan, tasks, implement | ✅ |
+| Kiro: Specs. https://kiro.dev/docs/specs/ | Requirements, Design, Tasks, jóváhagyás fázisok között | ✅ |
+| BMAD Method. https://docs.bmad-method.org/ | Clarify, Plan, Build and verify, Learn and adjust | ✅ |
+| Google Jules: terv jóváhagyás. https://jules.google/docs/review-plan/ | terv jóváhagyás, időzítővel automatikus | ✅ |
+| GitHub Copilot cloud agent. https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent | issue → PR, a kérő jóváhagyása nem számít | ✅ |
+| Devin dokumentáció. https://docs.devin.ai/ | terv, PR, Devin Review, felvétel a tesztről | ✅ |
+| OpenAI: „Harness engineering” (2026. február). https://openai.com/index/harness-engineering/ | „Humans steer. Agents execute.”; a részletek csak másodlagos forrásból | `[ellenőrizendő]` |

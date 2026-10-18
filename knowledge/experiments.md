@@ -13,7 +13,7 @@ git show <branch>:<útvonal>              # egy fájl tartalma
 
 | Kísérlet | Branch | Hol van | Lényeg |
 |---|---|---|---|
-| super-board | `staging` | `.claude/skills/super-*`, `.claude/bin/super-board-*`, `.claude/workflows/` | GitHub Project board vezérli. Lane-ek: Build, QA, Review. Kockázat alapú merge kapu. 1 kártya, 1 worktree, 1 branch. A `super-collect` telemetriából tölt backlogot. |
+| super-board | `origin/super-board` (korábban `staging`, a main `b2535fe` commitja nevezte át) | `.claude/skills/super-*`, `.claude/bin/super-board-*`, `.claude/workflows/` | GitHub Project board vezérli. Lane-ek: Build, QA, Review. Kockázat alapú merge kapu. 1 kártya, 1 worktree, 1 branch. A `super-collect` telemetriából tölt backlogot. |
 | fable-factory | `fable-factory` | `factory/`, `/factory` skill | `board.json` és `backlog.md`, eseményvezérelt orchestrátor, sync szakasz, backlog-függőségek, HTML dashboard. |
 | opus-factory | `opus-factory` | `factory/`, `/factory` skill | `board.py` és `board.json`, eseményvezérelt hurok, „landing slot” a merge sorosítására, `jobs/` mappa, HTML dashboard. |
 
