@@ -1,9 +1,9 @@
-# Invariánsok és ítéletek a 0002–0005 állásponton
+# Megkötések és ítéletek a 0002–0005 állásponton
 
 🔍 2026-10-18. A 0006 első próbája: végigmegyünk a 0002–0005 állásponton, és mindegyikből kiírjuk,
-mi invariáns, mi ítélet, és mi az, ami egyik formába sem fér bele.
+mi megkötés, mi ítélet, és mi az, ami egyik formába sem fér bele.
 
-📌 Mi az invariáns, milyen fajtái vannak, és mi történik, ha sérül:
+📌 Mi a megkötés, milyen fajtái vannak, és mi történik, ha sérül:
 `positions/0006-grafmodell.md` 4., 4a–4c. pont.
 
 ## Típusok (első változat)
@@ -38,7 +38,7 @@ mi invariáns, mi ítélet, és mi az, ami egyik formába sem fér bele.
 
 ## 0002 — Emberi kapuk és bizalom
 
-**Invariánsok**
+**Megkötések**
 
 - **I-0002-1** Ha egy kategóriában a K1 be van kapcsolva, akkor minden munkadarabtól a *származik*
   élek egy olyan spechez vezetnek, amelyre ember jóváhagyó ítélete *vonatkozik*. A K2-re ugyanez a
@@ -54,12 +54,12 @@ mi invariáns, mi ítélet, és mi az, ami egyik formába sem fér bele.
 **Ítéletek:** K0 (ember, mindig), K1 (ember), K2 (ember), K3 (ember vagy szabály), egy kapu ki- vagy bekapcsolása
 (ember, a tanuló hurok javaslata alapján).
 
-**Ami nem fér bele:** „a bizalmat mérjük”. Ez se nem invariáns, se nem ítélet, hanem
+**Ami nem fér bele:** „a bizalmat mérjük”. Ez se nem megkötés, se nem ítélet, hanem
 **lekérdezés** a gráfon: az átcsúszott hibák aránya kapunként és kategóriánként.
 
 ## 0003 — A vég a PR, bizonyítékkal
 
-**Invariánsok**
+**Megkötések**
 
 - **I-0003-1** A munkadarab minden AC-jére *igazol* legalább egy bizonyíték.
 - **I-0003-2** A bizonyítékot előállító futás *használta* a PR aktuális head commitját. Ha a head
@@ -78,7 +78,7 @@ mi invariáns, mi ítélet, és mi az, ami egyik formába sem fér bele.
 
 ## 0004 — Alacsony kockázat
 
-**Invariánsok**
+**Megkötések**
 
 - **I-0004-1** Szabály szereplőjű elfogadás csak akkor vonatkozhat egy PR-ra, ha mind az öt
   feltétel igaz:
@@ -111,7 +111,7 @@ kockázatnál, mintavételi ítélet, a küszöbök és a lista módosítása.
 
 ## 0005 — Scope-ellenőrzés
 
-**Invariánsok**
+**Megkötések**
 
 - **I-0005-1** A PR minden diffrészéből *teljesít* él vezet a munkadarab egy AC-jéhez.
 - **I-0005-2** A hatókör-ítéletet hozó futás szereplője más, mint a commitot előállítóé.
@@ -130,15 +130,15 @@ kockázatnál, mintavételi ítélet, a küszöbök és a lista módosítása.
 
 ## Amit a próba kimutatott
 
-1. **Két forma kevés, három kell.** Invariáns, ítélet és **mérőszám** (lekérdezés a gráfon). A
+1. **Két forma kevés, három kell.** Megkötés, ítélet és **mérőszám** (lekérdezés a gráfon). A
    küszöbök konfigurációként, emberi ítélettel változnak.
 2. **Ítéletet nem csak ember hoz.** Ágens (hatókör, kockázat, visszavonhatóság) és szabály (merge
-   policy) is. Az invariánsok azt mondják meg, *melyik* ítéletet ki hozhatja.
+   policy) is. A megkötések azt mondják meg, *melyik* ítéletet ki hozhatja.
 3. **A gráf időbeli, és csak bővülhet.** Verziók, SHA-kötés, olvasási sorrend, „csak felfelé”:
    ezek mind az időre vonatkoznak. Ezért semmi nem íródik felül, minden új csomópont vagy él lesz.
 4. **Az állapot nézet, nem tárolt adat.** Backlog, Ready, Done: a gráfból levezethető.
 5. **Két gráf van:** a munka gráfja és a kód függőségi gráfja. A 0004 hatókör-feltétele a kettőt
    köti össze.
 6. **Gyenge pont: az ágens saját állítása.** A preview környezet és a visszavonhatóság csak annyira
-   megbízható, amennyire a szereplő, aki állítja. Az invariáns csak azt garantálja, hogy *ki*
+   megbízható, amennyire a szereplő, aki állítja. A megkötés csak azt garantálja, hogy *ki*
    állította.

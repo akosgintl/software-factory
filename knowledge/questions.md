@@ -14,7 +14,7 @@ tesszük.
 
 - [ ] Mitől lesz egy ágens saját állítása ellenőrizhető (például „preview környezetben készült”,
       „reverttel visszavonható”)? Független második ágens, vagy gépi mérés az állítás mögött?
-      (`positions/0006-grafmodell.md`, `topics/invariansok.md`)
+      (`positions/0006-grafmodell.md`, `topics/megkotesek.md`)
 
 - [ ] **Ellentmondás:** a 0005 szerint a review közben talált kéretlen változásból munkadarab lesz,
       a fogalmi modell szerint viszont munkadarab csak tervből jöhet (a felbontás egyetlen helye).
@@ -23,7 +23,7 @@ tesszük.
       minden gyár-javaslat (review-lelet, telemetria, átcsúszott hiba, tanuló hurok) szándék-javaslat
       legyen, amely K0-n megy át; a *származik* él a szándéktól a lelet helyére mutasson; a 0005 3.
       pontja és az I-0005-4 helyére az I-0002-5 lépjen. (`positions/0005-scope-conformance.md`,
-      `topics/fogalmi-modell.md`, `topics/invariansok.md`)
+      `topics/fogalmi-modell.md`, `topics/megkotesek.md`)
 
 ## Gyakorlati
 

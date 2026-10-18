@@ -1,8 +1,8 @@
 # 0006 — Gráfmodell: most leíró, de a működési modell vezérel
 
 Állapot: 📌 elfogadva · 2026-10-18 · módosítva 2026-10-18 (három forma, ítélet bármely
-szereplőtől, időbeli gráf; a próba: `topics/invariansok.md`) · pontosítva 2026-10-18 (mi az
-invariáns)
+szereplőtől, időbeli gráf; a próba: `topics/megkotesek.md`) · pontosítva 2026-10-18 (mi a
+megkötés)
 
 ## Kérdés
 
@@ -24,25 +24,25 @@ gondolkodjunk róla (leíró modell), vagy arra, hogy a gyár ténylegesen így 
 3. **Most leíró modellel dolgozunk (A).** A gráf a jegyzetekben él.
 4. **A működési modell (B) a mérce.** Minden döntést úgy fogalmazunk meg, hogy működési szabállyá
    válhasson. Három formája lehet:
-   - **invariáns**: a gráfról szóló állítás, amely (1) bármely pillanatban eldönthető kizárólag
+   - **megkötés**: a gráfról szóló állítás, amely (1) bármely pillanatban eldönthető kizárólag
      a gráfból, determinisztikus kóddal, ember és ágens ítélete nélkül; (2) mindig igaz kell
      legyen; (3) a szerkezetről szól (ki, mit, miről, mikor, melyik verzión), nem a tartalom
      minőségéről. Például: a diff minden darabjából *teljesít* él vezet egy AC-hez. Ha LLM
-     ellenőrizné, az ítélet lenne, nem invariáns;
+     ellenőrizné, az ítélet lenne, nem megkötés;
    - **ítélet**: csomópont, amelyet egy szereplő hoz: ember, ágens vagy szabály. A gráf azt
-     rögzíti, hogy ki ítélt, miről, és melyik verzióról. Azt nem, hogy jól ítélt-e. Az invariánsok
+     rögzíti, hogy ki ítélt, miről, és melyik verzióról. Azt nem, hogy jól ítélt-e. A megkötések
      mondják meg, melyik ítéletet ki hozhatja;
    - **mérőszám**: lekérdezés a gráfon (például átcsúszási arány kapunként és kategóriánként). A
      küszöbe konfiguráció, amely emberi ítélettel változik.
-4a. **Az invariáns négy fajtája.** Szerkezeti (minden X-hez tartozik Y), őrfeltétel (egy esemény
+4a. **A megkötés négy fajtája.** Szerkezeti (minden X-hez tartozik Y), őrfeltétel (egy esemény
    csak akkor történhet meg, ha…), jogosultsági (ezt az ítéletet csak ez a szereplő hozhatja),
    sorrendi (ez előbb történt, mint az). A csak bővülő gráfban minden őrfeltétel szerkezeti
-   invariánssá válik, ezért utólag is ellenőrizhető. Ami csak „egyszer megtörténik” (liveness),
-   vagy csak időablakra igaz (statisztikai), az nem invariáns: az előbbiből időkorláttal lesz
-   invariáns, az utóbbi mérőszám küszöbbel.
-4b. **Ha egy invariáns sérül:** ahol lehet, **megelőző** (a lépés nem történik meg), ahol nem,
+   megkötéssé válik, ezért utólag is ellenőrizhető. Ami csak „egyszer megtörténik” (liveness),
+   vagy csak időablakra igaz (statisztikai), az nem megkötés: az előbbiből időkorláttal lesz
+   megkötés, az utóbbi mérőszám küszöbbel.
+4b. **Ha egy megkötés sérül:** ahol lehet, **megelőző** (a lépés nem történik meg), ahol nem,
    **észlelő** (utólag kiderül, és elakadás lesz belőle). Csendben átmenni soha nem lehet.
-4c. **Az invariáns alakja rögzített, a paramétere konfiguráció.** Például a „legfeljebb N
+4c. **A megkötés alakja rögzített, a paramétere konfiguráció.** Például a „legfeljebb N
    újramunka-kör” alakja csak az álláspont módosításával változik, az N-et a gyár javasolhatja,
    és ember élesíti (E8).
 5. **Ami egyik formába sem fér bele, az figyelmeztető jel.** Vagy még nem elég pontos, vagy rejtett
@@ -61,7 +61,7 @@ gondolkodjunk róla (leíró modell), vagy arra, hogy a gyár ténylegesen így 
   egy másik munkadarabból származó új munkadarab lesz. A bizonyíték egyszerre kötődik AC-hez és
   commithoz.
 - A folyamat az élekben él: a kapcsolat jelentése fontosabb, mint a darabszám.
-- Az álláspontok invariánsként ellenőrizhetők lesznek, nem csak prózában leírt szabályok.
+- Az álláspontok megkötésként ellenőrizhetők lesznek, nem csak prózában leírt szabályok.
 - A B mint mérce nem hagyja, hogy a beszélgetés olyan elvekre jusson, amelyeket a gyár nem tud
   betartatni.
 
@@ -73,11 +73,11 @@ gondolkodjunk róla (leíró modell), vagy arra, hogy a gyár ténylegesen így 
 - A tartalom minősége (jól érti-e a spec a szándékot) nem gráfszabály. Erre az ítélet-csomópont a
   válasz: a gráf az ítélet tényét és felelősét rögzíti, a tartalmát nem.
 - Az ágens saját állítása (például „preview környezetben készült”, „reverttel visszavonható”) csak
-  annyit ér, amennyit az állító. Az invariáns csak azt garantálja, ki állította. Ez a modell
+  annyit ér, amennyit az állító. A megkötés csak azt garantálja, ki állította. Ez a modell
   határa; nyitott kérdés, hogyan tehető ellenőrizhetővé.
 
 ## Mi változtatná meg
 
-- Ha a fontos szabályaink többsége nem fogalmazható meg invariánsként vagy döntés-csomópontként,
+- Ha a fontos szabályaink többsége nem fogalmazható meg megkötésként vagy döntés-csomópontként,
   akkor a gráfmodell rossz absztrakció.
 - Ha a működési gráf fenntartása többe kerül, mint amennyi hibát a szabályai megfognak.

@@ -1,12 +1,12 @@
 # Irányelvek
 
-📌 2026-10-18. Rövid, emberi mondatok, amelyekből az álláspontok és az invariánsok következnek.
-Minden gyár-irányelv mellett ott áll, mely invariánsok valósítják meg. Ha egy irányelvnek nincs
-invariánsa, az rés (visszavezethetőség az elvek szintjén).
+📌 2026-10-18. Rövid, emberi mondatok, amelyekből az álláspontok és a megkötések következnek.
+Minden gyár-irányelv mellett ott áll, mely megkötések valósítják meg. Ha egy irányelvnek nincs
+megkötése, az rés (visszavezethetőség az elvek szintjén).
 
 ## A gyár irányelvei
 
-| # | Irányelv | Honnan | Invariánsok |
+| # | Irányelv | Honnan | Megkötések |
 |---|---|---|---|
 | E1 | **A gyár javasol és végrehajt, az ember dönt és validál.** | 0001 | I-0002-5 |
 | E2 | **Az ember mindig validált elemet kap átnézésre.** Egy kapu kikapcsolása nem kapcsolja ki a független ellenőrzést: minden kapu előtt eval és review jön. Az ember e fölé kerül, nem helyette van. | 0008 | I-0008-4 |
@@ -32,10 +32,10 @@ maga írná a szabályt, az L5 lenne, amit a 0001 kizár.
 
 ## A munkánk elvei
 
-Ezek a beszélgetésre és a jegyzetekre vonatkoznak, nem a gyár működésére. Ezért nincs invariánsuk.
+Ezek a beszélgetésre és a jegyzetekre vonatkoznak, nem a gyár működésére. Ezért nincs megkötésük.
 
 | # | Elv | Honnan |
 |---|---|---|
 | M1 | **Mindenki ugyanazt értse alatta.** Minden használt fogalom definícióval szerepel a fogalomtárban. | `CLAUDE.md`, `glossary.md` |
 | M2 | **Egyszerűség (KISS).** Ha egy lépés elhagyható vagy összevonható, elhagyjuk vagy összevonjuk. | 0008 |
-| M3 | **A működési modell vezérel.** Minden döntést invariáns, ítélet vagy mérőszám formájában fogalmazunk meg. | 0006 |
+| M3 | **A működési modell vezérel.** Minden döntést megkötés, ítélet vagy mérőszám formájában fogalmazunk meg. | 0006 |

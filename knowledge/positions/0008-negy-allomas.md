@@ -45,7 +45,7 @@ Ami nem állomás:
 - **ütemezés**: a vezérlés dolga. A Ready nézet: a munkadarab indítható.
 - **utókövetés**: a kész után, a tanuló hurok része (mintavétel, átcsúszott hibák).
 
-Új invariánsok:
+Új megkötések:
 
 - **I-0008-1** Merge csak akkor történhet, ha a CI az összevont állapoton (a PR és az aktuális
   main) zöld.
@@ -58,7 +58,7 @@ Ami nem állomás:
   azonos az előállítóval. Akkor is, ha a kapun ember dönt, ha szabály dönt, és akkor is, ha a
   kapu ki van kapcsolva.
 
-A többi állomásra a meglévő invariánsok vonatkoznak: tervezés: I-0002-1, -2, -5; build:
+A többi állomásra a meglévő megkötések vonatkoznak: tervezés: I-0002-1, -2, -5; build:
 I-0007-3; ellenőrzés: I-0003-1…4, I-0004-3, I-0005-1…3; landing: I-0002-3, I-0004-1.
 
 ## Miért

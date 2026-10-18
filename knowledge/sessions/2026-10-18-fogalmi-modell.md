@@ -30,7 +30,7 @@ Miből áll egy szoftvergyár, melyek a folyamat lépései?
 - 📌 [`positions/0006-grafmodell.md`](../positions/0006-grafmodell.md): típusos, időbeli, csak
   bővülő gráf; három forma: invariáns, ítélet (ember, ágens vagy szabály), mérőszám; az állapot
   levezetett nézet; két gráf (munka és kód).
-- 🔍 [`topics/invariansok.md`](../topics/invariansok.md): a típusok első változata és a 0002–0005
+- 🔍 [`topics/megkotesek.md`](../topics/megkotesek.md): a típusok első változata és a 0002–0005
   invariánsai.
 - Fogalomtár: szándék, állomás, sáv, kapu, jóváhagyás, elfogadás, munkatermék, invariáns, ítélet.
   Forrás: W3C PROV-DM.

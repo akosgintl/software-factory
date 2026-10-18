@@ -30,11 +30,11 @@ utána?
    Előre ugrani nem lehet. A már merge-ölt munkadarabokat nem lehet visszacsinálni; az új
    tervnek számolnia kell velük.
 
-Invariánsok:
+Megkötések:
 
 - **I-0007-1** Egy állomás-futás legfeljebb T ideig lehet nyitott. Ha addig nem zárul a várt
   kimenettel, elakadással zárul. A T konfiguráció, állomásonként. (Korábban: „minden futás
-  lezárul”; ez liveness volt, időkorláttal lett invariáns.)
+  lezárul”; ez liveness volt, időkorláttal lett megkötés.)
 - **I-0007-2** Ha egy munkadarabra vagy annak forrására (terv, spec) elakadás vonatkozik, a
   munkadarab nem mehet tovább, amíg az elakadásra nem vonatkozik emberi ítélet.
 - **I-0007-3** Egy munkadarabon legfeljebb 3 újramunka-kör lehet (build → ellenőrzés → vissza). A
@@ -57,7 +57,7 @@ Mérőszám:
 - Kivételkezelés nélkül az ágens vagy végtelen hurokba kerül, vagy csendben gyenge munkát ad le.
 - Ha az elakadás a specre mutat, a spec új verziót kap, és az I-0002-2 miatt minden ráépülő
   jóváhagyás érvénytelen lesz. A visszalépést nem kell külön szabályként kitalálni, a meglévő
-  invariánsból következik.
+  megkötésből következik.
 
 ## Mi szólt ellene
 
