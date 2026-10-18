@@ -1,4 +1,4 @@
-# 0005 — Scope conformance: a PR nem csinál többet, mint amit az AC-k kérnek
+# 0005 — Scope-ellenőrzés (scope conformance): a PR nem csinál többet, mint amit az AC-k kérnek
 
 Állapot: 📌 elfogadva · 2026-10-16
 
@@ -10,7 +10,7 @@ hogy más nem változott.
 
 ## Álláspont
 
-1. **Kell scope conformance.** Egy független reviewer a diff minden részét visszavezeti egy AC-re.
+1. **Kell scope-ellenőrzés.** Egy független reviewer a diff minden részét visszavezeti egy AC-re.
    Az AC-ket és a diffet a Builder beszámolója *előtt* olvassa. Ami nem vezethető vissza, az
    kéretlen változás (scope drift).
 2. **A kéretlen változás nem maradhat a PR-ban.** Vagy kikerül belőle, vagy külön munkadarab lesz a
@@ -33,8 +33,8 @@ hogy más nem változott.
 
 ## Mi szólt ellene
 
-- Ha minden mellékes javítás külön munkadarabra megy, a kód nem javul, csak a Backlog nő. A scope
-  conformance így gyorsíthatja is az architektúra erózióját. Erre válasz az 5. pont.
+- Ha minden mellékes javítás külön munkadarabra megy, a kód nem javul, csak a Backlog nő. A
+  scope-ellenőrzés így gyorsíthatja is az architektúra erózióját. Erre válasz az 5. pont.
 - A „visszavezethető egy AC-re” ítélet ágensé, és lehet engedékeny. Védelem: a reviewer független,
   és a 0004 szerinti 10%-os emberi mintavétel ezt is ellenőrzi.
 - Plusz egy review-kör PR-onként. Ez ágensidő, nem emberi idő, ezért vállalható.

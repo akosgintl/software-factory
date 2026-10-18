@@ -99,7 +99,7 @@ kockázatnál, mintavételi ítélet, a küszöbök és a lista módosítása.
 - 💭 A visszavonhatóság ágens ítélete. Ellenőrizni nem tudjuk, csak azt, hogy ki mondta.
 - 💭 Az I-0004-5 statisztikai invariáns, időablakra. Nem egy pillanatra igaz vagy hamis.
 
-## 0005 — Scope conformance
+## 0005 — Scope-ellenőrzés
 
 **Invariánsok**
 

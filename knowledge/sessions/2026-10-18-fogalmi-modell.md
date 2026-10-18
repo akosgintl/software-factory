@@ -41,3 +41,29 @@ Miből áll egy szoftvergyár, melyek a folyamat lépései?
 - Nagy szándéknál a szándék : spec arány 1:N legyen?
 - Mitől lesz egy ágens saját állítása ellenőrizhető?
 - A folyamat kibontása: kivételkezelés (andon), a K1 kettéválása, utókövetés.
+
+---
+
+## Folytatás: elakadás és magyar szavak
+
+### Amit végiggondoltunk
+
+- 📌 Az elakadás munkatermék. Bármelyik sáv jelezheti, oda mutat, ahol a hiba van, és legfeljebb 3
+  újramunka-kör lehet.
+- 📌 Az escape tisztázása: átcsúszott hiba, mindig egy kapuhoz képest. Lehet AC-sértés,
+  szándék-sértés teljesült AC mellett (K1-hiba), vagy ki nem mondott elvárás sértése. Ha az ember
+  meggondolta magát, az új szándék.
+- 📌 Elv: mindenki ugyanazt értse alatta. Minden használt fogalom definícióval szerepel a
+  fogalomtárban, az angolul maradók is.
+- 📌 Szavak: kártya → munkadarab; AC = elfogadási kritérium; escape → átcsúszott hiba; scope
+  conformance → scope-ellenőrzés; scope drift → kéretlen változás; workflow → munkafolyamat; intake
+  → befogadás. Angolul marad: flaky, preview környezet, dark factory, build, review, QA, Builder,
+  Reviewer, landing, backlog, Ready, fan-in, fan-out, spec.
+- 📌 A „visszavezethetőség” (traceability) fenntartott szó: a kétirányú összepontozásra (gap
+  elemzés, traceability mátrix). A scope-ellenőrzés ennek csak egyik iránya.
+- Elvetett szavak: hatókörhűség, beolvasztás, PR-környezet, ingadozó teszt.
+
+### Ahová eljutottunk
+
+- 📌 [`positions/0007-elakadas.md`](../positions/0007-elakadas.md)
+- 📌 [`glossary.md`](../glossary.md) teljes; az elv a `CLAUDE.md`-be is bekerült.

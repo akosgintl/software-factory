@@ -43,7 +43,7 @@ Három szabály:
 - A sorok száma a hibavalószínűség durva, de olcsó jelzője. Elvetettük, mert a hatókör és a
   bizonyíték jobban mér.
 - Egy nagy PR könnyen többet változtat, mint amit az AC-k leírnak. Ezt a bizonyíték nem fedi le.
-  Pótlék: scope conformance, lásd `positions/0005-scope-conformance.md`.
+  Pótlék: scope-ellenőrzés, lásd `positions/0005-scope-conformance.md`.
 
 ## Mi változtatná meg
 
