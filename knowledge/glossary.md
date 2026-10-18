@@ -131,7 +131,7 @@ amelyeket „mindenki ismer”. A fogalomtár definiál, a szabályok az állás
 | tevékenység | a gyár gráfjának csomópont-típusa; nálunk az állomás-futás | `positions/0006-grafmodell.md` |
 | traceability mátrix | táblázatos nézet két tételcsoport között (például AC × bizonyíték), a cellában a kapcsolattal; a gyár gráfjából levezethető. Angolul marad | `elvek.md` (E9) |
 | újramunka-kör | a munkadarab az ellenőrzésből visszamegy a buildbe. A korlátja után elakadás jön | `positions/0007-elakadas.md` |
-| utókövetés | a kész után, nem állomás: mintavétel, átcsúszott hibák észlelése; innen jön a tanuló hurok jele | `positions/0008-negy-allomas.md` |
+| utókövetés | a kész után, nem állomás: az átcsúszott hibák észlelése; a mintavétellel együtt innen jön a tanuló hurok jele | `positions/0008-negy-allomas.md` |
 | ütemezés | a vezérlés dolga, nem állomás: melyik munkadarab mikor indul (függőségek, párhuzamosság, WIP limit) | `positions/0008-negy-allomas.md` |
 | validation contract | a Factory Missions fogalma: a tervezés előre rögzíti, milyen bizonyíték kell egy feature-höz | `topics/folyamat-osszevetes.md` |
 | verzió | egy munkatermék egy állapota. Minden változás új verzió (*új verziója* él); az ítélet mindig egy verzióra vonatkozik | `positions/0006-grafmodell.md` |

@@ -1,7 +1,7 @@
 # 0008 — A gyár folyamata: négy állomás
 
 Állapot: 📌 elfogadva · 2026-10-18 · módosítva 2026-10-18 (független ellenőrzés minden kapu előtt;
-a K3 a landing előtt, a landing gépi)
+a K3 a landing előtt, a landing gépi; a mintavétel nem az utókövetés része)
 
 ## Kérdés
 
@@ -49,7 +49,8 @@ Ami nem állomás:
 - **backlog**: a K0 előtti szándékok nézete, a gyár-javasolt szándékokkal együtt. Ott nem dolgozik
   senki.
 - **ütemezés**: a vezérlés dolga. A Ready nézet: a munkadarab indítható.
-- **utókövetés**: a kész után, a tanuló hurok része (mintavétel, átcsúszott hibák).
+- **utókövetés**: a kész után, a tanuló hurok része (átcsúszott hibák). A mintavétel nem ide
+  tartozik: minden szabály-ítéletre vonatkozik, mind a négy kapun (0002).
 
 ## Megkötések
 

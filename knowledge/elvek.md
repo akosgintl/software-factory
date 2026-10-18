@@ -11,7 +11,7 @@ megkötés legalább egy irányelvhez tartozik. Ha valamelyik hiányzik, az rés
 | E1 | **A gyár javasol és végrehajt, az ember dönt és validál**: tételenként, vagy az általa jóváhagyott szabályon át. | 0001 | I-0002-3, I-0002-5 |
 | E2 | **Az ember mindig validált elemet kap.** Minden kapu előtt független eval és review jön, akkor is, ha a kapun szabály dönt. Az ember e fölé kerül, nem helyette van. | 0008 | I-0008-4 |
 | E3 | **Senki nem minősíti a saját munkáját.** | 0003, 0004, 0005 | I-0003-3, I-0004-3, I-0005-2, I-0005-3, I-0008-4 |
-| E4 | **Az autonómia úgy nő, hogy az ember tételek helyett szabályokról dönt.** | 0001, 0002 | I-0002-6 |
+| E4 | **Az autonómia úgy nő, hogy az ember tételek helyett szabályokról dönt**, és a szabály ítéleteiből mindig mintát néz. | 0001, 0002 | I-0002-6 |
 | E5 | **Ember nélkül csak az alacsony kockázat megy át, és a kockázatot ágens csak emelheti.** | 0004 | I-0004-1, I-0004-2 |
 | E6 | **Semmi nem íródik felül; minden változás új verzió**, és a régi verzióra hozott ítélet nem érvényes az újra. | 0006 | I-0006-1, I-0002-2, I-0003-2, I-0007-5 |
 | E7 | **Előre ugrani nem lehet.** Elakadás után a munka ugyanott vagy korábban folytatódik. | 0007 | I-0007-4 |
@@ -26,7 +26,8 @@ Minden kapu, a K0 is, ugyanezt a létrát járja be, kategóriánként:
 
 1. az ember tételenként dönt;
 2. szabály dönt, az ember mintát néz;
-3. szabály dönt, a gyár javasolja a szabály módosítását, és az ember hagyja jóvá.
+3. szabály dönt, az ember mintát néz, a gyár javasolja a szabály módosítását, és az ember hagyja
+   jóvá.
 
 Kezdetben, és minden új kategóriában, minden kapu az 1. fokon áll. Fel és le a mért átcsúszási
 arány viszi (0002). Példa a K0 2. fokára: ember által jóváhagyott szabály szerint minden

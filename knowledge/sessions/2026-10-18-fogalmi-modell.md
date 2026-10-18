@@ -154,3 +154,14 @@ Vannak-e a repóban ellentmondások, kimaradt és redundáns tételek? A vizsgá
 - Kell-e merge utáni biztosíték az alacsony kockázathoz?
 - Mit csinál a Warp scorer `selfImprovement` beállítása, és sérti-e az E8-at?
 - A kísérletekről három kérdés átkerült az `experiments.md`-ből a `questions.md`-be.
+
+## Kiegészítés: az ábra ellenőrzése, mintavétel minden kapun
+
+- 📌 **A mintavétel minden szabály-ítéletre vonatkozik, mind a négy kapun** (0002, 5. pont). Az
+  ábra és a 0008 az utókövetéshez kötötte, ez szűkítés volt. Az utókövetés most az átcsúszott
+  hibák észlelése; a mintavétellel együtt adja a tanuló hurok jelét.
+- 📌 Nem lett külön irányelv (KISS): az E4 mondja ki, hogy a szabály ítéleteiből az ember mindig
+  mintát néz, és a létra 3. fokán is van mintavétel.
+- Ábra (`abrak/gyar-folyamat.html`, artifact 4. verzió): mintavétel-vonal mind a négy kapu
+  szabály-felétől; a jobb szélen „átcsúszott hiba”; a K3 kártyán I-0002-6; „max N kör (alapból
+  3)”; jelmagyarázat és forrás-lábléc kiegészítve.

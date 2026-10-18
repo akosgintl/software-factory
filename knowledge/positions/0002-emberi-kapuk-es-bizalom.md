@@ -31,8 +31,9 @@ A teljes folyamat a 0008-ban van.
    Kezdetben, és minden új kategóriában, minden kapun ember dönt. A kapu a mért bizalom alapján
    kerül szabályra, és ugyanígy kerül vissza emberhez (autonómia létrája, `elvek.md`). Kikapcsolt
    kapu nincs. A K3 szabályát a 0004 adja.
-5. **Mintavétel:** a szabály által hozott kapu-ítéletek egy részét utólag ember nézi meg. Az arány
-   kapunként konfiguráció, alapból 10%. Ebből jön a szabály-ítéletek átcsúszási aránya.
+5. **Mintavétel:** a szabály által hozott kapu-ítéletek egy részét utólag ember nézi meg, mind a
+   négy kapun (K0–K3), minden kategóriában. Az arány kapunként konfiguráció, alapból 10%. Ebből
+   jön a szabály-ítéletek átcsúszási aránya.
 
 ## Megkötések
 
