@@ -3,6 +3,9 @@
 🔍 2026-10-18. A 0006 első próbája: végigmegyünk a 0002–0005 állásponton, és mindegyikből kiírjuk,
 mi invariáns, mi ítélet, és mi az, ami egyik formába sem fér bele.
 
+📌 Mi az invariáns, milyen fajtái vannak, és mi történik, ha sérül:
+`positions/0006-grafmodell.md` 4., 4a–4c. pont.
+
 ## Típusok (első változat)
 
 💭 Csomópontok:
@@ -89,8 +92,9 @@ mi invariáns, mi ítélet, és mi az, ami egyik formába sem fér bele.
 - **I-0004-3** A munkadarabra vonatkozó kockázati besorolást nem hozhatja az a szereplő, amelyik a
   commitot előállította.
 - **I-0004-4** A kemény kategóriák listájának minden változására ember ítélete vonatkozik.
-- **I-0004-5** Az elmúlt időszakban szabály által elfogadott PR-ok legalább 10%-ára vonatkozik
-  utólagos emberi mintavételi ítélet.
+- ~~**I-0004-5**~~ Átsorolva mérőszámnak (2026-10-18): **mintavételi arány** = a szabály által
+  elfogadott PR-ok közül hánynak van utólagos emberi mintavételi ítélete, időablakra. Ha 10% alá
+  esik, a gyár riaszt. Az azonosító nem kerül újra kiosztásra.
 - **I-0004-6** A gyár saját szabályait vagy működését változtató PR (konfiguráció, küszöb, kemény
   lista, skill, ágens-utasítás, munkafolyamat) kemény kategória: elfogadó ítéletét csak ember hozhatja.
   Ennek a gyár által előállított változata javaslat marad, amíg ember jóvá nem hagyja (E8).
@@ -102,7 +106,8 @@ kockázatnál, mintavételi ítélet, a küszöbök és a lista módosítása.
 - 💭 A hatókör (fan-in, közös mag) nem a munka gráfjából jön, hanem a **kód függőségi gráfjából**.
   Ez egy második gráf.
 - 💭 A visszavonhatóság ágens ítélete. Ellenőrizni nem tudjuk, csak azt, hogy ki mondta.
-- 💭 Az I-0004-5 statisztikai invariáns, időablakra. Nem egy pillanatra igaz vagy hamis.
+- 🔍 Az I-0004-5 statisztikai volt, időablakra; egy pillanatra nem dönthető el. Ezért mérőszám
+  lett küszöbbel (0006, 4a).
 
 ## 0005 — Scope-ellenőrzés
 

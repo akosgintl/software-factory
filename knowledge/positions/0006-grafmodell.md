@@ -1,7 +1,8 @@
 # 0006 — Gráfmodell: most leíró, de a működési modell vezérel
 
 Állapot: 📌 elfogadva · 2026-10-18 · módosítva 2026-10-18 (három forma, ítélet bármely
-szereplőtől, időbeli gráf; a próba: `topics/invariansok.md`)
+szereplőtől, időbeli gráf; a próba: `topics/invariansok.md`) · pontosítva 2026-10-18 (mi az
+invariáns)
 
 ## Kérdés
 
@@ -23,13 +24,27 @@ gondolkodjunk róla (leíró modell), vagy arra, hogy a gyár ténylegesen így 
 3. **Most leíró modellel dolgozunk (A).** A gráf a jegyzetekben él.
 4. **A működési modell (B) a mérce.** Minden döntést úgy fogalmazunk meg, hogy működési szabállyá
    válhasson. Három formája lehet:
-   - **invariáns**: a gráfon gépi úton ellenőrizhető szabály (például: a diff minden darabjából
-     *teljesít* él vezet egy AC-hez);
+   - **invariáns**: a gráfról szóló állítás, amely (1) bármely pillanatban eldönthető kizárólag
+     a gráfból, determinisztikus kóddal, ember és ágens ítélete nélkül; (2) mindig igaz kell
+     legyen; (3) a szerkezetről szól (ki, mit, miről, mikor, melyik verzión), nem a tartalom
+     minőségéről. Például: a diff minden darabjából *teljesít* él vezet egy AC-hez. Ha LLM
+     ellenőrizné, az ítélet lenne, nem invariáns;
    - **ítélet**: csomópont, amelyet egy szereplő hoz: ember, ágens vagy szabály. A gráf azt
      rögzíti, hogy ki ítélt, miről, és melyik verzióról. Azt nem, hogy jól ítélt-e. Az invariánsok
      mondják meg, melyik ítéletet ki hozhatja;
    - **mérőszám**: lekérdezés a gráfon (például átcsúszási arány kapunként és kategóriánként). A
      küszöbe konfiguráció, amely emberi ítélettel változik.
+4a. **Az invariáns négy fajtája.** Szerkezeti (minden X-hez tartozik Y), őrfeltétel (egy esemény
+   csak akkor történhet meg, ha…), jogosultsági (ezt az ítéletet csak ez a szereplő hozhatja),
+   sorrendi (ez előbb történt, mint az). A csak bővülő gráfban minden őrfeltétel szerkezeti
+   invariánssá válik, ezért utólag is ellenőrizhető. Ami csak „egyszer megtörténik” (liveness),
+   vagy csak időablakra igaz (statisztikai), az nem invariáns: az előbbiből időkorláttal lesz
+   invariáns, az utóbbi mérőszám küszöbbel.
+4b. **Ha egy invariáns sérül:** ahol lehet, **megelőző** (a lépés nem történik meg), ahol nem,
+   **észlelő** (utólag kiderül, és elakadás lesz belőle). Csendben átmenni soha nem lehet.
+4c. **Az invariáns alakja rögzített, a paramétere konfiguráció.** Például a „legfeljebb N
+   újramunka-kör” alakja csak az álláspont módosításával változik, az N-et a gyár javasolhatja,
+   és ember élesíti (E8).
 5. **Ami egyik formába sem fér bele, az figyelmeztető jel.** Vagy még nem elég pontos, vagy rejtett
    ítélet, amit ki kell mondani, és szereplőt kell rendelni hozzá.
 6. **A gráf időbeli, és csak bővülhet.** Semmit nem írunk felül: minden változás új csomópont

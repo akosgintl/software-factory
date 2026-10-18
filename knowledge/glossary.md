@@ -44,7 +44,7 @@ amelyeket „mindenki ismer”. Ha egy fogalom jelentése vitatott, a hozzá tar
 | human on the loop | „ember a hurok fölött”: az ember felügyel, és csak kivételnél vagy kapunál lép be | `topics/ai-nativ-vs-ai-tamogatott.md` |
 | intake | lásd: befogadás | |
 | intent | lásd: szándék | |
-| invariáns | a gyár gráfján gépi úton ellenőrizhető szabály; a döntéseink három formájának egyike (invariáns, ítélet, mérőszám) | `positions/0006-grafmodell.md` |
+| invariáns | a gyár gráfjáról szóló állítás, amely bármely pillanatban eldönthető kizárólag a gráfból, determinisztikus kóddal (nem LLM-mel); mindig igaz kell legyen; a szerkezetről szól, nem a tartalom minőségéről. Fajtái: szerkezeti, őrfeltétel, jogosultsági, sorrendi. Sérülésekor megelőző (a lépés nem történik meg) vagy észlelő (elakadás), csendben soha. A döntéseink három formájának egyike (invariáns, ítélet, mérőszám) | `positions/0006-grafmodell.md` |
 | irányelv | rövid, emberi mondat, amelyből álláspontok és invariánsok következnek; mellette ott áll, mely invariánsok valósítják meg (E1–E8). A munkánk elvei külön szerepelnek (M1–M3) | `elvek.md` |
 | ítélet | munkatermék: egy szereplő (ember, ágens vagy szabály) döntése egy munkatermék adott verziójáról. Fajtái: kiválasztás, jóváhagyás, elfogadás, elutasítás, kockázati besorolás, hatókör-ítélet, mintavételi ítélet. Az invariánsok mondják meg, melyiket ki hozhatja | `positions/0006-grafmodell.md` |
 | jóváhagyás | ítélet, mielőtt a munka elindul: K1 a specre, K2 a tervre; vö. elfogadás | `topics/fogalmi-modell.md` |
@@ -59,14 +59,16 @@ amelyeket „mindenki ismer”. Ha egy fogalom jelentése vitatott, a hozzá tar
 | kockázati besorolás | ítélet egy munkadarab kockázatáról. Csak felfelé módosítható: ágens emelheti, csökkenteni csak ember | `positions/0004-alacsony-kockazat.md` |
 | landing | állomás: az ellenőrzött munkadarab bejuttatása a main-be: frissítés a main-re, sorosítás (egyszerre egy), CI az összevont állapoton, K3, merge. Angolul marad | `positions/0008-negy-allomas.md` |
 | lane | lásd: sáv | |
+| liveness, safety | a formális módszerek két tulajdonság-fajtája: safety = „rossz dolog soha nem történik meg”, bármely pillanatban ellenőrizhető (ez az invariáns); liveness = „a jó dolog egyszer megtörténik”, egy pillanatban nem dönthető el, invariáns csak időkorláttal lesz belőle. Angolul marad | `positions/0006-grafmodell.md` |
 | merge | git-művelet: egy branch változtatásainak beemelése egy másikba (nálunk a main-be) | |
 | merge kapu (merge gate) | szabályalapú döntési pont: automatikus merge, vagy emberi elfogadás kockázat szerint | `positions/0004-alacsony-kockazat.md` |
-| mérőszám | lekérdezés a gyár gráfján (például átcsúszási arány, elakadási arány); a döntéseink három formájának egyike. A küszöbe konfiguráció, emberi ítélettel változik | `positions/0006-grafmodell.md` |
-| mintavétel | az automatikusan merge-ölt PR-ok egy részét (most 10%) utólag ember nézi meg; ebből jön az átcsúszási arány | `positions/0004-alacsony-kockazat.md` |
+| mérőszám | lekérdezés a gyár gráfján (például átcsúszási arány, elakadási arány, mintavételi arány); a döntéseink három formájának egyike. A küszöbe konfiguráció, emberi ítélettel változik | `positions/0006-grafmodell.md` |
+| mintavétel | az automatikusan merge-ölt PR-ok egy részét (most 10%) utólag ember nézi meg; ebből jön az átcsúszási arány. A mintavételi arány mérőszám: ha a küszöb alá esik, a gyár riaszt | `positions/0004-alacsony-kockazat.md` |
 | munkadarab | munkatermék, a gyártás egysége: a terv terméke, saját technikai AC-vel, egy branch, egy PR. Ez halad állomásról állomásra. A board kártyája csak a megjelenése | `topics/fogalmi-modell.md` |
 | munkafolyamat (workflow) | az állomások és a kapuk sorrendje; determinisztikus vezérlés, nem ágens | `topics/fogalmi-modell.md` |
 | munkatermék (work product, artifact) | a gyár gráfjának csomópont-típusa: szándék, spec, AC, terv, munkadarab, commit, diffrész, PR, bizonyíték, beszámoló, ítélet, elakadás, átcsúszott hiba, konfiguráció | `positions/0006-grafmodell.md` |
 | Planner | a tervezés sáv ágense: specet és tervet ír. Angolul marad | `positions/0008-negy-allomas.md` |
+| őrfeltétel (guard) | az invariáns egyik fajtája: egy esemény csak akkor történhet meg, ha egy feltétel teljesül (például merge csak zöld CI-vel). A csak bővülő gráfban szerkezeti invariánssá válik | `positions/0006-grafmodell.md` |
 | PR (pull request) | munkatermék: egy branch merge-elésére tett javaslat, a diffel és a bizonyítékkal. A gyár kimenete | `positions/0003-a-veg-a-pr-bizonyitekkal.md` |
 | preview környezet (preview environment) | PR-onként egy, a PR megnyitásától a merge-ig vagy a lezárásig élő környezet, amelyen csak az adott PR head commitja fut; itt készül a bizonyíték. Nem azonos a közös UAT-val, staginggel vagy integrációs környezettel. Angolul marad | `positions/0003-a-veg-a-pr-bizonyitekkal.md` |
 | QA | sáv az ellenőrzés állomáson: a futó rendszer ellenőrzése (e2e, képernyőkép) a preview környezetben; ez állítja elő a bizonyítékot, a buildtől függetlenül | `positions/0003-a-veg-a-pr-bizonyitekkal.md` |

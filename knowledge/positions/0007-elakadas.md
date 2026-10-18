@@ -32,7 +32,9 @@ utána?
 
 Invariánsok:
 
-- **I-0007-1** Minden állomás-futás lezárul: vagy a várt kimenettel, vagy elakadással.
+- **I-0007-1** Egy állomás-futás legfeljebb T ideig lehet nyitott. Ha addig nem zárul a várt
+  kimenettel, elakadással zárul. A T konfiguráció, állomásonként. (Korábban: „minden futás
+  lezárul”; ez liveness volt, időkorláttal lett invariáns.)
 - **I-0007-2** Ha egy munkadarabra vagy annak forrására (terv, spec) elakadás vonatkozik, a
   munkadarab nem mehet tovább, amíg az elakadásra nem vonatkozik emberi ítélet.
 - **I-0007-3** Egy munkadarabon legfeljebb 3 újramunka-kör lehet (build → ellenőrzés → vissza). A
