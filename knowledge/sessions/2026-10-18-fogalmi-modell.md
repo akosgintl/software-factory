@@ -67,3 +67,21 @@ Miből áll egy szoftvergyár, melyek a folyamat lépései?
 
 - 📌 [`positions/0007-elakadas.md`](../positions/0007-elakadas.md)
 - 📌 [`glossary.md`](../glossary.md) teljes; az elv a `CLAUDE.md`-be is bekerült.
+
+---
+
+## Folytatás: K0 és négy állomás
+
+- 📌 K0: a szándék kiválasztása (prioritás), mindig ember, soha nem kapcsolható ki, kötegelhető.
+  A 0002 módosult, új invariáns: I-0002-5.
+- 🔍 Ellentmondás: a 0005 szerint review-ból munkadarab lesz, a fogalmi modell szerint munkadarab
+  csak tervből jöhet. Feljegyezve, később döntünk (`questions.md`).
+- 🔍 Összevetés: a három saját kísérlet 5–6 állomással dolgozik, a publikus rendszerek többsége
+  néggyel (terv, build, ellenőrzés, merge). A mi vázlatunk kilenc volt.
+- 📌 [`positions/0008-negy-allomas.md`](../positions/0008-negy-allomas.md): tervezés, build,
+  ellenőrzés, landing, plusz az elakadt mellékállapot. A backlog, az ütemezés és az utókövetés nem
+  állomás. Új sáv: Planner.
+- 💭 Három ötlet a többiektől: a bizonyíték előre rögzítve (Factory Missions), rejtett
+  forgatókönyvek (StrongDM), az azonos okú hiba számolása (super-board). Mind a `questions.md`-be
+  került.
+- Javítás: a super-board az `origin/super-board` branchen van, nem a `staging`-en.

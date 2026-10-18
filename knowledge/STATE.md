@@ -4,16 +4,17 @@ Utolsó frissítés: 2026-10-18
 
 ## Fókusz
 
-Hét álláspont van: 0001 definíció, 0002 emberi kapuk és mért bizalom, 0003 a vég a PR,
-bizonyítékkal, 0004 alacsony kockázat, 0005 scope-ellenőrzés, 0006 gráfmodell, 0007 elakadás.
+Nyolc álláspont van: 0001 definíció, 0002 emberi kapuk (K0–K3) és mért bizalom, 0003 a vég a PR,
+bizonyítékkal, 0004 alacsony kockázat, 0005 scope-ellenőrzés, 0006 gráfmodell, 0007 elakadás,
+0008 négy állomás (tervezés, build, ellenőrzés, landing; mellékállapot: elakadt).
 A 0006 szerint a gyárat típusos, időbeli gráfként írjuk le, és minden döntést invariáns, ítélet
 vagy mérőszám formában fogalmazunk meg. A fogalomtárban minden használt fogalom definícióval
 szerepel (elv: mindenki ugyanazt értse alatta).
 
 ## Javasolt következő lépés
 
-Vissza a folyamathoz, a gráfmodellel: a K1 kettéválása (akarjuk-e, és jól értette-e), az
-állomások mint tevékenységtípusok (bemenet, kimenet, sáv, invariánsok), az utókövetés.
+A folyamat váza kész (0008). Következő jelöltek: a 0005 és a fogalmi modell ellentmondása
+(gyár-javaslat mint szándék), a szándék-szintű elfogadás, vagy a tanuló hurok (mit mér a gyár).
 
 ## Futó szálak
 
@@ -30,7 +31,8 @@ Vissza a folyamathoz, a gráfmodellel: a K1 kettéválása (akarjuk-e, és jól 
 | Scope-ellenőrzés | `positions/0005-scope-conformance.md` | 📌 elfogadva |
 | Gráfmodell | `positions/0006-grafmodell.md` | 📌 elfogadva |
 | Elakadás | `positions/0007-elakadas.md` | 📌 elfogadva |
-| A gyár folyamata (állomások) | `sessions/2026-10-18-fogalmi-modell.md` | 💭 vázlat |
+| Négy állomás | `positions/0008-negy-allomas.md` | 📌 elfogadva |
+| Folyamat-összevetés (saját és publikus gyárak) | `topics/folyamat-osszevetes.md` | 🔍 |
 | A három gyár-kísérlet összevetése | `experiments.md` | 🔍 a super-board kapuit megnéztük |
 
 ## Utolsó napló

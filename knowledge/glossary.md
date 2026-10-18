@@ -10,17 +10,17 @@ amelyeket „mindenki ismer”. Ha egy fogalom jelentése vitatott, a hozzá tar
 | AI-natív szoftvergyár | olyan gyár, amelynek a folyamatát az ágensekre tervezték; az ember a hurok fölött áll | `topics/ai-nativ-vs-ai-tamogatott.md` |
 | AI-támogatott szoftvergyár | meglévő, emberközpontú folyamat, amelyben az AI eszköz; az ember a hurokban áll | `topics/ai-nativ-vs-ai-tamogatott.md` |
 | ágens (agent) | szereplő: modell, eszközök és utasítás egy szerephez; önállóan több lépést hajt végre | `topics/fogalmi-modell.md` |
-| állomás | egy lépés a soron: befogadás, spec, terv, ütemezés, build, QA, review, landing, utókövetés. *Mit* csinálunk; a sorrendet a munkafolyamat adja | `topics/fogalmi-modell.md` |
+| állomás | egy lépés a soron. Négy van: tervezés, build, ellenőrzés, landing. *Mit* csinálunk; a sorrendet a munkafolyamat adja. A backlog, az ütemezés és az utókövetés nem állomás | `topics/fogalmi-modell.md` |
 | állomás-futás | tevékenység: egy állomás egyszeri végrehajtása egy munkaterméken; van szereplője, kezdete és vége. Vagy a várt kimenettel zárul, vagy elakadással | `positions/0006-grafmodell.md` |
 | andon zsinór | a Toyota-gyárak zsinórja, amellyel bárki megállíthatja a sort, ha hibát lát. Nálunk: elakadás | `positions/0007-elakadas.md` |
 | átcsúszási arány (escape rate) | az átcsúszott hibák aránya kapunként és kategóriánként; a kapu és a bizalom mérőszáma. Külön jelzés nélkül a merge utáni átcsúszást értjük alatta | `positions/0004-alacsony-kockazat.md` |
 | átcsúszott hiba (escape) | hiba, amely átjutott egy kapun, és később találták meg. Mindig egy kapuhoz képest értjük; ha a kapu megfogja, az újramunka, nem átcsúszás. Lehet AC-sértés, a szándék sértése teljesült AC mellett (ez a K1-en csúszott át), vagy ki nem mondott elvárás sértése (regresszió, biztonság). Ha az ember meggondolta magát, az új szándék, nem átcsúszás. A besorolása ítélet, kezdetben emberé | `positions/0007-elakadas.md` |
 | backlog | a még nem indítható munkadarabok és szándékok nézete; a gráfból levezetett, nem tárolt állapot. Angolul marad | `positions/0006-grafmodell.md` |
-| befogadás (intake) | állomás: a szándékok beérkezése. Forrás az ember, vagy a gyár javaslata (telemetria, átcsúszott hiba, refaktor). Hogy mit építünk, arról az ember dönt | `positions/0001-mit-ertunk-szoftvergyar-alatt.md` |
+| befogadás (intake) | a szándékok beérkezése a backlogba, nem állomás. Forrás az ember, vagy a gyár javaslata (telemetria, átcsúszott hiba, refaktor). Hogy mit építünk, arról az ember dönt | `positions/0001-mit-ertunk-szoftvergyar-alatt.md` |
 | beszámoló | munkatermék: a Builder saját leírása arról, mit csinált. A review csak az AC-k és a diff után olvassa | `positions/0005-scope-conformance.md` |
 | bizonyíték (evidence) | munkatermék: a PR-hoz csatolt, emberi szemmel gyorsan ellenőrizhető igazolás (képernyőkép a futásról, e2e eredmény). AC-nként, a head commithoz kötve, független sávtól, preview környezetben | `positions/0003-a-veg-a-pr-bizonyitekkal.md` |
 | branch | git-ág: a kód egy külön fejlődési vonala. Egy munkadarabhoz egy branch tartozik | |
-| build | állomás: az implementáció és a unit tesztek megírása. Angolul marad | `topics/fogalmi-modell.md` |
+| build | állomás: az implementáció és a unit tesztek megírása; kimenete commit, PR és beszámoló. Angolul marad | `positions/0008-negy-allomas.md` |
 | Builder | a build sáv ágense. Nem minősíti a saját munkáját | `positions/0004-alacsony-kockazat.md` |
 | CI (continuous integration) | folyamatos integráció: minden PR-on és merge-en automatikusan lefutó build és teszt | |
 | commit | munkatermék: a kód egy rögzített állapota a gitben, egyedi SHA-val | |
@@ -28,8 +28,10 @@ amelyeket „mindenki ismer”. Ha egy fogalom jelentése vitatott, a hozzá tar
 | diff | két kódállapot különbsége; amit egy PR változtat | |
 | diffrész (hunk) | munkatermék: a diff egy összefüggő darabja. A scope-ellenőrzés egysége: mindegyikhez tartoznia kell egy AC-nek, amiért készült | `topics/invariansok.md` |
 | e2e (end-to-end) teszt | a futó rendszer tesztje a felhasználó oldaláról, böngészőn vagy API-n át, az összes rétegen keresztül | `positions/0003-a-veg-a-pr-bizonyitekkal.md` |
+| elakadt | mellékállapot: a munkadarab elakadás miatt áll, és emberi ítéletig ott marad; a gráfból levezetett nézet | `positions/0008-negy-allomas.md` |
 | elakadás | munkatermék: az állomás-futás nem a várt kimenetet állítja elő, hanem jelzi, hogy nem tud továbbmenni. Bármelyik sáv jelezheti. Oda mutat, ahol a hiba van (munkadarab, terv vagy spec), és emberi ítéletig megállítja a munkadarabot | `positions/0007-elakadas.md` |
 | elfogadás | ítélet az eredményről (K3); vö. jóváhagyás | `topics/fogalmi-modell.md` |
+| ellenőrzés | állomás: a PR head commitjának ellenőrzése két független sávval, párhuzamosan. A QA bizonyítékot állít elő, a Reviewer scope-ítéletet, review-leletet és kockázati besorolást. Ha nem megy át, újramunka | `positions/0008-negy-allomas.md` |
 | escape, escape rate | lásd: átcsúszott hiba, átcsúszási arány | |
 | fan-in, fan-out | hány modul hív egy adott modult (fan-in), és hány modult hív ő (fan-out). A nagy fan-in nagy hatókört jelent (0004). Angolul marad | `positions/0004-alacsony-kockazat.md` |
 | feature flag | kapcsoló a kódban, amellyel egy funkció merge után is kikapcsolva maradhat. Így a félkész szándék munkadarabjai is merge-ölhetők | |
@@ -52,7 +54,7 @@ amelyeket „mindenki ismer”. Ha egy fogalom jelentése vitatott, a hozzá tar
 | kiválasztás | ítélet (K0): melyik szándékon dolgozzon a gyár, és milyen sorrendben. Prioritás, nem ellenőrzés. Mindig ember hozza, a gyár által javasolt szándékra is; soha nem kapcsolható ki; kötegelhető | `positions/0002-emberi-kapuk-es-bizalom.md` |
 | kockázat | mi romolhat el × mennyire látjuk × mennyire vonható vissza | `positions/0004-alacsony-kockazat.md` |
 | kockázati besorolás | ítélet egy munkadarab kockázatáról. Csak felfelé módosítható: ágens emelheti, csökkenteni csak ember | `positions/0004-alacsony-kockazat.md` |
-| landing | állomás: a munkadarab bejuttatása a main-be (rebase, merge sor, CI az összevont állapoton, merge). Angolul marad | `topics/fogalmi-modell.md` |
+| landing | állomás: az ellenőrzött munkadarab bejuttatása a main-be: frissítés a main-re, sorosítás (egyszerre egy), CI az összevont állapoton, K3, merge. Angolul marad | `positions/0008-negy-allomas.md` |
 | lane | lásd: sáv | |
 | merge | git-művelet: egy branch változtatásainak beemelése egy másikba (nálunk a main-be) | |
 | merge kapu (merge gate) | szabályalapú döntési pont: automatikus merge, vagy emberi elfogadás kockázat szerint | `positions/0004-alacsony-kockazat.md` |
@@ -61,14 +63,15 @@ amelyeket „mindenki ismer”. Ha egy fogalom jelentése vitatott, a hozzá tar
 | munkadarab | munkatermék, a gyártás egysége: a terv terméke, saját technikai AC-vel, egy branch, egy PR. Ez halad állomásról állomásra. A board kártyája csak a megjelenése | `topics/fogalmi-modell.md` |
 | munkafolyamat (workflow) | az állomások és a kapuk sorrendje; determinisztikus vezérlés, nem ágens | `topics/fogalmi-modell.md` |
 | munkatermék (work product, artifact) | a gyár gráfjának csomópont-típusa: szándék, spec, AC, terv, munkadarab, commit, diffrész, PR, bizonyíték, beszámoló, ítélet, elakadás, átcsúszott hiba, konfiguráció | `positions/0006-grafmodell.md` |
+| Planner | a tervezés sáv ágense: specet és tervet ír. Angolul marad | `positions/0008-negy-allomas.md` |
 | PR (pull request) | munkatermék: egy branch merge-elésére tett javaslat, a diffel és a bizonyítékkal. A gyár kimenete | `positions/0003-a-veg-a-pr-bizonyitekkal.md` |
 | preview környezet (preview environment) | PR-onként egy, a PR megnyitásától a merge-ig vagy a lezárásig élő környezet, amelyen csak az adott PR head commitja fut; itt készül a bizonyíték. Nem azonos a közös UAT-val, staginggel vagy integrációs környezettel. Angolul marad | `positions/0003-a-veg-a-pr-bizonyitekkal.md` |
-| QA | állomás és sáv: a futó rendszer ellenőrzése (e2e, képernyőkép) a preview környezetben; ez állítja elő a bizonyítékot, a buildtől függetlenül | `positions/0003-a-veg-a-pr-bizonyitekkal.md` |
+| QA | sáv az ellenőrzés állomáson: a futó rendszer ellenőrzése (e2e, képernyőkép) a preview környezetben; ez állítja elő a bizonyítékot, a buildtől függetlenül | `positions/0003-a-veg-a-pr-bizonyitekkal.md` |
 | Ready | a munkadarab indítható: érvényes jóváhagyások tartoznak hozzá, és a függőségei készen vannak. A gráfból levezetett nézet. Angolul marad | `positions/0006-grafmodell.md` |
 | revert | git-művelet: egy merge-ölt változtatás visszavonása egy új committal | `positions/0004-alacsony-kockazat.md` |
-| review | állomás: a diff átnézése a buildtől független szereplővel, ezen belül a scope-ellenőrzés. Angolul marad | `positions/0005-scope-conformance.md` |
-| Reviewer | a review sáv ágense | `positions/0005-scope-conformance.md` |
-| sáv (lane) | szerepkör: *ki* végzi az állomást (Build, QA, Review, ember). Egy sávban több állomás lehet. A függetlenségi szabályok sávok között élnek | `topics/fogalmi-modell.md` |
+| review | a Reviewer munkája az ellenőrzés állomáson: a diff átnézése a buildtől független szereplővel, ezen belül a scope-ellenőrzés. Angolul marad | `positions/0005-scope-conformance.md` |
+| Reviewer | a review sáv ágense az ellenőrzés állomáson | `positions/0005-scope-conformance.md` |
+| sáv (lane) | szerepkör: *ki* végzi az állomást (Planner, Builder, QA, Reviewer, szabály, ember). Egy sávban több állomás lehet. A függetlenségi szabályok sávok között élnek | `topics/fogalmi-modell.md` |
 | scope conformance | lásd: scope-ellenőrzés | |
 | scope drift | lásd: kéretlen változás | |
 | scope-ellenőrzés (scope conformance) | a review része: a diff minden darabjához tartoznia kell egy AC-nek, amiért készült. Ami mellé nem tartozik, az kéretlen változás. Csak a diff → AC irányt nézi; a visszavezethetőség egyik iránya | `positions/0005-scope-conformance.md` |
@@ -80,10 +83,11 @@ amelyeket „mindenki ismer”. Ha egy fogalom jelentése vitatott, a hozzá tar
 | szoftvergyár (software factory) | rendszer, amely emberi szándékból ágensekkel, skillekkel és munkafolyamatokkal PR-t állít elő; az ember dönt és validál, a gyár javasol, végrehajt és tanul | `positions/0001-mit-ertunk-szoftvergyar-alatt.md` |
 | tanuló hurok (learning loop) | a gyár elemzi az eredményeit és a hatékonyságát, és változtatást javasol a saját működésére; az ember dönt róla | `positions/0001-mit-ertunk-szoftvergyar-alatt.md` |
 | terv | munkatermék: a spec megvalósításának módja. Megközelítés, felbontás munkadarabokra, függőségek. Ágens írja, ember hagyja jóvá (K2). A felbontás egyetlen helye | `topics/fogalmi-modell.md` |
+| tervezés | állomás: a K0-n kiválasztott szándékból spec és terv készül; utána K1 és K2. A felbontás egyetlen helye | `positions/0008-negy-allomas.md` |
 | tevékenység | a gyár gráfjának csomópont-típusa; nálunk az állomás-futás | `positions/0006-grafmodell.md` |
 | traceability mátrix | táblázatos nézet két tételcsoport között (például AC × bizonyíték), a cellában a kapcsolattal; a gyár gráfjából levezethető. Angolul marad | |
 | újramunka-kör | a munkadarab az ellenőrzésből (QA, review) visszamegy a buildbe. Legfeljebb 3, utána elakadás | `positions/0007-elakadas.md` |
-| utókövetés | állomás a merge után: mintavétel, átcsúszott hibák észlelése; innen jön a tanuló hurok jele | `topics/fogalmi-modell.md` |
-| ütemezés | állomás: melyik munkadarab mikor indul (függőségek, párhuzamosság, WIP limit) | `topics/fogalmi-modell.md` |
+| utókövetés | a kész után, nem állomás: mintavétel, átcsúszott hibák észlelése; innen jön a tanuló hurok jele | `topics/fogalmi-modell.md` |
+| ütemezés | a vezérlés dolga, nem állomás: melyik munkadarab mikor indul (függőségek, párhuzamosság, WIP limit) | `topics/fogalmi-modell.md` |
 | visszavezethetőség (traceability) | tételek összepontozása a lánc mentén, mindkét irányban: szándék ↔ spec AC ↔ munkadarab AC ↔ diffrész ↔ bizonyíték. Fenntartott szó: erre a kétirányú összepontozásra használjuk (gap elemzés, traceability mátrix), a scope-ellenőrzés csak az egyik iránya | |
 | worktree izoláció | minden munkadarab saját git worktree-ben és branchen fut, hogy a párhuzamos munka ne ütközzön | `experiments.md` |

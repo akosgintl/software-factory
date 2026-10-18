@@ -19,8 +19,8 @@ szándék ─1:1─ spec ─1:1─ terv ─1:N─ munkadarab ─1:1─ PR ─1:N
 | spec | ágens, ember hagyja jóvá (K1) | probléma, felhasználói szintű AC, kockázat, és mi *nincs* benne |
 | terv | ágens, ember hagyja jóvá (K2) | megközelítés, felbontás munkadarabokra, függőségek |
 | munkadarab | a terv terméke | a gyártás egysége: saját, technikai AC, egy branch, egy PR |
-| PR | Build | a változtatás |
-| bizonyíték | QA, függetlenül a Buildtől | AC-nként, a commithoz kötve (0003) |
+| PR | Builder | a változtatás |
+| bizonyíték | QA, függetlenül a Buildertől | AC-nként, a commithoz kötve (0003) |
 
 - 📌 **A felbontás egyetlen helye a terv.** Munkadarab csak a tervből jön. Ezért a K2 erősebb kapu,
   mint korábban gondoltuk (0002).
@@ -39,8 +39,8 @@ szándék ─1:1─ spec ─1:1─ terv ─1:N─ munkadarab ─1:1─ PR ─1:N
 
 ## 3. Állomás és sáv
 
-- **állomás**: egy lépés a soron (spec, terv, build, QA, review, landing). *Mit* csinálunk. Az
-  állomások sorrendjét a munkafolyamat adja.
+- **állomás**: egy lépés a soron. Négy van: tervezés, build, ellenőrzés, landing (0008). *Mit*
+  csinálunk. Az állomások sorrendjét a munkafolyamat adja.
 - **sáv (lane)**: szerepkör. *Ki* csinálja. Egy sávban több állomás lehet. Egy állomás egy
   sávhoz tartozik.
 - 💭 A sáv nem csak vizualizáció. A függetlenségi szabályok sávok között élnek: a Builder nem

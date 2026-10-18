@@ -38,6 +38,15 @@ tesszük.
       mérőszám, emberi refaktor-kör). Kapcsolódik: fan-in alapú hatókör (0004).
 - [ ] Hol fordul át a gazdaságosság: mikor olcsóbb az ágens, mint az ember, a teljes költséggel?
 
+- [ ] Ki és mikor fogadja el a szándékot, ha több munkadarabra bomlott, és mindegyik külön ment át
+      a K3-on? Kell szándék-szintű bizonyíték (e2e az összevont állapoton)? És mi van a main-nel a
+      köztes állapotban (feature flag)? (`positions/0008-negy-allomas.md`)
+- [ ] Rögzítse-e a tervezés AC-nként előre, milyen bizonyíték kell (a Factory Missions „validation
+      contract”-ja mintájára)? (`topics/folyamat-osszevetes.md`)
+- [ ] Legyenek-e rejtett forgatókönyvek, amelyeket a Builder nem lát (StrongDM)?
+- [ ] Az újramunka-korlát a köröket számolja (0007, most 3), vagy az azonos okú hibát (super-board,
+      root-cause hash)? És a landing ütközése számít-e újramunka-körnek?
+
 ## Emberi oldal
 
 - [ ] Milyen szerepek maradnak az embernek, és milyen képességek kellenek hozzájuk? Részben: a 0001
