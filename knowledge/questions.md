@@ -9,6 +9,14 @@ tesszük.
       mi gyárunk L4 plusz tanuló hurok, az L5 nem gyár-szint. Kérdés, hogy az L3/L4 határ elég-e,
       vagy más tengely kell (például: kinek írjuk a dokumentációt).
 
+- [ ] Nagy szándéknál a szándék : spec arány 1:N legyen, vagy a nagy szándékot bontsuk több
+      szándékra? (`topics/fogalmi-modell.md`, most 1:1)
+- [ ] Mi legyen a „kártya” magyar neve? (`topics/fogalmi-modell.md`)
+
+- [ ] Mitől lesz egy ágens saját állítása ellenőrizhető (például „preview környezetben készült”,
+      „reverttel visszavonható”)? Független második ágens, vagy gépi mérés az állítás mögött?
+      (`positions/0006-grafmodell.md`, `topics/invariansok.md`)
+
 ## Gyakorlati
 
 - [ ] Hogyan védjük a tanuló hurkot a Goodhart-hatástól, vagyis attól, hogy a gyár kijátssza a
