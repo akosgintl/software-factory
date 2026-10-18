@@ -1,6 +1,6 @@
 # 0007 — Elakadás: a kivételkezelés
 
-Állapot: 📌 elfogadva · 2026-10-18
+Állapot: 📌 elfogadva · 2026-10-18 · módosítva 2026-10-18 (hová megy vissza a munka)
 
 ## Kérdés
 
@@ -14,6 +14,21 @@ utána?
 2. **Bármelyik sáv jelezhet elakadást** (andon zsinór).
 3. **Az elakadás oda mutat, ahol a hiba van**, nem feltétlenül a munkadarabra. Ha a QA azt találja,
    hogy két AC ellentmond egymásnak, az elakadás a specre *vonatkozik*.
+4. **Hová megy vissza a munka.** Az elakadás jelzője javasol célt (*vonatkozik* él). Az
+   alapértelmezés: ott folytatódik, ahol elakadt. Az ember az ítéletében bármelyik korábbi pontot
+   választhatja:
+
+   | Döntés | Hová megy vissza | Mi lesz érvénytelen |
+   |---|---|---|
+   | folytat | ugyanoda | semmi |
+   | build | a munkadarab újra buildbe | a PR bizonyítékai |
+   | terv | tervezés, a terv új verziója | K2, a terv összes még nem merge-ölt munkadarabja |
+   | spec | tervezés, a spec új verziója | K1, K2 és minden, ami belőlük származik |
+   | szándék | backlog, újra K0 | minden |
+   | lezár | sehová, a szándék lezárul | — |
+
+   Előre ugrani nem lehet. A már merge-ölt munkadarabokat nem lehet visszacsinálni; az új
+   tervnek számolnia kell velük.
 
 Invariánsok:
 
@@ -23,6 +38,13 @@ Invariánsok:
 - **I-0007-3** Egy munkadarabon legfeljebb 3 újramunka-kör lehet (build → ellenőrzés → vissza). A
   következő futás kötelezően elakadással zárul. A 3 konfiguráció, a tanuló hurok javasolhat
   változtatást.
+- **I-0007-4** Az elakadásra vonatkozó emberi ítélet célja ugyanaz az állomás vagy egy korábbi.
+  Előre nem mutathat.
+- **I-0007-5** Visszaküldéskor a cél munkatermék új verziót kap. A belőle származó, még nem
+  merge-ölt munkatermékekre vonatkozó jóváhagyások és bizonyítékok érvénytelenek. (Ez az
+  I-0002-2-ből és az I-0003-2-ből következik.)
+- **I-0007-6** Visszaküldéskor az újramunka-számláló újraindul, mert a munkadarab új verziója új
+  munka.
 
 Mérőszám:
 

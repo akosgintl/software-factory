@@ -145,6 +145,13 @@ figcaption { color: var(--muted); font-size: 14px; max-width: 80ch; }
 .notes { display: grid; gap: 10px; max-width: 80ch; }
 .notes ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
 .notes b { font-weight: 600; }
+.notes p { margin: 0; }
+.rule-inline { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; font-size: 14px; width: 100%; min-width: 480px; }
+th { font-family: var(--f-display); font-weight: 600; font-size: 15px; letter-spacing: .04em; text-align: left; color: var(--muted); }
+th, td { padding: 7px 14px 7px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+td:first-child { font-family: var(--f-mono); font-size: 13px; color: var(--human); white-space: nowrap; }
 footer { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -162,7 +169,7 @@ footer { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
 
   <figure>
     <div class="scroller">
-      <svg viewBox="0 0 1200 664" role="img" aria-label="Úszósávos folyamatábra. Az ember K0-n kiválasztja a szándékot; a Planner specet és tervet ír, amelyet az ember K1-en és K2-n hagy jóvá; a Builder commitot és PR-t állít elő; a QA és a Reviewer párhuzamosan ellenőriz, elutasításnál legfeljebb három újramunka-kör van; a merge gate a CI-t az összevont állapoton futtatja, egyszerre egy munkadarabot enged át, nem alacsony kockázatnál az ember fogad el K3-on; merge után mintavétel. Bármelyik állomásról a munkadarab az elakadt állapotba kerülhet, ahonnan ember dönt.">
+      <svg viewBox="0 0 1200 664" role="img" aria-label="Úszósávos folyamatábra. Az ember K0-n kiválasztja a szándékot, gyár-javaslatnál a Reviewer előbb kiértékeli; a Planner specet és tervet ír, a Reviewer kiértékeli és átnézi, majd az ember K1-en és K2-n hagyja jóvá; a Builder commitot és PR-t állít elő; a QA és a Reviewer párhuzamosan ellenőriz, elutasításnál legfeljebb három újramunka-kör van; a merge gate a CI-t az összevont állapoton futtatja, egyszerre egy munkadarabot enged át, nem alacsony kockázatnál az ember fogad el K3-on; merge után mintavétel. Bármelyik állomásról a munkadarab az elakadt állapotba kerülhet, ahonnan ember dönt: folytat ugyanott, vagy visszaküldi a buildbe, a tervre, a specre vagy a szándékra, vagy lezárja.">
         <defs>
           <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="m-ink"/></marker>
           <marker id="ar-m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="m-muted"/></marker>
@@ -228,15 +235,28 @@ footer { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
         <polygon class="g-always" points="275,89 295,109 275,129 255,109"/>
         <text class="t-gate" x="275" y="113" text-anchor="middle">kiv</text>
 
-        <!-- K0 -> Planner -->
-        <path class="e" d="M275,129 V194 H288" marker-end="url(#ar)"/>
-        <text class="t-edge" x="281" y="170">kiválasztva</text>
-        <rect class="node" x="290" y="176" width="120" height="36" rx="3"/>
-        <text class="t-node" x="350" y="199" text-anchor="middle">spec + terv</text>
+        <!-- gyár-javaslat eval a K0 előtt -->
+        <rect class="node-soft" x="130" y="412" width="100" height="44" rx="3"/>
+        <text class="t-node" x="180" y="430" text-anchor="middle">Reviewer</text>
+        <text class="t-sub" x="180" y="446" text-anchor="middle">javaslat eval</text>
+        <path class="e-loop" d="M180,412 V128" marker-end="url(#ar-m)"/>
+        <text class="t-edge" x="186" y="300">javaslatnál</text>
 
-        <!-- Planner -> K1 -> K2 -->
-        <path class="e-h" d="M380,176 V133" marker-end="url(#ar-h)"/>
-        <text class="t-edge-h" x="386" y="166">jóváhagyásra</text>
+        <!-- K0 -> Planner -> Reviewer -->
+        <path class="e" d="M275,129 V174" marker-end="url(#ar)"/>
+        <text class="t-edge" x="281" y="166">kiválasztva</text>
+        <rect class="node" x="250" y="176" width="110" height="36" rx="3"/>
+        <text class="t-node" x="305" y="199" text-anchor="middle">spec + terv</text>
+        <path class="e" d="M305,212 V410" marker-end="url(#ar)"/>
+        <text class="t-edge" x="311" y="300">eval +</text>
+        <text class="t-edge" x="311" y="314">review</text>
+        <rect class="node" x="250" y="412" width="110" height="44" rx="3"/>
+        <text class="t-node" x="305" y="430" text-anchor="middle">Reviewer</text>
+        <text class="t-sub" x="305" y="446" text-anchor="middle">spec · terv</text>
+
+        <!-- Reviewer -> K1 -> K2 -->
+        <path class="e-h" d="M360,434 H380 V133" marker-end="url(#ar-h)"/>
+        <text class="t-edge-h" x="386" y="300">jóváhagyásra</text>
         <text class="t-gcap" x="380" y="82" text-anchor="middle">K1 spec</text>
         <polygon class="g-switch" points="380,89 400,109 380,129 360,109"/>
         <text class="t-gate-d" x="380" y="113" text-anchor="middle">K1</text>
@@ -299,7 +319,7 @@ footer { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
         <text class="t-node" x="1125" y="113.5" text-anchor="middle">mintavétel 10%</text>
 
         <!-- elakadás -->
-        <path class="e-s" d="M350,212 V576" marker-end="url(#ar-s)"/>
+        <path class="e-s" d="M330,456 V576" marker-end="url(#ar-s)"/>
         <path class="e-s" d="M510,296 V576" marker-end="url(#ar-s)"/>
         <path class="e-s" d="M790,456 V576" marker-end="url(#ar-s)"/>
         <path class="e-s" d="M960,544 V576" marker-end="url(#ar-s)"/>
@@ -307,12 +327,12 @@ footer { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
         <rect class="stopband" x="120" y="580" width="1070" height="70" rx="3"/>
         <rect x="120" y="580" width="1070" height="70" rx="3" fill="url(#hatch)"/>
         <text class="t-stop" x="140" y="610">ELAKADT</text>
-        <text class="t-stop-sub" x="140" y="632">emberi ítéletig áll, utána vissza oda, ahová a hiba mutat: munkadarab, terv vagy spec (0007)</text>
+        <text class="t-stop-sub" x="140" y="632">emberi ítéletig áll · folytat ugyanott, vagy vissza: build, terv, spec, szándék · vagy lezár (0007)</text>
         <text class="t-edge-h" x="1134" y="619" text-anchor="end">ember dönt</text>
         <polygon class="g-always" points="1158,601 1172,615 1158,629 1144,615"/>
       </svg>
     </div>
-    <figcaption>Az oszlopok az állomások, a sorok a sávok: ki végzi a munkát. A backlog és a kész nem állomás, hanem nézet. A QA és a Reviewer ugyanazt a PR-t nézi, egymástól függetlenül. Széles ábra: kis képernyőn oldalra görgethető.</figcaption>
+    <figcaption>Az oszlopok az állomások, a sorok a sávok: ki végzi a munkát. A backlog és a kész nem állomás, hanem nézet. A Reviewer sáv minden kapu előtt ellenőriz: a gyár-javaslatot, a specet és a tervet, majd a QA-val párhuzamosan a PR-t. Széles ábra: kis képernyőn oldalra görgethető.</figcaption>
     <div class="legend" aria-label="Jelmagyarázat">
       <span><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><polygon class="g-always" points="11,2 20,11 11,20 2,11"/></svg>emberi kapu, mindig él</span>
       <span><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><polygon class="g-switch" points="11,2 20,11 11,20 2,11"/></svg>emberi kapu, kategóriánként kikapcsolható</span>
@@ -327,17 +347,17 @@ footer { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
     <div class="gate-grid">
       <article class="gate">
         <div class="gate-head"><span class="gate-id">K0</span><span class="gate-name">Kiválasztás</span></div>
-        <p>Melyik szándékon dolgozzon a gyár, és milyen sorrendben. Prioritás, nem ellenőrzés. A gyár által javasolt szándékra is kell.</p>
+        <p>Melyik szándékon dolgozzon a gyár, és milyen sorrendben. Prioritás, nem ellenőrzés. A gyár által javasolt szándékra is kell, és előtte a Reviewer kiértékeli: van-e mögötte adat, nem duplikátum-e.</p>
         <p class="rule">mindig ember · kötegelhető · I-0002-5</p>
       </article>
       <article class="gate">
         <div class="gate-head"><span class="gate-id switch">K1</span><span class="gate-name">Spec jóváhagyása</span></div>
-        <p>Jól értette-e az ágens a szándékot. A spec felhasználói szintű AC-i lesznek a végső elfogadás szerződése.</p>
+        <p>Jól értette-e az ágens a szándékot. Előtte a Reviewer ellenőrzi, hogy a szándék minden eleméhez van-e AC, és nincs-e kéretlen AC.</p>
         <p class="rule">ember · kategóriánként kikapcsolható · I-0002-1, -2</p>
       </article>
       <article class="gate">
         <div class="gate-head"><span class="gate-id switch">K2</span><span class="gate-name">Terv jóváhagyása</span></div>
-        <p>A megközelítés, és a felbontás munkadarabokra. Ez a felbontás egyetlen helye, ezért több munkadarabos szándéknál erős kapu.</p>
+        <p>A megközelítés, és a felbontás munkadarabokra. Előtte a Reviewer gap elemzést végez: a munkadarabok AC-i lefedik-e a spec minden AC-jét.</p>
         <p class="rule">ember · kategóriánként kikapcsolható · I-0002-1, -2</p>
       </article>
       <article class="gate">
@@ -345,6 +365,29 @@ footer { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
         <p>Az eredmény a szándékhoz képest, a bizonyíték alapján. Alacsony kockázatnál a merge gate szabálya dönt, és a PR-ok 10%-át utólag ember nézi meg.</p>
         <p class="rule">ember vagy szabály · 0004 · I-0008-2</p>
       </article>
+    </div>
+  </section>
+
+  <section class="notes" aria-labelledby="ellenorzes">
+    <h2 id="ellenorzes">Minden kapu előtt független ellenőrzés</h2>
+    <p>Egy emberi kapu kikapcsolása nem kapcsolja ki az ellenőrzést. Minden kapu előtt egy, az előállítótól független ágens kiértékel (eval) és átnéz (review). Az ember e fölé kerül, nem helyette van. <span class="rule-inline">I-0008-4</span></p>
+  </section>
+
+  <section class="notes" aria-labelledby="elakadas-utan">
+    <h2 id="elakadas-utan">Elakadás után</h2>
+    <p>Az elakadás javasol célt, az ember dönt. Alapból ott folytatódik, ahol elakadt; előre ugrani nem lehet.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Döntés</th><th>Hová megy vissza</th><th>Mi lesz érvénytelen</th></tr></thead>
+        <tbody>
+          <tr><td>folytat</td><td>ugyanoda</td><td>semmi</td></tr>
+          <tr><td>build</td><td>a munkadarab újra buildbe</td><td>a PR bizonyítékai</td></tr>
+          <tr><td>terv</td><td>tervezés, a terv új verziója</td><td>K2, a terv összes még nem merge-ölt munkadarabja</td></tr>
+          <tr><td>spec</td><td>tervezés, a spec új verziója</td><td>K1, K2 és minden, ami belőlük származik</td></tr>
+          <tr><td>szándék</td><td>backlog, újra K0</td><td>minden</td></tr>
+          <tr><td>lezár</td><td>sehová, a szándék lezárul</td><td>—</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 

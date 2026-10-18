@@ -1,6 +1,6 @@
 # 0008 — A gyár folyamata: négy állomás
 
-Állapot: 📌 elfogadva · 2026-10-18
+Állapot: 📌 elfogadva · 2026-10-18 · módosítva 2026-10-18 (független ellenőrzés minden kapu előtt)
 
 ## Kérdés
 
@@ -21,10 +21,20 @@ backlog ─[K0]─▶ tervezés ─[K1, K2]─▶ build ⇄ ellenőrzés ─▶ 
 
 | Állomás | Mit használ | Mit állít elő | Sáv | Utána |
 |---|---|---|---|---|
-| **tervezés** | a K0-n kiválasztott szándékot | spec (felhasználói szintű AC, kockázat, mi nincs benne) és terv (felbontás munkadarabokra, függőségek) | Planner | K1 a specre, K2 a tervre |
+| **tervezés** | a K0-n kiválasztott szándékot | spec (felhasználói szintű AC, kockázat, mi nincs benne) és terv (felbontás munkadarabokra, függőségek); utána eval és review | Planner, majd Reviewer | K1 a specre, K2 a tervre |
 | **build** | egy Ready munkadarabot és az AC-it; újramunkánál az ellenőrzés leleteit | commit, PR, beszámoló | Builder | ellenőrzés |
 | **ellenőrzés** | a PR head commitját, a munkadarab AC-it | QA: bizonyíték AC-nként, preview környezetben. Reviewer: scope-ítélet, review-leletek, kockázati besorolás | QA és Reviewer, párhuzamosan, egymástól függetlenül | átment: landing. Nem ment át: vissza a buildbe (újramunka) |
 | **landing** | az ellenőrzött PR-t és az aktuális main-t | frissítés a main-re, CI az összevont állapoton, elfogadás (K3), merge | szabály (merge gate), ember a 0004 szerint | kész |
+
+**Független ellenőrzés minden kapu előtt.** Egy emberi kapu kikapcsolása nem kapcsolja ki az
+ellenőrzést. Minden kapu előtt egy, az előállítótól független szereplő eval-t (gépi
+kiértékelés) és review-t végez. Az ember e fölé kerül, nem helyette van.
+
+| Kapu | Mit ellenőriznek előtte | Ki |
+|---|---|---|
+| K0 | gyár-javasolt szándéknál: van-e mögötte adat, nem duplikátum-e, ütközik-e mással | Reviewer |
+| K1, K2 | szándék → spec: minden elemhez van AC, és nincs kéretlen AC; spec AC → munkadarab AC: a felbontás lefed mindent (visszavezethetőség, gap elemzés); minden AC-hez megadható bizonyíték; a kockázati besorolás | Reviewer, előbb a szándékot olvassa, csak utána a Planner indoklását |
+| K3 | bizonyíték AC-nként; scope-ellenőrzés; CI az összevont állapoton | QA, Reviewer, merge gate |
 
 Bármelyik állomás-futás zárulhat **elakadással** (0007). Ekkor a munkadarab az *elakadt*
 mellékállapotba kerül, és emberi ítéletig ott marad.
@@ -43,6 +53,10 @@ Ami nem állomás:
   merge-ölünk. Ha a landing közben a head változik (ütközés feloldása), a munkadarab visszamegy az
   ellenőrzésre.
 - **I-0008-3** Egyszerre egy munkadarab landol (sorosítás).
+- **I-0008-4** Minden munkatermékre, amelyre kapu-ítélet épül (gyár-javasolt szándék, spec, terv,
+  PR), a kapu előtt vonatkozik egy eval- és egy review-ítélet egy olyan szereplőtől, amely nem
+  azonos az előállítóval. Akkor is, ha a kapun ember dönt, ha szabály dönt, és akkor is, ha a
+  kapu ki van kapcsolva.
 
 A többi állomásra a meglévő invariánsok vonatkoznak: tervezés: I-0002-1, -2, -5; build:
 I-0007-3; ellenőrzés: I-0003-1…4, I-0004-3, I-0005-1…3; landing: I-0002-3, I-0004-1.

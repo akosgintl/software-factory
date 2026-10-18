@@ -32,6 +32,7 @@ amelyeket „mindenki ismer”. Ha egy fogalom jelentése vitatott, a hozzá tar
 | elakadás | munkatermék: az állomás-futás nem a várt kimenetet állítja elő, hanem jelzi, hogy nem tud továbbmenni. Bármelyik sáv jelezheti. Oda mutat, ahol a hiba van (munkadarab, terv vagy spec), és emberi ítéletig megállítja a munkadarabot | `positions/0007-elakadas.md` |
 | elfogadás | ítélet az eredményről (K3); vö. jóváhagyás | `topics/fogalmi-modell.md` |
 | ellenőrzés | állomás: a PR head commitjának ellenőrzése két független sávval, párhuzamosan. A QA bizonyítékot állít elő, a Reviewer scope-ítéletet, review-leletet és kockázati besorolást. Ha nem megy át, újramunka | `positions/0008-negy-allomas.md` |
+| eval (kiértékelés) | gépi, ismételhető ellenőrzés egy munkaterméken: teszt, invariáns-ellenőrzés, vagy rubrika szerinti pontozás (LLM mint bíráló). Eredménye átment / nem ment át, vagy pontszám. Minden kapu előtt kell, a review-val együtt | `positions/0008-negy-allomas.md` |
 | escape, escape rate | lásd: átcsúszott hiba, átcsúszási arány | |
 | fan-in, fan-out | hány modul hív egy adott modult (fan-in), és hány modult hív ő (fan-out). A nagy fan-in nagy hatókört jelent (0004). Angolul marad | `positions/0004-alacsony-kockazat.md` |
 | feature flag | kapcsoló a kódban, amellyel egy funkció merge után is kikapcsolva maradhat. Így a félkész szándék munkadarabjai is merge-ölhetők | |
@@ -69,8 +70,8 @@ amelyeket „mindenki ismer”. Ha egy fogalom jelentése vitatott, a hozzá tar
 | QA | sáv az ellenőrzés állomáson: a futó rendszer ellenőrzése (e2e, képernyőkép) a preview környezetben; ez állítja elő a bizonyítékot, a buildtől függetlenül | `positions/0003-a-veg-a-pr-bizonyitekkal.md` |
 | Ready | a munkadarab indítható: érvényes jóváhagyások tartoznak hozzá, és a függőségei készen vannak. A gráfból levezetett nézet. Angolul marad | `positions/0006-grafmodell.md` |
 | revert | git-művelet: egy merge-ölt változtatás visszavonása egy új committal | `positions/0004-alacsony-kockazat.md` |
-| review | a Reviewer munkája az ellenőrzés állomáson: a diff átnézése a buildtől független szereplővel, ezen belül a scope-ellenőrzés. Angolul marad | `positions/0005-scope-conformance.md` |
-| Reviewer | a review sáv ágense az ellenőrzés állomáson | `positions/0005-scope-conformance.md` |
+| review | független ágens ítélete egy munkatermékről, minden kapu előtt. A PR-nál a diff átnézése, ezen belül a scope-ellenőrzés; a tervezésnél a spec és a terv átnézése (visszavezethetőség, ellenőrizhetőség). Angolul marad | `positions/0005-scope-conformance.md` |
+| Reviewer | a review sáv ágense: a tervezés végén a specet és a tervet, az ellenőrzés állomáson a PR-t nézi át, a K0 előtt a gyár-javasolt szándékot | `positions/0005-scope-conformance.md` |
 | sáv (lane) | szerepkör: *ki* végzi az állomást (Planner, Builder, QA, Reviewer, szabály, ember). Egy sávban több állomás lehet. A függetlenségi szabályok sávok között élnek | `topics/fogalmi-modell.md` |
 | scope conformance | lásd: scope-ellenőrzés | |
 | scope drift | lásd: kéretlen változás | |
@@ -83,7 +84,7 @@ amelyeket „mindenki ismer”. Ha egy fogalom jelentése vitatott, a hozzá tar
 | szoftvergyár (software factory) | rendszer, amely emberi szándékból ágensekkel, skillekkel és munkafolyamatokkal PR-t állít elő; az ember dönt és validál, a gyár javasol, végrehajt és tanul | `positions/0001-mit-ertunk-szoftvergyar-alatt.md` |
 | tanuló hurok (learning loop) | a gyár elemzi az eredményeit és a hatékonyságát, és változtatást javasol a saját működésére; az ember dönt róla | `positions/0001-mit-ertunk-szoftvergyar-alatt.md` |
 | terv | munkatermék: a spec megvalósításának módja. Megközelítés, felbontás munkadarabokra, függőségek. Ágens írja, ember hagyja jóvá (K2). A felbontás egyetlen helye | `topics/fogalmi-modell.md` |
-| tervezés | állomás: a K0-n kiválasztott szándékból spec és terv készül; utána K1 és K2. A felbontás egyetlen helye | `positions/0008-negy-allomas.md` |
+| tervezés | állomás: a K0-n kiválasztott szándékból a Planner specet és tervet ír, a Reviewer eval-t és review-t végez; utána K1 és K2. A felbontás egyetlen helye | `positions/0008-negy-allomas.md` |
 | tevékenység | a gyár gráfjának csomópont-típusa; nálunk az állomás-futás | `positions/0006-grafmodell.md` |
 | traceability mátrix | táblázatos nézet két tételcsoport között (például AC × bizonyíték), a cellában a kapcsolattal; a gyár gráfjából levezethető. Angolul marad | |
 | újramunka-kör | a munkadarab az ellenőrzésből (QA, review) visszamegy a buildbe. Legfeljebb 3, utána elakadás | `positions/0007-elakadas.md` |
