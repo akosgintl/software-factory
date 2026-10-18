@@ -1,7 +1,7 @@
 # Munkamódszer a knowledge beszélgetéshez
 
-Ez a mappa egy tartós, több munkameneten át tartó beszélgetés. A téma: szoftvergyár, AI-natív és
-AI-támogatott. A branch a tiszta `main`-ből indul: nincs rajta super-board, nincs ticket, nincs
+Ez a mappa egy tartós, több munkameneten át tartó beszélgetés. A téma: az AI-natív szoftvergyár
+(0001). A branch a tiszta `main`-ből indul: nincs rajta super-board, nincs ticket, nincs
 board, nincs PR. A gyár-kísérleteket más branchekről olvassuk, lásd `experiments.md`.
 
 ## Nyelv
@@ -26,6 +26,10 @@ board, nincs PR. A gyár-kísérleteket más branchekről olvassuk, lásd `exper
 - Forrást ne találj ki. Ha egy hivatkozásban nem vagy biztos, `[ellenőrizendő]` jelet kap a
   `sources.md` fájlban.
 - Ha egy fogalom megérik, írd át a `topics/` mappába. A napló ne nőjön végtelenre.
+- **Egy állítás egy helyen él** (M4). A szabály az álláspontban van, a fogalomtár csak definiál, a
+  többi hely hivatkozik. Ha egy szabály változik, keresd meg minden hivatkozását.
+- Új megkötés az álláspontjába kerül, és az `elvek.md` táblázatában egy irányelv mellé. Az
+  azonosítót (`I-NNNN-n`) nem osztjuk ki újra; a visszavontat áthúzzuk.
 - A repó saját gyár-kísérletei (`experiments.md`) terepi bizonyítékok. Ha egy állítás ellenőrizhető
   a kódban, nézd meg a kódot, ne a memóriádra hagyatkozz.
 
@@ -64,6 +68,7 @@ board, nincs PR. A gyár-kísérleteket más branchekről olvassuk, lásd `exper
 
 ## Kérdés
 ## Álláspont
+## Megkötések
 ## Miért
 ## Mi szólt ellene
 ## Mi változtatná meg

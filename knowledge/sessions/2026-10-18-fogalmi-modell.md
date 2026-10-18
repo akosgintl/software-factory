@@ -99,3 +99,58 @@ Miből áll egy szoftvergyár, melyek a folyamat lépései?
 - 📌 Az autonómia úgy nő, hogy az ember tételek helyett szabályokról dönt. A K0 is lehet nem
   kötelező tételenként, ha ember által írt szabály választ. A 0001 kiegészült.
 - 📌 [`elvek.md`](../elvek.md): irányelvek (E1–E7) invariánsokkal, és a munkánk elvei (M1–M3).
+
+---
+
+## Folytatás: E8 és a megkötés pontos jelentése
+
+- 📌 E8: a szabályt soha nem élesíti a gyár maga. A gyár saját szabályai és működése kemény
+  kategória lett a 0004-ben (akkor I-0004-6).
+- 📌 Mi a megkötés (0006, 4., 4a–4c): bármely pillanatban, kizárólag a gráfból, determinisztikus
+  kóddal eldönthető, mindig igaz, a szerkezetről szól. Négy fajtája van; sérülésekor megelőző vagy
+  észlelő, csendben soha. Az alakja rögzített, a paramétere konfiguráció.
+- 📌 Az I-0004-5 (mintavétel) statisztikai volt, ezért mérőszám lett küszöbbel.
+- Szó: „invariáns” helyett „megkötés”. Az `I-` előtag maradt.
+
+---
+
+## Folytatás: konzisztencia-vizsgálat
+
+### Kérdés
+
+Vannak-e a repóban ellentmondások, kimaradt és redundáns tételek? A vizsgálat 11 ellentmondást,
+5 kétértelmű fogalmat, 11 kimaradt tételt és 8 redundanciát talált. Mindet átvezettük.
+
+### Ahová eljutottunk
+
+- 📌 **A gyár AI-natív.** Ez már nem kérdés. A 0001 kiegészült (7. pont, a két pólus és az L0–L5
+  skála), a `topics/ai-nativ-vs-ai-tamogatott.md` beolvadt.
+- 📌 **Minden kapun mindig van ítélet**, ember vagy ember által jóváhagyott szabály hozza, a
+  kapu-konfiguráció szerint, kategóriánként; szabálynál mintavétellel (0002). Kikapcsolt kapu
+  nincs. A K0 és a K3 ugyanazt a létrát járja, mint a K1 és a K2. Új megkötés: I-0002-6.
+  Hidegindítás: új kategóriában ember dönt.
+- 📌 **A szabály szereplő**: determinisztikus kiértékelő kód. Amit az E8 véd, az a
+  **konfiguráció** (a szabályok kódja is). Az I-0004-4 és az I-0004-6 beolvadt az I-0002-4-be.
+- 📌 **Minden gyár-javaslat szándék-javaslat**, K0-n megy át (0005). Munkadarab csak tervből jön.
+  Az I-0005-4 visszavonva.
+- 📌 **A K3 a landing előtt van, a landing gépi** (0008). A frissítés nem változtatja a head
+  commitot; ütközésnél vissza az ellenőrzésre.
+- 📌 Szavak: „hatókör-ítélet” → scope-ítélet; „kemény kategória” → kemény terület; a kategória
+  változtatás-típus és kódterület (a kockázat nem dimenziója); független = más sáv, más szereplő.
+- 📌 Bizonyíték: e2e mindig; képernyőkép vagy felvétel csak felületet érintő AC-nél; a gyár
+  konfigurációját változtató PR-nál eval-futás (0003).
+- 📌 A zárt típuslista a 0006-ba került, új csomópont: megfigyelés; új él: *hozta*; új megkötés:
+  I-0006-1 (csak bővülő gráf).
+- 📌 Irányelvek: E9 (visszavezethetőség), E10 (inkább megáll), E11 (a main-be az kerül, amit
+  ellenőriztek és elfogadtak); M4 (egy állítás egy helyen). Mind a 27 megkötésnek van irányelve.
+- 🔍 Negyedik kísérlet: `warpdotdev-factory` (`experiments.md`, `topics/folyamat-osszevetes.md`).
+- Beolvadt és törölve: `topics/alacsony-kockazat.md` (a 0004-be), `topics/megkotesek.md` (a
+  megkötések az álláspontokba, a típuslista a 0006-ba), `topics/ai-nativ-vs-ai-tamogatott.md` (a
+  0001-be).
+
+### Nyitva maradt
+
+- Mikor független két ágens (más modell kell-e)?
+- Kell-e merge utáni biztosíték az alacsony kockázathoz?
+- Mit csinál a Warp scorer `selfImprovement` beállítása, és sérti-e az E8-at?
+- A kísérletekről három kérdés átkerült az `experiments.md`-ből a `questions.md`-be.
