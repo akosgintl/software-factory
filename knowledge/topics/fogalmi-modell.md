@@ -50,6 +50,8 @@ szándék ─1:1─ spec ─1:1─ terv ─1:N─ munkadarab ─1:1─ PR ─1:N
 ## 4. Döntési pontok: ahol a munka megáll
 
 - **kapu**: döntési pont. Dönthet ember vagy szabály (például merge policy).
+- **kiválasztás**: döntés arról, melyik szándékon dolgozzon a gyár, és milyen sorrendben. K0,
+  mindig ember, soha nem kapcsolható ki.
 - **jóváhagyás**: döntés, *mielőtt* a munka elindul. K1 (spec), K2 (terv).
 - **elfogadás**: döntés az *eredményről*. K3.
 - **kockázat**, **kategória**: ezek alapján kapcsoljuk a kapukat (0004).

@@ -10,7 +10,7 @@ mi invariáns, mi ítélet, és mi az, ami egyik formába sem fér bele.
 | Csoport | Típus | Megjegyzés |
 |---|---|---|
 | munkatermék | szándék, spec, AC, terv, munkadarab, commit, diffrész, PR, bizonyíték, beszámoló | a diffrész a commit egy darabja (hunk); a beszámoló a Builder saját leírása |
-| munkatermék | ítélet | jóváhagyás, elfogadás, elutasítás, kockázati besorolás, hatókör-ítélet, mintavételi ítélet |
+| munkatermék | ítélet | kiválasztás, jóváhagyás, elfogadás, elutasítás, kockázati besorolás, hatókör-ítélet, mintavételi ítélet |
 | munkatermék | konfiguráció | kemény kategóriák listája, küszöbök, kapuk be- és kikapcsolása kategóriánként |
 | munkatermék | átcsúszott hiba | egy kapun átjutott, később talált hiba |
 | tevékenység | állomás-futás | attribútum: állomás, sáv, kezdet, vég |
@@ -45,8 +45,10 @@ mi invariáns, mi ítélet, és mi az, ami egyik formába sem fér bele.
 - **I-0002-3** Minden merge-ölt PR-ra vonatkozik egy elfogadás. Hogy ki hozhatja, azt a 0004 mondja
   meg.
 - **I-0002-4** A kapu-konfiguráció minden változására vonatkozik egy ember ítélete.
+- **I-0002-5** Spec csak olyan szándékra készülhet, amelyre ember kiválasztó ítélete (K0)
+  vonatkozik. A K0 nem kapcsolható ki.
 
-**Ítéletek:** K1 (ember), K2 (ember), K3 (ember vagy szabály), egy kapu ki- vagy bekapcsolása
+**Ítéletek:** K0 (ember, mindig), K1 (ember), K2 (ember), K3 (ember vagy szabály), egy kapu ki- vagy bekapcsolása
 (ember, a tanuló hurok javaslata alapján).
 
 **Ami nem fér bele:** „a bizalmat mérjük”. Ez se nem invariáns, se nem ítélet, hanem

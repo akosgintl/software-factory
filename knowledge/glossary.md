@@ -41,14 +41,15 @@ amelyeket „mindenki ismer”. Ha egy fogalom jelentése vitatott, a hozzá tar
 | intake | lásd: befogadás | |
 | intent | lásd: szándék | |
 | invariáns | a gyár gráfján gépi úton ellenőrizhető szabály; a döntéseink három formájának egyike (invariáns, ítélet, mérőszám) | `positions/0006-grafmodell.md` |
-| ítélet | munkatermék: egy szereplő (ember, ágens vagy szabály) döntése egy munkatermék adott verziójáról. Fajtái: jóváhagyás, elfogadás, elutasítás, kockázati besorolás, hatókör-ítélet, mintavételi ítélet. Az invariánsok mondják meg, melyiket ki hozhatja | `positions/0006-grafmodell.md` |
+| ítélet | munkatermék: egy szereplő (ember, ágens vagy szabály) döntése egy munkatermék adott verziójáról. Fajtái: kiválasztás, jóváhagyás, elfogadás, elutasítás, kockázati besorolás, hatókör-ítélet, mintavételi ítélet. Az invariánsok mondják meg, melyiket ki hozhatja | `positions/0006-grafmodell.md` |
 | jóváhagyás | ítélet, mielőtt a munka elindul: K1 a specre, K2 a tervre; vö. elfogadás | `topics/fogalmi-modell.md` |
-| K1, K2, K3 | a három emberi kapu: K1 a spec jóváhagyása, K2 a terv jóváhagyása, K3 az eredmény elfogadása | `positions/0002-emberi-kapuk-es-bizalom.md` |
-| kapu | döntési pont, ahol a munka megáll; dönthet ember vagy szabály. Kategóriánként be- és kikapcsolható, a K3 mindig él | `positions/0002-emberi-kapuk-es-bizalom.md` |
+| K0, K1, K2, K3 | a négy emberi kapu: K0 a szándék kiválasztása (mindig él), K1 a spec jóváhagyása, K2 a terv jóváhagyása, K3 az eredmény elfogadása (mindig él) | `positions/0002-emberi-kapuk-es-bizalom.md` |
+| kapu | döntési pont, ahol a munka megáll; dönthet ember vagy szabály. Kategóriánként be- és kikapcsolható, a K0 és a K3 mindig él | `positions/0002-emberi-kapuk-es-bizalom.md` |
 | kártya | lásd: munkadarab | |
 | kategória | a munkadarabok csoportja, amelyre a bizalmat és a kapukat külön mérjük és kapcsoljuk: változtatás-típus, kockázat, kódterület | `positions/0002-emberi-kapuk-es-bizalom.md` |
 | kemény kategória | olyan terület, ahol automatikus merge soha nem lehet: pénz, auth és jogosultság, adat, személyes adat, publikus API, infrastruktúra és titkok, új függőség. A listát csak ember változtatja | `positions/0004-alacsony-kockazat.md` |
 | kéretlen változás (scope drift) | a diff olyat változtat, amit a munkadarab AC-i nem kértek | `positions/0005-scope-conformance.md` |
+| kiválasztás | ítélet (K0): melyik szándékon dolgozzon a gyár, és milyen sorrendben. Prioritás, nem ellenőrzés. Mindig ember hozza, a gyár által javasolt szándékra is; soha nem kapcsolható ki; kötegelhető | `positions/0002-emberi-kapuk-es-bizalom.md` |
 | kockázat | mi romolhat el × mennyire látjuk × mennyire vonható vissza | `positions/0004-alacsony-kockazat.md` |
 | kockázati besorolás | ítélet egy munkadarab kockázatáról. Csak felfelé módosítható: ágens emelheti, csökkenteni csak ember | `positions/0004-alacsony-kockazat.md` |
 | landing | állomás: a munkadarab bejuttatása a main-be (rebase, merge sor, CI az összevont állapoton, merge). Angolul marad | `topics/fogalmi-modell.md` |
