@@ -28,6 +28,7 @@ A munkamódszer részletei a [`CLAUDE.md`](CLAUDE.md) fájlban vannak. Claude ez
 | [`questions.md`](questions.md) | nyitott kérdések listája | folyamatosan |
 | [`glossary.md`](glossary.md) | fogalomtár, a közös szókincs | amikor új fogalmat használunk |
 | [`sources.md`](sources.md) | források, megbízhatósági jelöléssel | amikor forrásra hivatkozunk |
+| [`abrak/`](abrak/) | ábrák HTML-ben; a `gyar-folyamat.html` a 0008 folyamatábrája, élő változata: https://claude.ai/artifact/QfdY4btjwQMcAwXPBguZ2H | amikor egy álláspont vizuálisan változik |
 | [`experiments.md`](experiments.md) | a repó saját gyár-kísérletei mint terepi bizonyíték | amikor egy kísérlet változik |
 
 ## A tudás érettségi szintjei

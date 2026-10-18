@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="hu">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A gyár folyamata</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: egy széles úszósávos ábra (sávok soronként, állomások oszloponként), alatta a négy kapu kártyán. */
+:root {
+  --paper: #f2f4f6;
+  --node: #ffffff;
+  --ink: #1d2733;
+  --muted: #5d6b7a;
+  --line: #c6cfd8;
+  --band: #e7ebef;
+  --human: #d9480f;
+  --human-soft: #fbe6d9;
+  --stop: #c92a2a;
+  --stop-soft: #f7dcdc;
+  --rule: #8a96a3;
+  --f-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #10151b; --node: #18212b; --ink: #e5eaf0; --muted: #94a2b1; --line: #2c3742;
+    --band: #151c24; --human: #ff8a4c; --human-soft: #3a2316; --stop: #ff6b6b; --stop-soft: #3a1c20;
+    --rule: #6b7886; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #10151b; --node: #18212b; --ink: #e5eaf0; --muted: #94a2b1; --line: #2c3742;
+  --band: #151c24; --human: #ff8a4c; --human-soft: #3a2316; --stop: #ff6b6b; --stop-soft: #3a1c20;
+  --rule: #6b7886; color-scheme: dark;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-block: 40px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid;
+  gap: 36px;
+}
+header { display: grid; gap: 10px; max-width: 70ch; }
+.eyebrow {
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--muted);
+}
+h1 {
+  font-family: var(--f-display); font-weight: 700; font-size: clamp(36px, 6vw, 56px);
+  line-height: 1; margin: 0; letter-spacing: .01em; text-wrap: balance;
+}
+h2 {
+  font-family: var(--f-display); font-weight: 600; font-size: 26px; margin: 0; letter-spacing: .02em;
+  text-wrap: balance;
+}
+.lead { margin: 0; color: var(--muted); font-size: 16px; }
+.lead b { color: var(--human); font-weight: 600; }
+
+figure { margin: 0; display: grid; gap: 14px; }
+.scroller {
+  overflow-x: auto;
+  background: var(--node);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.scroller svg { display: block; width: 100%; min-width: 980px; height: auto; }
+figcaption { color: var(--muted); font-size: 14px; max-width: 80ch; }
+
+/* SVG */
+.grid { stroke: var(--line); stroke-width: 1; }
+.coldiv { stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 4; }
+.colband { fill: var(--band); }
+.lane-human { fill: var(--human-soft); }
+.t-station { font-family: var(--f-display); font-weight: 700; font-size: 17px; letter-spacing: .08em; fill: var(--ink); }
+.t-view { font-family: var(--f-display); font-weight: 500; font-size: 16px; letter-spacing: .08em; fill: var(--muted); }
+.t-num { font-family: var(--f-mono); font-size: 11px; fill: var(--muted); }
+.t-lane { font-family: var(--f-display); font-weight: 600; font-size: 18px; fill: var(--ink); }
+.t-lane-h { font-family: var(--f-display); font-weight: 700; font-size: 18px; fill: var(--human); }
+.t-kind { font-family: var(--f-mono); font-size: 10.5px; fill: var(--muted); }
+.node { fill: var(--node); stroke: var(--ink); stroke-width: 1.4; }
+.node-soft { fill: var(--node); stroke: var(--rule); stroke-width: 1.2; }
+.node-h { fill: var(--node); stroke: var(--human); stroke-width: 1.4; stroke-dasharray: 4 3; }
+.t-node { font-family: var(--f-body); font-weight: 600; font-size: 13.5px; fill: var(--ink); }
+.t-sub { font-family: var(--f-mono); font-size: 10.5px; fill: var(--muted); }
+.t-edge { font-family: var(--f-mono); font-size: 10.5px; fill: var(--muted); }
+.t-edge-h { font-family: var(--f-mono); font-size: 10.5px; fill: var(--human); }
+.t-edge-s { font-family: var(--f-mono); font-size: 10.5px; fill: var(--stop); }
+.e { fill: none; stroke: var(--ink); stroke-width: 1.4; }
+.e-loop { fill: none; stroke: var(--muted); stroke-width: 1.4; stroke-dasharray: 5 4; }
+.e-h { fill: none; stroke: var(--human); stroke-width: 1.6; }
+.e-hd { fill: none; stroke: var(--human); stroke-width: 1.4; stroke-dasharray: 5 4; }
+.e-s { fill: none; stroke: var(--stop); stroke-width: 1.3; stroke-dasharray: 4 4; }
+.m-ink { fill: var(--ink); }
+.m-muted { fill: var(--muted); }
+.m-h { fill: var(--human); }
+.m-s { fill: var(--stop); }
+.g-always { fill: var(--human); stroke: var(--human); stroke-width: 1.4; }
+.g-switch { fill: var(--human-soft); stroke: var(--human); stroke-width: 1.6; stroke-dasharray: 4 3; }
+.g-rule { fill: var(--rule); }
+.t-gate { font-family: var(--f-mono); font-weight: 500; font-size: 11.5px; fill: var(--node); }
+.t-gate-d { font-family: var(--f-mono); font-weight: 500; font-size: 11.5px; fill: var(--human); }
+.t-gcap { font-family: var(--f-display); font-weight: 600; font-size: 14px; letter-spacing: .04em; fill: var(--human); }
+.stopband { fill: var(--stop-soft); stroke: var(--stop); stroke-width: 1.2; }
+.hatch-line { stroke: var(--stop); stroke-width: 1; opacity: .18; }
+.t-stop { font-family: var(--f-display); font-weight: 700; font-size: 20px; letter-spacing: .14em; fill: var(--stop); }
+.t-stop-sub { font-family: var(--f-body); font-size: 12.5px; fill: var(--ink); }
+
+/* Jelmagyarázat */
+.legend { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.legend svg { flex: none; }
+
+/* Kapuk */
+.gates { display: grid; gap: 14px; }
+.gate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.gate {
+  background: var(--node); border: 1px solid var(--line); border-radius: 6px;
+  padding: 16px 18px; display: grid; gap: 8px; align-content: start; min-width: 0;
+}
+.gate-head { display: flex; align-items: baseline; gap: 10px; }
+.gate-id {
+  font-family: var(--f-mono); font-weight: 500; font-size: 13px; padding: 2px 8px; border-radius: 3px;
+  background: var(--human); color: var(--node);
+}
+.gate-id.switch { background: var(--human-soft); color: var(--human); outline: 1.5px dashed var(--human); outline-offset: -1.5px; }
+.gate-id.split { background: linear-gradient(90deg, var(--human) 50%, var(--rule) 50%); }
+.gate-name { font-family: var(--f-display); font-weight: 600; font-size: 21px; }
+.gate p { margin: 0; font-size: 14px; }
+.gate .rule { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+
+.notes { display: grid; gap: 10px; max-width: 80ch; }
+.notes ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.notes b { font-weight: 600; }
+footer { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .gate { transition: border-color .15s ease; }
+  .gate:hover { border-color: var(--human); }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Szoftvergyár · 0008 · 2026-10-18</div>
+    <h1>A gyár folyamata</h1>
+    <p class="lead">Négy állomás, hat sáv, négy kapu és egy mellékállapot. A szándék balról jobbra halad, és az ember csak a <b>narancssárga</b> pontokon lép be.</p>
+  </header>
+
+  <figure>
+    <div class="scroller">
+      <svg viewBox="0 0 1200 664" role="img" aria-label="Úszósávos folyamatábra. Az ember K0-n kiválasztja a szándékot; a Planner specet és tervet ír, amelyet az ember K1-en és K2-n hagy jóvá; a Builder commitot és PR-t állít elő; a QA és a Reviewer párhuzamosan ellenőriz, elutasításnál legfeljebb három újramunka-kör van; a merge gate a CI-t az összevont állapoton futtatja, egyszerre egy munkadarabot enged át, nem alacsony kockázatnál az ember fogad el K3-on; merge után mintavétel. Bármelyik állomásról a munkadarab az elakadt állapotba kerülhet, ahonnan ember dönt.">
+        <defs>
+          <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="m-ink"/></marker>
+          <marker id="ar-m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="m-muted"/></marker>
+          <marker id="ar-h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="m-h"/></marker>
+          <marker id="ar-s" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="m-s"/></marker>
+          <pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="10" class="hatch-line"/>
+          </pattern>
+        </defs>
+
+        <!-- állomás-oszlopok háttere -->
+        <rect class="colband" x="240" y="64" width="220" height="490"/>
+        <rect class="colband" x="640" y="64" width="220" height="490"/>
+        <!-- ember sáv kiemelés -->
+        <rect class="lane-human" x="0" y="64" width="1190" height="90"/>
+
+        <!-- fejléc -->
+        <text class="t-view" x="180" y="44" text-anchor="middle">BACKLOG</text>
+        <text class="t-num" x="350" y="24" text-anchor="middle">1. állomás</text>
+        <text class="t-station" x="350" y="46" text-anchor="middle">TERVEZÉS</text>
+        <text class="t-num" x="550" y="24" text-anchor="middle">2. állomás</text>
+        <text class="t-station" x="550" y="46" text-anchor="middle">BUILD</text>
+        <text class="t-num" x="750" y="24" text-anchor="middle">3. állomás</text>
+        <text class="t-station" x="750" y="46" text-anchor="middle">ELLENŐRZÉS</text>
+        <text class="t-num" x="960" y="24" text-anchor="middle">4. állomás</text>
+        <text class="t-station" x="960" y="46" text-anchor="middle">LANDING</text>
+        <text class="t-view" x="1125" y="44" text-anchor="middle">KÉSZ</text>
+
+        <!-- rács -->
+        <line class="grid" x1="0" y1="64" x2="1190" y2="64"/>
+        <line class="grid" x1="0" y1="154" x2="1190" y2="154"/>
+        <line class="grid" x1="0" y1="234" x2="1190" y2="234"/>
+        <line class="grid" x1="0" y1="314" x2="1190" y2="314"/>
+        <line class="grid" x1="0" y1="394" x2="1190" y2="394"/>
+        <line class="grid" x1="0" y1="474" x2="1190" y2="474"/>
+        <line class="grid" x1="0" y1="554" x2="1190" y2="554"/>
+        <line class="coldiv" x1="120" y1="64" x2="120" y2="554"/>
+        <line class="coldiv" x1="240" y1="64" x2="240" y2="554"/>
+        <line class="coldiv" x1="460" y1="64" x2="460" y2="554"/>
+        <line class="coldiv" x1="640" y1="64" x2="640" y2="554"/>
+        <line class="coldiv" x1="860" y1="64" x2="860" y2="554"/>
+        <line class="coldiv" x1="1060" y1="64" x2="1060" y2="554"/>
+
+        <!-- sáv-címkék -->
+        <text class="t-lane-h" x="16" y="107">Ember</text>
+        <text class="t-kind" x="16" y="123">kapuk, döntés</text>
+        <text class="t-lane" x="16" y="192">Planner</text>
+        <text class="t-kind" x="16" y="208">ágens</text>
+        <text class="t-lane" x="16" y="272">Builder</text>
+        <text class="t-kind" x="16" y="288">ágens</text>
+        <text class="t-lane" x="16" y="352">QA</text>
+        <text class="t-kind" x="16" y="368">ágens, független</text>
+        <text class="t-lane" x="16" y="432">Reviewer</text>
+        <text class="t-kind" x="16" y="448">ágens, független</text>
+        <text class="t-lane" x="16" y="512">Szabály</text>
+        <text class="t-kind" x="16" y="528">kód, merge gate</text>
+
+        <!-- szándék -> K0 -->
+        <rect class="node-soft" x="135" y="94" width="90" height="30" rx="15"/>
+        <text class="t-node" x="180" y="113.5" text-anchor="middle">szándék</text>
+        <path class="e" d="M225,109 H251" marker-end="url(#ar)"/>
+        <text class="t-gcap" x="275" y="82" text-anchor="middle">K0</text>
+        <polygon class="g-always" points="275,89 295,109 275,129 255,109"/>
+        <text class="t-gate" x="275" y="113" text-anchor="middle">kiv</text>
+
+        <!-- K0 -> Planner -->
+        <path class="e" d="M275,129 V194 H288" marker-end="url(#ar)"/>
+        <text class="t-edge" x="281" y="170">kiválasztva</text>
+        <rect class="node" x="290" y="176" width="120" height="36" rx="3"/>
+        <text class="t-node" x="350" y="199" text-anchor="middle">spec + terv</text>
+
+        <!-- Planner -> K1 -> K2 -->
+        <path class="e-h" d="M380,176 V133" marker-end="url(#ar-h)"/>
+        <text class="t-edge-h" x="386" y="166">jóváhagyásra</text>
+        <text class="t-gcap" x="380" y="82" text-anchor="middle">K1 spec</text>
+        <polygon class="g-switch" points="380,89 400,109 380,129 360,109"/>
+        <text class="t-gate-d" x="380" y="113" text-anchor="middle">K1</text>
+        <path class="e-h" d="M400,109 H408" marker-end="url(#ar-h)"/>
+        <text class="t-gcap" x="432" y="82" text-anchor="middle">K2 terv</text>
+        <polygon class="g-switch" points="430,89 450,109 430,129 410,109"/>
+        <text class="t-gate-d" x="430" y="113" text-anchor="middle">K2</text>
+
+        <!-- K2 -> Builder -->
+        <path class="e" d="M430,129 V274 H478" marker-end="url(#ar)"/>
+        <text class="t-edge" x="436" y="252">Ready</text>
+        <rect class="node" x="480" y="252" width="140" height="44" rx="3"/>
+        <text class="t-node" x="550" y="270" text-anchor="middle">build</text>
+        <text class="t-sub" x="550" y="286" text-anchor="middle">commit · PR</text>
+
+        <!-- Builder -> QA + Reviewer -->
+        <path class="e" d="M620,274 H645 V434 H668" marker-end="url(#ar)"/>
+        <path class="e" d="M645,356 H668" marker-end="url(#ar)"/>
+        <text class="t-edge" x="624" y="266">PR head</text>
+        <rect class="node" x="670" y="334" width="160" height="44" rx="3"/>
+        <text class="t-node" x="750" y="352" text-anchor="middle">QA</text>
+        <text class="t-sub" x="750" y="368" text-anchor="middle">bizonyíték AC-nként</text>
+        <rect class="node" x="670" y="412" width="160" height="44" rx="3"/>
+        <text class="t-node" x="750" y="430" text-anchor="middle">Reviewer</text>
+        <text class="t-sub" x="750" y="446" text-anchor="middle">scope · kockázat</text>
+
+        <!-- újramunka -->
+        <path class="e-loop" d="M700,456 V467 H550 V299" marker-end="url(#ar-m)"/>
+        <text class="t-edge" x="625" y="490" text-anchor="middle">újramunka · max 3 kör</text>
+
+        <!-- -> merge gate -->
+        <path class="e" d="M830,356 H850 V510 H878" marker-end="url(#ar)"/>
+        <path class="e" d="M830,434 H850"/>
+        <text class="t-edge" x="856" y="480">átment</text>
+        <rect class="node" x="880" y="488" width="160" height="56" rx="3"/>
+        <text class="t-node" x="960" y="505" text-anchor="middle">merge gate</text>
+        <text class="t-sub" x="960" y="520" text-anchor="middle">CI összevont · egyesével</text>
+        <text class="t-sub" x="960" y="535" text-anchor="middle">alacsony kockázat: auto</text>
+
+        <!-- K3 -->
+        <path class="e-h" d="M920,488 V109 H936" marker-end="url(#ar-h)"/>
+        <text class="t-edge-h" x="927" y="290">nem alacsony</text>
+        <text class="t-edge-h" x="927" y="304">kockázat</text>
+        <text class="t-gcap" x="960" y="82" text-anchor="middle">K3 elfogadás</text>
+        <polygon class="g-always" points="960,89 960,129 940,109"/>
+        <polygon class="g-rule" points="960,89 980,109 960,129"/>
+        <text class="t-gate" x="960" y="113" text-anchor="middle">K3</text>
+        <path class="e-h" d="M980,109 H1000 V486" marker-end="url(#ar-h)"/>
+        <text class="t-edge-h" x="1006" y="290">elfogad</text>
+
+        <!-- merge -> main -> mintavétel -->
+        <path class="e" d="M1040,516 H1073" marker-end="url(#ar)"/>
+        <text class="t-edge" x="1057" y="508" text-anchor="middle">merge</text>
+        <rect class="node" x="1075" y="498" width="100" height="36" rx="3"/>
+        <text class="t-node" x="1125" y="521" text-anchor="middle">main</text>
+        <path class="e-hd" d="M1125,498 V128" marker-end="url(#ar-h)"/>
+        <text class="t-edge-h" x="1131" y="300">utólag</text>
+        <text class="t-gcap" x="1125" y="82" text-anchor="middle">utókövetés</text>
+        <rect class="node-h" x="1072" y="94" width="106" height="30" rx="15"/>
+        <text class="t-node" x="1125" y="113.5" text-anchor="middle">mintavétel 10%</text>
+
+        <!-- elakadás -->
+        <path class="e-s" d="M350,212 V576" marker-end="url(#ar-s)"/>
+        <path class="e-s" d="M510,296 V576" marker-end="url(#ar-s)"/>
+        <path class="e-s" d="M790,456 V576" marker-end="url(#ar-s)"/>
+        <path class="e-s" d="M960,544 V576" marker-end="url(#ar-s)"/>
+        <text class="t-edge-s" x="516" y="568">elakadás</text>
+        <rect class="stopband" x="120" y="580" width="1070" height="70" rx="3"/>
+        <rect x="120" y="580" width="1070" height="70" rx="3" fill="url(#hatch)"/>
+        <text class="t-stop" x="140" y="610">ELAKADT</text>
+        <text class="t-stop-sub" x="140" y="632">emberi ítéletig áll, utána vissza oda, ahová a hiba mutat: munkadarab, terv vagy spec (0007)</text>
+        <text class="t-edge-h" x="1134" y="619" text-anchor="end">ember dönt</text>
+        <polygon class="g-always" points="1158,601 1172,615 1158,629 1144,615"/>
+      </svg>
+    </div>
+    <figcaption>Az oszlopok az állomások, a sorok a sávok: ki végzi a munkát. A backlog és a kész nem állomás, hanem nézet. A QA és a Reviewer ugyanazt a PR-t nézi, egymástól függetlenül. Széles ábra: kis képernyőn oldalra görgethető.</figcaption>
+    <div class="legend" aria-label="Jelmagyarázat">
+      <span><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><polygon class="g-always" points="11,2 20,11 11,20 2,11"/></svg>emberi kapu, mindig él</span>
+      <span><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><polygon class="g-switch" points="11,2 20,11 11,20 2,11"/></svg>emberi kapu, kategóriánként kikapcsolható</span>
+      <span><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><polygon class="g-always" points="11,2 11,20 2,11"/><polygon class="g-rule" points="11,2 20,11 11,20"/></svg>ember vagy szabály dönt, kockázat szerint</span>
+      <span><svg width="34" height="10" viewBox="0 0 34 10" aria-hidden="true"><line class="e-loop" x1="1" y1="5" x2="33" y2="5"/></svg>újramunka</span>
+      <span><svg width="34" height="10" viewBox="0 0 34 10" aria-hidden="true"><line class="e-s" x1="1" y1="5" x2="33" y2="5"/></svg>elakadás, bármelyik állomásról</span>
+    </div>
+  </figure>
+
+  <section class="gates" aria-labelledby="kapuk">
+    <h2 id="kapuk">A négy emberi kapu</h2>
+    <div class="gate-grid">
+      <article class="gate">
+        <div class="gate-head"><span class="gate-id">K0</span><span class="gate-name">Kiválasztás</span></div>
+        <p>Melyik szándékon dolgozzon a gyár, és milyen sorrendben. Prioritás, nem ellenőrzés. A gyár által javasolt szándékra is kell.</p>
+        <p class="rule">mindig ember · kötegelhető · I-0002-5</p>
+      </article>
+      <article class="gate">
+        <div class="gate-head"><span class="gate-id switch">K1</span><span class="gate-name">Spec jóváhagyása</span></div>
+        <p>Jól értette-e az ágens a szándékot. A spec felhasználói szintű AC-i lesznek a végső elfogadás szerződése.</p>
+        <p class="rule">ember · kategóriánként kikapcsolható · I-0002-1, -2</p>
+      </article>
+      <article class="gate">
+        <div class="gate-head"><span class="gate-id switch">K2</span><span class="gate-name">Terv jóváhagyása</span></div>
+        <p>A megközelítés, és a felbontás munkadarabokra. Ez a felbontás egyetlen helye, ezért több munkadarabos szándéknál erős kapu.</p>
+        <p class="rule">ember · kategóriánként kikapcsolható · I-0002-1, -2</p>
+      </article>
+      <article class="gate">
+        <div class="gate-head"><span class="gate-id split">K3</span><span class="gate-name">Elfogadás</span></div>
+        <p>Az eredmény a szándékhoz képest, a bizonyíték alapján. Alacsony kockázatnál a merge gate szabálya dönt, és a PR-ok 10%-át utólag ember nézi meg.</p>
+        <p class="rule">ember vagy szabály · 0004 · I-0008-2</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="notes" aria-labelledby="nem-allomas">
+    <h2 id="nem-allomas">Ami nem állomás</h2>
+    <ul>
+      <li><b>Backlog:</b> a K0 előtti szándékok nézete. Ott nem dolgozik senki.</li>
+      <li><b>Ütemezés:</b> a vezérlés dolga. A Ready nézet: a munkadarab indítható.</li>
+      <li><b>Utókövetés:</b> a kész után. A mintavételből és az átcsúszott hibákból jön a tanuló hurok jele.</li>
+    </ul>
+  </section>
+
+  <footer>Forrás: knowledge/positions 0002, 0004, 0005, 0007, 0008 · branch: knowledge</footer>
+</div>
+
+</html>
