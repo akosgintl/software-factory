@@ -36,8 +36,20 @@ local-runs/     run logs from /factory-local (git-ignored)
 - `runners/linux-build.yaml`: `python:3.12-bookworm` instead of the Go image, and
   no Go setup command.
 - The two skill stubs now hold this repo's conventions and checks.
+- Scorers: a `name` field in each `scorer.md`, which the published schema
+  requires.
 
 The agent prompts and scorer rubrics are otherwise verbatim.
+
+## Names
+
+Agents, automations and runners take their name from their path. To rename
+one, move its file or directory.
+
+Scorers are the exception. A Scorer's identity is the `name` field in its
+frontmatter, and its directory is only a filesystem slug. Keep `name` equal to
+the directory name, and when you rename a Scorer, change both together. Moving
+the directory alone does not rename it.
 
 ## Run it locally (Free plan)
 
